@@ -31,6 +31,8 @@ Mismas versiones fijadas que el portafolio cuando existen:
 - **Sin** Supabase, adaptador de servidor, GSAP, Lenis, librerías de fechas, de formularios, de estado ni Testing Library. Los componentes se prueban con e2e y la lógica con tests unitarios.
 - `.npmrc` igual que el portafolio: sin scripts de instalación, `min-release-age=7` y solo el registro de npm. Todas las versiones de arriba tienen más de 7 días.
 
+**Cambio 2026-11-18 (R01):** `@lhci/cli` 0.16.1 se publicó el 2026-11-11 a las 23:40 UTC y no cumple los 7 días hasta la noche del 18. En lugar de pedir otra excepción, se instala en R10 (Lighthouse), y hasta entonces la CI no tiene ese paso. Sin él, `npm audit` da 0 avisos, así que `scripts/audit.mjs` empieza sin excepciones.
+
 ## 3. Estructura
 
 ```

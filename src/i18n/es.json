@@ -1,0 +1,8 @@
+{
+  "sitio.titulo": "Navaja del Puerto · Barbería en Puerto Cabello",
+  "sitio.descripcion": "Barbería ficticia de Puerto Cabello con reserva de turno en línea. Concepto de portafolio de [A]nkordev: la barbería no existe y la reserva es una demo.",
+  "marca.nombre": "Navaja del Puerto",
+  "reserva.titulo": "Reserva tu turno",
+  "reserva.sinJs": "La reserva de demostración necesita JavaScript. Los servicios, los barberos y el horario se leen igual.",
+  "reserva.lista": "La reserva está lista."
+}

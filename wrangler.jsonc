@@ -1,0 +1,13 @@
+// Cloudflare Workers con recursos estáticos (plan §10): sin código de servidor, el Worker
+// solo sirve dist/. Las cabeceras de seguridad van en public/_headers.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "navaja-del-puerto",
+  // Fecha fija: el comportamiento del runtime no cambia sin decidirlo
+  "compatibility_date": "2026-10-23",
+  "workers_dev": true,
+  "preview_urls": false,
+  "assets": {
+    "directory": "./dist"
+  }
+}

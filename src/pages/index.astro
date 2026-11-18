@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import Reserva from '../components/reserva/Reserva.tsx';
+import { t } from '../i18n';
+---
+
+<Base>
+  <main>
+    <h1>{t('marca.nombre')}</h1>
+    <section id="reservar" aria-labelledby="reservar-titulo">
+      <h2 id="reservar-titulo">{t('reserva.titulo')}</h2>
+      <Reserva client:visible />
+    </section>
+  </main>
+</Base>
