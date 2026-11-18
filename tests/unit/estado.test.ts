@@ -105,6 +105,12 @@ describe('datos y envío', () => {
     expect(s).toMatchObject({ paso: 'datos', envio: { estado: 'error', error: 'tope-alcanzado' } });
   });
 
+  it('un fallo inesperado al confirmar deja reintentar, sin culpar a los datos', () => {
+    const s = aplicar([{ tipo: 'enviando' }, { tipo: 'envio-interrumpido' }], completo);
+    expect(s).toMatchObject({ paso: 'datos', envio: { estado: 'error' } });
+    expect(s.envio.error).toBeUndefined();
+  });
+
   it('confirmado: guarda el turno y pasa al comprobante', () => {
     const reserva: Reserva = { codigo: 'NP-4F7K', servicioId: 'corte', barberoId: 'leo', fecha: '2026-11-25', inicio: 600, duracion: 30, nombre: 'Ana', nota: '' };
     const s = aplicar([{ tipo: 'enviando' }, { tipo: 'confirmado', reserva }], completo);

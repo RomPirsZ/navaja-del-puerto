@@ -149,3 +149,17 @@ describe('misReservas y cancelarReserva', () => {
     expect(await a.cancelarReserva(r.reserva.codigo)).toEqual({ ok: false });
   });
 });
+
+describe('proximoDia', () => {
+  it('desde un día sin huecos para ese servicio, devuelve el siguiente que tenga', async () => {
+    // Infantil solo lo hace Jesús, que no trabaja los martes
+    const dia = await api().api.proximoDia({ desde: '2026-11-24', servicioId: 'infantil', barberoId: 'cualquiera' });
+    expect(dia).toBe('2026-11-25');
+  });
+
+  it('cuenta los turnos ya reservados en ese navegador', async () => {
+    const { api: a } = api();
+    expect(await a.proximoDia({ desde: '2026-11-25', servicioId: 'corte', barberoId: 'leo' })).toBe('2026-11-25');
+  });
+});
+

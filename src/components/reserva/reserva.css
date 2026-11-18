@@ -1,0 +1,469 @@
+/* Booking island on the black band (surface contract): choices are tracklist rows and
+   chips; the record label is the ticket. Colours only through the tokens. */
+
+.reserva {
+  display: grid;
+  gap: 2rem var(--hueco);
+}
+
+.reserva-sinjs {
+  margin: 0;
+  max-width: 44ch;
+  font-size: var(--text-tema);
+}
+
+.reserva-flujo {
+  display: grid;
+  gap: 2.5rem;
+  align-content: start;
+}
+
+.paso {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.paso-titulo {
+  margin: 0;
+  font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
+  color: var(--papel);
+}
+
+/* ——— Choices ——— */
+
+.opciones {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.opciones-lista {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.opciones-rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6.25rem, 1fr));
+  gap: 0.5rem;
+}
+
+.opcion {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  text-align: start;
+  color: var(--papel);
+  background: var(--vinilo);
+  border: 2px solid var(--vinilo);
+  cursor: pointer;
+}
+
+.opcion:hover {
+  border-color: var(--papel-suave);
+}
+
+.opcion[aria-pressed='true'] {
+  background: var(--funda);
+  border-color: var(--funda);
+  color: var(--tinta);
+}
+
+.opcion:disabled {
+  background: transparent;
+  border-color: var(--vinilo);
+  color: var(--papel-suave);
+  cursor: not-allowed;
+}
+
+.opcion-nombre {
+  font-size: var(--text-tema);
+  font-weight: 700;
+}
+
+.opcion-dato {
+  text-align: end;
+}
+
+.opcion-dia {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  text-align: center;
+}
+
+.opcion-numero {
+  font-family: var(--font-display);
+  font-stretch: 62%;
+  font-weight: 900;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.opcion-semana,
+.opcion-mes {
+  font-size: var(--text-nota);
+  font-weight: 600;
+}
+
+.opcion-hora {
+  justify-content: center;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.opciones-horas {
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+}
+
+.horas {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.horas-grupo {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.horas-titulo {
+  margin: 0;
+  font-size: var(--text-cuerpo);
+  color: var(--papel-suave);
+}
+
+.horas-estado {
+  margin: 0;
+  font-size: var(--text-tema);
+}
+
+/* ——— Form ——— */
+
+.datos {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 34rem;
+}
+
+.campo {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.campo label {
+  font-weight: 700;
+}
+
+.campo input,
+.campo textarea {
+  font: inherit;
+  font-size: max(1rem, 1em);
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.85rem;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 2px solid var(--papel-suave);
+  border-radius: 0;
+}
+
+.campo [aria-invalid='true'] {
+  border-color: var(--funda);
+  outline: 2px solid var(--funda);
+}
+
+.campo-ayuda {
+  margin: 0;
+  font-size: var(--text-nota);
+  color: var(--papel-suave);
+}
+
+.campo-error {
+  margin: 0;
+  font-weight: 700;
+  color: var(--funda);
+}
+
+.campo-error::before {
+  content: '× ';
+}
+
+.aviso-error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--funda);
+  color: var(--tinta);
+  font-weight: 700;
+}
+
+.datos-demo {
+  margin: 0;
+  font-size: var(--text-nota);
+  color: var(--papel-suave);
+  max-width: 48ch;
+}
+
+.reserva .boton {
+  justify-self: start;
+}
+
+.reserva .boton:hover {
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+.reserva .boton:disabled {
+  background: var(--papel-suave);
+  cursor: progress;
+}
+
+.boton-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding-inline: 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--papel);
+  background: transparent;
+  border: 2px solid var(--papel);
+  cursor: pointer;
+}
+
+.boton-secundario:hover {
+  background: var(--papel);
+  color: var(--tinta);
+}
+
+/* ——— Receipt ——— */
+
+.confirmacion {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.confirmacion-codigo {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-weight: 700;
+}
+
+.confirmacion-codigo strong {
+  font-family: var(--font-display);
+  font-stretch: 62%;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 2rem + 6vw, 6rem);
+  line-height: 0.9;
+  color: var(--funda);
+}
+
+.confirmacion-resumen {
+  margin: 0;
+  font-size: var(--text-tema);
+  max-width: 40ch;
+}
+
+.confirmacion-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.confirmacion-copia {
+  margin: 0;
+  min-height: 1.5em;
+  font-weight: 700;
+}
+
+/* ——— Your bookings ——— */
+
+.turnos {
+  display: grid;
+  gap: 1rem;
+  padding-block-start: 2rem;
+  border-block-start: 2px solid var(--papel-suave);
+}
+
+.turnos-titulo {
+  margin: 0;
+  font-size: var(--text-tema);
+  font-weight: 700;
+}
+
+.turnos-lista {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.turno {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+  padding: 1rem;
+  background: var(--vinilo);
+}
+
+.turno p {
+  margin: 0;
+}
+
+.turno-codigo {
+  font-family: var(--font-display);
+  font-stretch: 62%;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.turno-pregunta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* ——— The record label (ticket) ——— */
+
+/* Narrow: a strip that stays at the bottom while the booking is on screen. Focused controls
+   scroll clear of it (WCAG 2.4.11, focus not obscured). */
+@media (width < 64rem) {
+  html:has(.ficha) {
+    scroll-padding-block-end: 7rem;
+  }
+}
+
+.ficha {
+  position: sticky;
+  inset-block-end: 0;
+  z-index: 5;
+  margin-inline: calc(var(--margen) * -1);
+  padding: 0.75rem var(--margen);
+  background: var(--funda);
+  color: var(--tinta);
+}
+
+.ficha-etiqueta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem;
+}
+
+.ficha-titulo {
+  margin: 0;
+  font-size: var(--text-nota);
+  font-weight: 800;
+}
+
+.ficha-lineas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ficha-linea {
+  font-weight: 700;
+}
+
+.ficha-linea:not([data-llena]) {
+  font-weight: 400;
+}
+
+.ficha-linea button {
+  min-height: 1.75rem;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.ficha-linea [aria-current='step'] {
+  padding-inline: 0.35rem;
+  background: var(--tinta);
+  color: var(--funda);
+}
+
+.ficha-total,
+.ficha-codigo {
+  margin: 0;
+  font-weight: 800;
+}
+
+/* Wide: the record itself, with the orange label in the middle, beside the steps */
+@media (width >= 64rem) {
+  .reserva {
+    grid-template-columns: minmax(0, 1fr) min(26rem, 38%);
+    align-items: start;
+  }
+
+  .ficha {
+    position: sticky;
+    inset-block: 6rem auto;
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: var(--tinta);
+  }
+
+  .ficha-disco {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--vinilo);
+    /* The grooves: two rings of the band's black around the label */
+    box-shadow:
+      inset 0 0 0 1.75rem var(--vinilo),
+      inset 0 0 0 calc(1.75rem + 2px) var(--tinta),
+      inset 0 0 0 3.5rem var(--vinilo),
+      inset 0 0 0 calc(3.5rem + 2px) var(--tinta);
+  }
+
+  .ficha-etiqueta {
+    width: 72%;
+    aspect-ratio: 1;
+    min-height: 0;
+    border-radius: 50%;
+    background: var(--funda);
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.2rem;
+    padding: 4% 9%;
+    text-align: center;
+  }
+
+  .ficha-lineas {
+    display: grid;
+    justify-items: center;
+    gap: 0.1rem;
+  }
+
+  .ficha-codigo {
+    font-family: var(--font-display);
+    font-stretch: 62%;
+    font-weight: 900;
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+}

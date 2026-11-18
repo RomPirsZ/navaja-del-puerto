@@ -6,7 +6,7 @@ import { HUECO } from '../../data/horario';
 import { buscarServicio } from '../../data/servicios';
 import type { Almacen, Reserva } from './almacen';
 import { generarCodigo } from './codigo';
-import { celda, huecosLibres, type Ahora, type Hueco } from './disponibilidad';
+import { celda, huecosLibres, proximoDiaConHueco, type Ahora, type Hueco } from './disponibilidad';
 import { ocupacionSimulada } from './ocupacion-simulada';
 import { ahoraEnPuerto } from './tiempo';
 import { validarDatos, type ErroresDatos } from './validacion';
@@ -147,6 +147,14 @@ export function crearApi({ almacen, reloj = () => new Date(), latencia = () => 2
       if (quedan.length === turnos.length) return { ok: false };
       almacen.escribir(quedan);
       return { ok: true };
+    },
+
+    /** The first day from `desde` with a free slot for that service and barber, or null */
+    async proximoDia({ desde, servicioId, barberoId }: { desde: string; servicioId: string; barberoId: string }): Promise<string | null> {
+      await esperar();
+      const a = ahora();
+      const turnos = vigentes(a);
+      return proximoDiaConHueco({ desde, servicioId, barberoId, ocupadosDe: (fecha) => ocupadosDe(fecha, turnos), ahora: a });
     },
 
     async misReservas(): Promise<Reserva[]> {

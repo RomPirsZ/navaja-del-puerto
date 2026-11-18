@@ -39,6 +39,7 @@ export type Accion =
   | { tipo: 'huecos-error' }
   | { tipo: 'enviando' }
   | { tipo: 'envio-fallido'; resultado: Fallo }
+  | { tipo: 'envio-interrumpido' }
   | { tipo: 'confirmado'; reserva: Reserva }
   | { tipo: 'reiniciar' };
 
@@ -125,6 +126,8 @@ export function reducir(e: Estado, a: Accion): Estado {
       const envio = { estado: 'error' as const, error: r.error, ...(r.error === 'datos-invalidos' && r.campos ? { campos: r.campos } : {}) };
       return { ...e, paso: 'datos', envio };
     }
+    case 'envio-interrumpido':
+      return { ...e, paso: 'datos', envio: { estado: 'error' } };
     case 'confirmado':
       return { ...e, paso: 'confirmado', reserva: a.reserva, envio: SIN_ENVIO };
     case 'reiniciar':
