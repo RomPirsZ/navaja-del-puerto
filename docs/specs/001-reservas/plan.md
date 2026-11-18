@@ -28,6 +28,7 @@ Mismas versiones fijadas que el portafolio cuando existen:
 - `animejs` 4.5.0 (MIT, publicada el 2026-06-22). La serie 5 está en beta: no se usa.
 - **Fuente:** `@fontsource-variable/archivo` 5.3.0 (publicada el 2026-07-19), con los ejes de ancho (62–125) y peso: una sola familia para el nombre extra condensado y el texto (dirección «Lado A»).
 - **Desarrollo:** `typescript` 6.0.3, `@astrojs/check` 0.9.12, `@types/react` y `@types/react-dom` 19.3.0, `vitest` 5.0.5, `@playwright/test` 1.64.1, `@axe-core/playwright` 4.14.0, `@lhci/cli` 0.16.1 y `wrangler` 4.156.1.
+- **Fechas:** `Intl.DateTimeFormat` con la zona `America/Caracas` por su nombre IANA. modern-web-guidance recomienda Temporal, pero Safari no lo trae y su polyfill es una librería de fechas; se toma su modelo (fecha de calendario y hora de reloj por separado, nunca un desfase fijo) sin la dependencia.
 - **Sin** Supabase, adaptador de servidor, GSAP, Lenis, librerías de fechas, de formularios, de estado ni Testing Library. Los componentes se prueban con e2e y la lógica con tests unitarios.
 - `.npmrc` igual que el portafolio: sin scripts de instalación, `min-release-age=7` y solo el registro de npm. Todas las versiones de arriba tienen más de 7 días.
 

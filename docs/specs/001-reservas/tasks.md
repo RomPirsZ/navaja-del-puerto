@@ -19,7 +19,7 @@
 
 ## Fase 2 — Lógica de reservas, tests primero (18–19 nov)
 
-- [ ] R03 `tiempo.ts`, datos (`servicios`, `barberos`, `horario`) y `disponibilidad.ts` + `ocupacion-simulada.ts`, con sus tests primero
+- [x] R03 `tiempo.ts`, datos (`servicios`, `barberos`, `horario`) y `disponibilidad.ts` + `ocupacion-simulada.ts`, con sus tests primero — *hecha 2026-11-18: 33 tests nuevos escritos antes que el código. Fechas como `YYYY-MM-DD` y horas como minutos de reloj, con la zona por su nombre IANA y sin desfase fijo (modern-web-guidance recomienda Temporal, pero Safari no lo tiene y el polyfill sería una librería de fechas: plan §2). `huecosLibres` aplica todas las reglas de la spec §5.2 (ventana de 14 días, hoy + 30 min, almuerzo, cierre, 60 min = dos huecos seguidos, días y servicios de cada barbero, «el primero libre» con los barberos libres en cada hora) y `proximoDiaConHueco` busca el siguiente día. Ocupación simulada determinista (FNV-1a + mulberry32), alrededor del 40 % y nunca un día entero. Un test estaba mal (el día 13 de la ventana caía en lunes) y se corrigió el test, no el código*
 - [ ] R04 `validacion.ts`, `codigo.ts`, `ics.ts`, `almacen.ts` y `api-simulada.ts`, con sus tests primero
 - [ ] R05 `estado.ts` (reducer del flujo), con sus tests primero
 

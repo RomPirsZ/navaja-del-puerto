@@ -4,5 +4,21 @@
   "marca.nombre": "Navaja del Puerto",
   "reserva.titulo": "Reserva tu turno",
   "reserva.sinJs": "La reserva de demostración necesita JavaScript. Los servicios, los barberos y el horario se leen igual.",
-  "reserva.lista": "La reserva está lista."
+  "reserva.lista": "La reserva está lista.",
+  "servicio.corte.nombre": "Corte clásico",
+  "servicio.corte.descripcion": "Tijera y máquina, lavado y peinado.",
+  "servicio.corte-barba.nombre": "Corte y barba",
+  "servicio.corte-barba.descripcion": "El corte completo y la barba perfilada con navaja.",
+  "servicio.barba.nombre": "Arreglo de barba",
+  "servicio.barba.descripcion": "Recorte, perfilado y aceite para la barba.",
+  "servicio.afeitado.nombre": "Afeitado con navaja",
+  "servicio.afeitado.descripcion": "Toalla caliente, espuma de brocha, navaja y loción.",
+  "servicio.infantil.nombre": "Corte infantil",
+  "servicio.infantil.descripcion": "Para niños de hasta 12 años, con paciencia.",
+  "barbero.ramon.nombre": "Ramón",
+  "barbero.ramon.especialidad": "Afeitado clásico con navaja. El veterano de la casa.",
+  "barbero.leo.nombre": "Leo",
+  "barbero.leo.especialidad": "Degradados y diseño.",
+  "barbero.jesus.nombre": "Jesús",
+  "barbero.jesus.especialidad": "Cortes clásicos e infantiles."
 }
