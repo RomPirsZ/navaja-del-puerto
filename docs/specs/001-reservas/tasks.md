@@ -48,7 +48,13 @@
 
 ## Fase 5 — Cierre y despliegue (20 nov)
 
-- [ ] R10 Cierre visual: polish y critique de impeccable, detector, revisión de Taste a 390, 768 y 1440 px, `DESIGN.md`, axe y Lighthouse móvil
+- [x] R10 Cierre visual: polish y critique de impeccable, detector, revisión de Taste a 390, 768 y 1440 px, `DESIGN.md`, axe y Lighthouse móvil — *hecha 2026-11-18.*
+  - *Revisión final de impeccable en tres rondas, con 9 capturas cada vez (escritorio, tableta, móvil y estados de la reserva y del menú). Veredicto «fix» con 8 correcciones; luego 7 resueltas y 1 parcial, con 2 regresiones; al final «ship». Semilla de la tirada verificada.*
+  - *Correcciones: fotos de barberos y del ritual impresas con `multiply` (sin blanco puro); la funda llena el primer pantallazo del móvil y el pelo del retrato monta sobre el pie de «PUERTO»; menú móvil con «Reservar turno» y «Cerrar menú»; «Reservar con X →» subrayado; la navaja una vez por vista (funda y Barberos); fila de hoy del horario alineada; el ritual en su propia banda; errores de campo sin glifo.*
+  - *Segunda opinión de Taste (lint e inspector). Aplicado: barberos en filas compactas en el móvil (la tira deslizable dejaba texto pegado al borde y descuadraba los márgenes), la cinta del pie en varias líneas y la frase del ritual junto a su título. Defendido: los surcos del vinilo (anillos dibujados, no elevación), el desenfoque del menú (referencia de Swap), el verbo fijo sobre la foto (composición de Taste), el papel crema (paleta fijada) y la falta de vídeo (no hay un clip honesto).*
+  - *Procedencia incrustada en las 13 fotos (`embed-prompt`: 0 sin procedencia).*
+  - *`DESIGN.md` y `.impeccable/design.json` escritos por el documentador a partir del build. Desvíos registrados: `--text-monumento` sin uso, el nombre que encoge con el scroll y la capitular de los barberos sin construir.*
+  - *Lighthouse móvil (lighthouse 13.6.0 por `npx`, con el permiso del usuario y sin añadirlo al proyecto; `@lhci/cli` no cumplía los 7 días): 99 / 100 / 100 / 100 en las tres pasadas, LCP 2,2 s, TBT 10–60 ms, CLS 0. `lighthouserc.cjs` queda listo para la CI en R11.*
 - [ ] R11 Despliegue: repo en GitHub (revisar el historial antes), Workers Builds y URL en vivo comprobada; e2e 10 contra producción
 - [ ] R12 En el portafolio (T30): caso de estudio 003 con capturas reales y enlaces, ES y EN
 

@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T20:02:39.633Z",
+  "title": "Design System: Navaja del Puerto",
+  "extensions": {
+    "colorMeta": {
+      "funda": {
+        "role": "primary",
+        "displayName": "Naranja de funda",
+        "canonical": "oklch(65.9% 0.195 38)",
+        "tonalRamp": [
+          "oklch(15% 0.070 38)",
+          "oklch(26% 0.100 38)",
+          "oklch(38% 0.134 38)",
+          "oklch(49% 0.164 38)",
+          "oklch(61% 0.192 38)",
+          "oklch(72% 0.162 38)",
+          "oklch(84% 0.128 38)",
+          "oklch(95% 0.098 38)"
+        ]
+      },
+      "papel": {
+        "role": "neutral",
+        "displayName": "Papel",
+        "canonical": "oklch(93.4% 0.029 85)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "arena-clara": {
+        "role": "neutral",
+        "displayName": "Arena clara",
+        "canonical": "oklch(88.6% 0.039 84)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "arena": {
+        "role": "neutral",
+        "displayName": "Arena (cartón de funda)",
+        "canonical": "oklch(82.4% 0.052 83)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "arena-oscura": {
+        "role": "neutral",
+        "displayName": "Arena oscura",
+        "canonical": "oklch(75.1% 0.061 82)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "papel-suave": {
+        "role": "neutral",
+        "displayName": "Papel suave",
+        "canonical": "oklch(78.8% 0.050 85)",
+        "tonalRamp": [
+          "oklch(15% 0.018 85)",
+          "oklch(26% 0.026 85)",
+          "oklch(38% 0.034 85)",
+          "oklch(49% 0.042 85)",
+          "oklch(61% 0.049 85)",
+          "oklch(72% 0.041 85)",
+          "oklch(84% 0.033 85)",
+          "oklch(95% 0.025 85)"
+        ]
+      },
+      "tinta-suave": {
+        "role": "neutral",
+        "displayName": "Tinta suave",
+        "canonical": "oklch(37.0% 0.029 69)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "vinilo": {
+        "role": "neutral",
+        "displayName": "Vinilo",
+        "canonical": "oklch(23.3% 0.016 63)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      },
+      "tinta": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "oklch(18.6% 0.010 67)",
+        "tonalRamp": [
+          "#16120e",
+          "#231c16",
+          "#4a3d2f",
+          "#c2ab82",
+          "#d6c3a0",
+          "#e6d8bd",
+          "#f2e8d4"
+        ]
+      }
+    },
+    "contrastPairs": [
+      {
+        "text": "tinta",
+        "ground": "arena",
+        "ratio": 10.8,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "tinta",
+        "ground": "arena-clara",
+        "ratio": 13.24,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "tinta",
+        "ground": "arena-oscura",
+        "ratio": 8.38,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "tinta-suave",
+        "ground": "arena",
+        "ratio": 6.09,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "tinta-suave",
+        "ground": "arena-clara",
+        "ratio": 7.46,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "tinta",
+        "ground": "funda",
+        "ratio": 5.5,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "papel",
+        "ground": "tinta",
+        "ratio": 15.32,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "papel",
+        "ground": "vinilo",
+        "ratio": 13.82,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "papel-suave",
+        "ground": "tinta",
+        "ratio": 9.57,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "papel-suave",
+        "ground": "vinilo",
+        "ratio": 8.63,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "funda",
+        "ground": "tinta",
+        "ratio": 5.5,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      },
+      {
+        "text": "funda",
+        "ground": "vinilo",
+        "ratio": 4.96,
+        "enforcedBy": "tests/unit/tokens.test.ts (AA 4.5:1)"
+      }
+    ],
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display condensada",
+        "purpose": "Nombre, títulos de sección, verbos del ritual, estado del horario y códigos. Clase display: wdth 62 %, 900, mayúsculas."
+      },
+      "title": {
+        "displayName": "Tema",
+        "purpose": "Nombres de temas, frases de entrada, botón y precios."
+      },
+      "body": {
+        "displayName": "Cuerpo",
+        "purpose": "Texto corrido y descripciones; font-size-adjust: from-font."
+      },
+      "label": {
+        "displayName": "Nota",
+        "purpose": "Aviso de concepto, notas de ficción, etiqueta del turno, pie legal."
+      },
+      "figures": {
+        "displayName": "Cifras tabulares",
+        "purpose": "Horas, duraciones, precios, números de tema (.cifras)."
+      },
+      "monumento": {
+        "displayName": "Monumento",
+        "purpose": "Token --text-monumento definido (clamp(5.5rem, 1rem + 19vw, 19rem)) pero sin uso: el nombre se mide en unidades de contenedor."
+      }
+    },
+    "shadows": [
+      {
+        "name": "surcos-disco",
+        "value": "inset 0 0 0 1.75rem var(--vinilo), inset 0 0 0 calc(1.75rem + 2px) var(--tinta), inset 0 0 0 3.5rem var(--vinilo), inset 0 0 0 calc(3.5rem + 2px) var(--tinta)",
+        "purpose": "Anillos dibujados del disco de la ficha. Dibujo, no elevación; único uso."
+      }
+    ],
+    "focusRing": {
+      "value": "outline: 3px solid currentColor; outline-offset: 3px",
+      "purpose": "Anillo global: toma la tinta de la superficie (3:1 sobre arena, naranja y negro)."
+    },
+    "motion": [
+      {
+        "name": "curva",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "La única curva; out(4) en Anime.js."
+      },
+      {
+        "name": "ola-nombre",
+        "value": "rotateX -95deg→0, y 0.25em→0, 500ms, stagger 18ms (start 60ms)",
+        "purpose": "Entrada letra a letra del nombre."
+      },
+      {
+        "name": "retrato-entrada",
+        "value": "y 6%→0, scale 1.05→1, 1100ms, delay 420ms, out(3)",
+        "purpose": "Entrada del retrato de la funda."
+      },
+      {
+        "name": "revelado",
+        "value": "y 12px→0, opacity 0→1, 500ms, stagger 40ms",
+        "purpose": "Piezas de cada [data-revelar-grupo] al entrar en pantalla."
+      },
+      {
+        "name": "reservar-barrido",
+        "value": "clip-path 250ms",
+        "purpose": "«Reservar →» sobre duración y precio."
+      },
+      {
+        "name": "fila-activa",
+        "value": "background-color, color 200ms",
+        "purpose": "Inversión de la fila del Lado A."
+      },
+      {
+        "name": "muestra-funda",
+        "value": "clip-path 400ms entrar / 350ms salir",
+        "purpose": "Foto del tema en la esquina de la funda."
+      },
+      {
+        "name": "menu",
+        "value": "opacity, translate 250ms abrir / 150ms cerrar",
+        "purpose": "Popover del menú en el móvil."
+      },
+      {
+        "name": "credito",
+        "value": "opacity 250ms; scale 1.04 250ms, vuelta 350ms",
+        "purpose": "Créditos con ratón."
+      },
+      {
+        "name": "opcion",
+        "value": "background-color, border-color, color 180ms; :active scale(0.98)",
+        "purpose": "Opciones de la reserva."
+      },
+      {
+        "name": "paso-entrar",
+        "value": "opacity, translateY 8px, blur 3px, 250ms",
+        "purpose": "Paso nuevo y confirmación."
+      },
+      {
+        "name": "ficha-escribir",
+        "value": "clip-path 250ms",
+        "purpose": "Cada elección se escribe en la etiqueta."
+      },
+      {
+        "name": "ficha-girar",
+        "value": "rotate -90deg→0, 500ms",
+        "purpose": "Cuarto de vuelta del disco al confirmar."
+      },
+      {
+        "name": "ficha-sellar",
+        "value": "scale 1.6→1, rotate -8deg→0, blur 8px→0, 500ms tras 300ms",
+        "purpose": "Sello del código."
+      },
+      {
+        "name": "ritual-asentar",
+        "value": "scale 1.12→1, animation-timeline: view(), entry 0% cover 60%",
+        "purpose": "La foto del ritual se asienta con el scroll."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation/transition-duration 0s",
+        "purpose": "Sin la clase motion; los estados cambian al instante."
+      },
+      {
+        "name": "fallback-sin-modulo",
+        "value": "aparecer-sin-modulo 0s 2.5s forwards",
+        "purpose": "Lo revelado aparece aunque el módulo no llegue."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "medio",
+        "value": "48rem"
+      },
+      {
+        "name": "ancho",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botón principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "La única forma de botón: cuadrado, plano, naranja con texto de tinta.",
+      "html": "<a class=\"ds-boton\" href=\"#\">Reservar turno</a>",
+      "css": ".ds-boton{display:inline-flex;align-items:center;justify-content:center;min-height:3.25rem;padding-inline:1.5rem;background:var(--funda);color:var(--tinta);font-family:'Archivo Variable',ui-sans-serif,system-ui,sans-serif;font-weight:800;font-size:clamp(1.25rem,1.12rem + 0.55vw,1.625rem);text-decoration:none;border:0;border-radius:0;cursor:pointer}.ds-boton:hover{background:var(--tinta);color:var(--funda)}.ds-boton:focus-visible{outline:3px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Botón secundario (banda oscura)",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Contorno de papel sobre las bandas oscuras.",
+      "html": "<div class=\"ds-banda\"><button class=\"ds-boton-sec\" type=\"button\">Copiar código</button></div>",
+      "css": ".ds-banda{background:var(--tinta);padding:1.5rem}.ds-boton-sec{display:inline-flex;align-items:center;min-height:3rem;padding-inline:1.25rem;font-family:'Archivo Variable',ui-sans-serif,sans-serif;font-weight:700;font-size:1.0625rem;color:var(--papel);background:transparent;border:2px solid var(--papel);border-radius:0;cursor:pointer}.ds-boton-sec:hover{background:var(--papel);color:var(--tinta)}.ds-boton-sec:focus-visible{outline:3px solid currentColor;outline-offset:3px}"
+    },
+    {
+      "name": "Opción de la reserva",
+      "kind": "chip",
+      "refersTo": "option",
+      "description": "Botón con aria-pressed; elegida en naranja, ocupada transparente.",
+      "html": "<div class=\"ds-banda\"><button class=\"ds-opcion\" type=\"button\" aria-pressed=\"false\"><span class=\"ds-opcion-nombre\">Corte</span><span>30 min · $8</span></button><button class=\"ds-opcion\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-opcion-nombre\">Barba</span><span>20 min · $5</span></button><button class=\"ds-opcion\" type=\"button\" disabled>10:30</button></div>",
+      "css": ".ds-banda{display:grid;gap:.5rem;background:var(--tinta);padding:1.5rem}.ds-opcion{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;width:100%;min-height:3.5rem;padding:.75rem 1rem;font-family:'Archivo Variable',ui-sans-serif,sans-serif;font-size:1.0625rem;font-variant-numeric:tabular-nums;text-align:start;color:var(--papel);background:var(--vinilo);border:2px solid var(--vinilo);border-radius:0;cursor:pointer;transition:background-color 180ms cubic-bezier(0.22,1,0.36,1),border-color 180ms cubic-bezier(0.22,1,0.36,1),color 180ms cubic-bezier(0.22,1,0.36,1)}.ds-opcion:hover{border-color:var(--papel-suave)}.ds-opcion[aria-pressed='true']{background:var(--funda);border-color:var(--funda);color:var(--tinta)}.ds-opcion:disabled{background:transparent;color:var(--papel-suave);cursor:not-allowed}.ds-opcion:focus-visible{outline:3px solid currentColor;outline-offset:3px}.ds-opcion-nombre{font-weight:700;font-size:1.25rem}"
+    },
+    {
+      "name": "Campo de formulario",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Papel sobre la banda, borde de 2 px, error en naranja.",
+      "html": "<div class=\"ds-banda\"><label class=\"ds-campo\">Nombre<input value=\"\" placeholder=\"\"></label><label class=\"ds-campo\">Teléfono<input aria-invalid=\"true\" value=\"123\"></label></div>",
+      "css": ".ds-banda{display:grid;gap:1.5rem;background:var(--tinta);color:var(--papel);padding:1.5rem;font-family:'Archivo Variable',ui-sans-serif,sans-serif}.ds-campo{display:grid;gap:.4rem;font-weight:700}.ds-campo input{font:inherit;font-weight:400;min-height:3rem;padding:.7rem .85rem;color:var(--tinta);background:var(--papel);border:2px solid var(--papel-suave);border-radius:0}.ds-campo input:focus-visible{outline:3px solid var(--papel);outline-offset:3px}.ds-campo [aria-invalid='true']{border-color:var(--funda);outline:2px solid var(--funda)}"
+    },
+    {
+      "name": "Barra de navegación",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Barra fija de tinta con el nombre condensado y la acción naranja.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-marca\" href=\"#\">Navaja del Puerto</a><a href=\"#\">Servicios</a><a href=\"#\">Barberos</a><a href=\"#\">Horario</a><a class=\"ds-nav-accion\" href=\"#\">Reservar turno</a></header>",
+      "css": ".ds-nav{display:flex;align-items:center;gap:1.75rem;min-height:4rem;padding-inline:1.5rem;background:var(--tinta);color:var(--papel);font-family:'Archivo Variable',ui-sans-serif,sans-serif;font-weight:600}.ds-nav a{color:inherit;text-decoration:none;min-height:2.75rem;display:inline-flex;align-items:center}.ds-nav a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.2em}.ds-nav a:focus-visible{outline:3px solid currentColor;outline-offset:3px}.ds-nav-marca{margin-inline-end:auto;font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:1.75rem}.ds-nav-accion{padding-inline:.875rem;background:var(--funda);color:var(--tinta)!important}"
+    },
+    {
+      "name": "Tema del Lado A",
+      "kind": "custom",
+      "refersTo": "track-row",
+      "description": "Fila con filetes de 2 px; activa se invierte a negro y «Reservar →» entra con un barrido.",
+      "html": "<ol class=\"ds-pistas\"><li class=\"ds-pista\"><span>A1</span><a href=\"#\">Corte<small>Tijera y máquina</small></a><span class=\"ds-datos\">30 min <b>$8</b><span class=\"ds-reservar\" aria-hidden=\"true\">Reservar →</span></span></li><li class=\"ds-pista\"><span>A2</span><a href=\"#\">Afeitado clásico<small>Navaja y toalla caliente</small></a><span class=\"ds-datos\">40 min <b>$10</b><span class=\"ds-reservar\" aria-hidden=\"true\">Reservar →</span></span></li></ol>",
+      "css": ".ds-pistas{margin:0;padding:0;list-style:none;border-top:2px solid var(--tinta);background:var(--arena);color:var(--tinta);font-family:'Archivo Variable',ui-sans-serif,sans-serif;font-variant-numeric:tabular-nums}.ds-pista{display:grid;grid-template-columns:2.25rem 1fr auto;align-items:baseline;gap:.75rem;padding:.6rem .5rem;border-bottom:2px solid var(--tinta);transition:background-color 200ms cubic-bezier(0.22,1,0.36,1),color 200ms cubic-bezier(0.22,1,0.36,1)}.ds-pista a{display:grid;color:inherit;text-decoration:none;font-weight:700;font-size:1.25rem}.ds-pista a:focus-visible{outline:3px solid currentColor;outline-offset:3px}.ds-pista small{font-weight:400;font-size:1rem;color:var(--tinta-suave)}.ds-datos{position:relative;display:flex;gap:.75rem;align-items:baseline}.ds-reservar{position:absolute;inset:-.15rem -.5rem;display:grid;place-items:center end;padding-inline:.6rem;background:var(--funda);color:var(--tinta);font-weight:700;white-space:nowrap;clip-path:inset(0 0 0 100%);transition:clip-path 250ms cubic-bezier(0.22,1,0.36,1)}.ds-pista:hover,.ds-pista:focus-within{background:var(--tinta);color:var(--papel)}.ds-pista:hover small,.ds-pista:focus-within small{color:var(--papel-suave)}.ds-pista:hover .ds-reservar,.ds-pista:focus-within .ds-reservar{clip-path:inset(0)}"
+    },
+    {
+      "name": "Etiqueta del disco (ficha)",
+      "kind": "custom",
+      "refersTo": "record-label",
+      "description": "El único círculo: disco de vinilo con surcos dibujados y la etiqueta naranja del turno.",
+      "html": "<div class=\"ds-disco\"><div class=\"ds-etiqueta\"><p class=\"ds-titulo\">Tu turno</p><p>Corte · Andrés</p><p>Sáb 21 · 10:30</p><p class=\"ds-codigo\">NP-4K7Q</p></div></div>",
+      "css": ".ds-disco{display:grid;place-items:center;width:22rem;aspect-ratio:1;border-radius:50%;background:var(--vinilo);box-shadow:inset 0 0 0 1.75rem var(--vinilo),inset 0 0 0 calc(1.75rem + 2px) var(--tinta),inset 0 0 0 3.5rem var(--vinilo),inset 0 0 0 calc(3.5rem + 2px) var(--tinta)}.ds-etiqueta{display:grid;place-content:center;justify-items:center;gap:.2rem;width:72%;aspect-ratio:1;border-radius:50%;background:var(--funda);color:var(--tinta);text-align:center;font-family:'Archivo Variable',ui-sans-serif,sans-serif;font-weight:700;font-variant-numeric:tabular-nums}.ds-etiqueta p{margin:0}.ds-titulo{font-size:.875rem;font-weight:800}.ds-codigo{font-stretch:62%;font-weight:900;font-size:1.75rem;line-height:1}"
+    },
+    {
+      "name": "Verbo del ritual",
+      "kind": "custom",
+      "description": "El verbo condensado sobre una tira de tinta, sobre la foto impresa en papel.",
+      "html": "<div class=\"ds-ritual\"><h3 class=\"ds-verbo\">Espuma</h3></div>",
+      "css": ".ds-ritual{display:grid;min-height:14rem;padding:1.5rem;background:var(--papel)}.ds-verbo{justify-self:start;align-self:start;margin:0;padding:.06em .12em 0;font-family:'Archivo Variable','Arial Narrow',sans-serif;font-stretch:62%;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.82;font-size:6rem;color:var(--papel);background:var(--tinta)}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Lado A",
+    "overview": "La barbería es un LP de salsa de los setenta. La página es la funda de cartón: un fondo arena, campos enteros de naranja de funda y bandas casi negras de vinilo y contraportada. Los servicios son la lista de temas del Lado A, con duración y precio alineados como en una contraportada; los barberos son los créditos; el turno reservado es la etiqueta del disco, que se rellena mientras eliges y se sella con su número de catálogo `NP-XXXX`.\n\nEl sistema es plano, cuadrado y tipográfico. La voz es una sola familia, Archivo con eje de anchura: extra condensada, negra y apilada para el nombre y los títulos; ancho normal para leer. La densidad es la de una contraportada: filas apretadas separadas por filetes de tinta de 2 px, cifras tabulares, márgenes cortos. Las fotos no flotan sobre la página: se imprimen en ella (`multiply` sobre el cartón o el papel) o, en el retrato de la portada, se recortan en duotono tinta y naranja para colarse entre las letras.\n\nSe rechazan, de forma confirmada en el contrato de dirección, el hero partido (titular, foto y botón) con tres tarjetas de servicios y el oscuro con dorado de las barberías.",
+    "keyCharacteristics": [
+      "Una sola escala tonal de arena a negro más un naranja de funda que llena campos enteros (estrategia Committed).",
+      "Archivo Variable al 62 % de anchura y peso 900 para lo monumental; ancho normal para el texto; cifras tabulares en horas, duraciones y precios.",
+      "Esquinas rectas y superficies planas; el único círculo es la etiqueta del disco.",
+      "Filetes de tinta de 2 px entre temas, días y filas.",
+      "Una navaja grabada por vista, como único motivo.",
+      "Movimiento con una sola curva y estados que se leen igual con movimiento reducido."
+    ],
+    "rules": [
+      {
+        "name": "The Committed Orange Rule",
+        "body": "El naranja ocupa del 30 al 60 % de las vistas principales como campo entero (funda, capítulo, etiqueta, barra). Nunca aparece como un acento suelto, un subrayado de color o un icono pintado.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Scale Rule",
+        "body": "Todo neutro sale de la escala arena→negro. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `papel` o `arena` con `multiply`.",
+        "section": "colors"
+      },
+      {
+        "name": "The Roles Only Rule",
+        "body": "Los hex viven solo en `:root` de `src/styles/global.css`; los componentes usan los roles. El test falla si aparece un hex fuera de `:root`. Las dos copias aceptadas fuera del CSS (la `theme-color` de `Base.astro` y el duotono de `scripts/retrato-hero.sh`) repiten `tinta` y `funda` y se actualizan con ellos.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Widths Rule",
+        "body": "Una familia, dos anchuras: 62 % y 900 para lo que se mira, normal para lo que se lee. Nada intermedio, ninguna segunda familia.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tracklist Figures Rule",
+        "body": "Horas, duraciones, precios, números de tema y códigos van con cifras tabulares (`.cifras`, `tnum`), para que se alineen como en una contraportada.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Sleeve Rule",
+        "body": "Nada se levanta en reposo ni al pasar el puntero. La única `box-shadow` del sistema son los surcos dibujados del disco.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Only Circle Rule",
+        "body": "Ningún otro elemento es redondo. Ni avatares, ni puntos de estado, ni botones con píldora.",
+        "section": "shapes"
+      },
+      {
+        "name": "The 2px Groove Rule",
+        "body": "Lo que se lista se separa con filetes de tinta de 2 px entre filas (temas, días). No se usan tarjetas para agrupar filas.",
+        "section": "shapes"
+      },
+      {
+        "name": "The One Razor Rule",
+        "body": "Una navaja por vista, como mucho. No se convierte en icono de interfaz ni se repite como patrón.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do usar los roles (`var(--funda)`, `var(--tinta)`…) y nunca un hex en un componente; un par nuevo de texto sobre fondo entra antes en `tokens.test.ts`.",
+      "Do dar al naranja campos enteros (funda, capítulo, etiqueta, barra, botón), del 30 al 60 % de las vistas principales.",
+      "Do separar filas con filetes de tinta de 2 px y alinear cifras con `.cifras`.",
+      "Do imprimir las fotos sobre el fondo con `multiply` (`arena`, `papel` o `funda`), y producir el retrato de portada con `scripts/retrato-hero.sh` (duotono `tinta`→`funda` recortado).",
+      "Do usar la forma única de botón y, para elegir, botones con `aria-pressed`.",
+      "Do dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).",
+      "Do animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).",
+      "Do rotular la ficción: aviso de concepto visible, barberos, precios, horario y dirección marcados como ficticios."
+    ],
+    "donts": [
+      "Don't animar `width`, `height`, `top`, `left`, `margin` ni nada que recalcule el diseño (constitución II).",
+      "Don't escribir atributos `style=\"\"` ni scripts o estilos en línea sin su hash: la CSP solo admite `self` y los hashes de los bloques conocidos, y `tests/e2e/seguridad.spec.ts` lo comprueba.",
+      "Don't inventar prueba social: ni reseñas, ni estrellas, ni testimonios, ni cifras de clientes, tampoco dentro de la ficción.",
+      "Don't redondear esquinas ni añadir otro círculo que no sea la etiqueta del disco.",
+      "Don't levantar nada con sombras; la única `box-shadow` son los surcos dibujados del disco.",
+      "Don't usar el naranja como acento suelto ni introducir un segundo color saturado, dorado incluido.",
+      "Don't repetir la navaja más de una vez por vista ni usarla como icono de interfaz.",
+      "Don't volver al hero partido (titular, foto y botón) con tres tarjetas de servicios, ni al oscuro con dorado de las barberías."
+    ]
+  }
+}
