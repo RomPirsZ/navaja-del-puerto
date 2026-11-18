@@ -15,8 +15,8 @@ function entradaPortada(): void {
     rotateX: [-95, 0],
     y: ['0.25em', '0em'],
     opacity: [0, 1],
-    duration: 900,
-    delay: stagger(32, { start: 60 }),
+    duration: 500,
+    delay: stagger(18, { start: 60 }),
     ease: CURVA,
   });
   const retrato = document.querySelector<HTMLElement>('.funda-retrato');
@@ -29,7 +29,7 @@ function entradaPortada(): void {
 /** Each group's parts (heading, text, picture) rise in once, staggered, as it enters. */
 function prepararRevelados(): void {
   const revelar = (grupo: Element) =>
-    animate(grupo.querySelectorAll('[data-revelar]'), { opacity: 1, y: 0, duration: 700, delay: stagger(70), ease: CURVA });
+    animate(grupo.querySelectorAll('[data-revelar]'), { opacity: 1, y: 0, duration: 500, delay: stagger(40), ease: CURVA });
 
   const observador = new IntersectionObserver(
     (entradas) => {
@@ -43,7 +43,7 @@ function prepararRevelados(): void {
   );
 
   for (const grupo of document.querySelectorAll('[data-revelar-grupo]')) {
-    utils.set(grupo.querySelectorAll('[data-revelar]'), { opacity: 0, y: 24 });
+    utils.set(grupo.querySelectorAll('[data-revelar]'), { opacity: 0, y: 12 });
     observador.observe(grupo);
   }
 }

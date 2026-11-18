@@ -483,15 +483,15 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .ficha-linea[data-llena] > * {
-    animation: ficha-escribir 420ms var(--curva) both;
+    animation: ficha-escribir 250ms var(--curva) both;
   }
 
   .ficha[data-confirmada] .ficha-disco {
-    animation: ficha-girar 900ms var(--curva) both;
+    animation: ficha-girar 500ms var(--curva) both;
   }
 
   .ficha[data-confirmada] .ficha-codigo {
-    animation: ficha-sellar 520ms 380ms var(--curva) both;
+    animation: ficha-sellar 500ms 300ms var(--curva) both;
   }
 
   .opcion {
@@ -507,7 +507,7 @@
 
   .paso,
   .confirmacion {
-    animation: paso-entrar 450ms var(--curva) both;
+    animation: paso-entrar 250ms var(--curva) both;
   }
 }
 
@@ -530,25 +530,30 @@
   }
 }
 
+/* The stamp comes down: from large and out of focus to sharp (success check: 8px blur) */
 @keyframes ficha-sellar {
   from {
     opacity: 0;
     transform: scale(1.6) rotate(-8deg);
+    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: scale(1) rotate(0deg);
+    filter: blur(0);
   }
 }
 
 @keyframes paso-entrar {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
+    filter: blur(3px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 

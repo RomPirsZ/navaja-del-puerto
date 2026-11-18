@@ -20,7 +20,7 @@
   --seccion: clamp(4.5rem, 2.5rem + 8vw, 9rem);
 
   /* One curve for everything that moves: a quick start that settles (exponential out) */
-  --curva: cubic-bezier(0.16, 1, 0.3, 1);
+  --curva: cubic-bezier(0.22, 1, 0.36, 1);
 
   color-scheme: only light;
 }

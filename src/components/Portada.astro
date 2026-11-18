@@ -146,7 +146,8 @@ import Servicios from './Servicios.astro';
       position: absolute;
       inset: 0;
       clip-path: inset(100% 0 0 0);
-      transition: clip-path 450ms var(--curva);
+      /* Leaving: a little quicker than arriving (open/close asymmetry) */
+      transition: clip-path 350ms var(--curva);
     }
 
     .portada:has([data-servicio='corte'] :is(:hover, :focus-visible)) [data-muestra='corte'],
@@ -155,6 +156,7 @@ import Servicios from './Servicios.astro';
     .portada:has([data-servicio='afeitado'] :is(:hover, :focus-visible)) [data-muestra='afeitado'],
     .portada:has([data-servicio='infantil'] :is(:hover, :focus-visible)) [data-muestra='infantil'] {
       clip-path: inset(0);
+      transition-duration: 400ms;
     }
 
     .portada:has(.pista :is(:hover, :focus-visible)) .funda-catalogo {
@@ -164,7 +166,7 @@ import Servicios from './Servicios.astro';
 
   /* Decorative catalogue line: only where it clears the portrait */
   .funda-catalogo {
-    transition: opacity 250ms var(--curva);
+    transition: opacity 150ms var(--curva);
     display: none;
     position: absolute;
     inset-inline-end: 4cqi;

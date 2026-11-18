@@ -95,15 +95,16 @@ import Foto from './Foto.astro';
     display: grid;
     gap: 1rem;
     align-content: start;
-    transition: opacity 300ms var(--curva);
+    transition: opacity 250ms var(--curva);
   }
 
   .credito-foto {
     overflow: clip;
   }
 
+  /* Hover in is quick; the return is softer */
   .credito-foto :global(img) {
-    transition: transform 600ms var(--curva);
+    transition: transform 350ms var(--curva);
   }
 
   /* With a mouse, the credit under the pointer comes forward and the others step back */
@@ -114,6 +115,7 @@ import Foto from './Foto.astro';
 
     .credito:hover .credito-foto :global(img) {
       transform: scale(1.04);
+      transition-duration: 250ms;
     }
   }
 

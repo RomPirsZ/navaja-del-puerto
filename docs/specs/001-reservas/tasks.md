@@ -35,7 +35,16 @@
 ## Fase 4 — Movimiento (19–20 nov)
 
 - [x] R08 `animations.ts` con Anime.js: ola del hero, barridos de Servicios, tira de Barberos, menú con desenfoque, ficha que se escribe y entradas de sección; e2e 8 (reduced-motion) — *hecha 2026-11-18 con impeccable (detector sin hallazgos) y modern-web-guidance (transiciones del popover con `@starting-style` y `transition-behavior` aparte). Anime.js solo donde hace falta JS: las letras del nombre entran en ola (`splitText`, que deja una copia oculta para lectores de pantalla), luego el retrato, y cada grupo `[data-revelar-grupo]` se revela escalonado al entrar. El resto, con CSS: «Reservar →» en barrido `clip-path`; al pasar por un tema, su foto entra en la esquina libre de la funda en duotono (`:has()`, solo con ratón y en pantalla ancha); tira de barberos que apaga los demás; menú que cae y se funde; ficha que escribe cada línea, gira un cuarto de vuelta al confirmar y sella el código; la navaja (`/navaja.svg` como máscara) marca el paso activo. Sección del ritual construida al llegar las fotos: cuatro pantallas con el verbo fijo sobre una cinta de tinta (la foto de la navaja es clara y el verbo no se leía) y la foto que se asienta con `animation-timeline: view()` donde existe. Descartados: la cinta del pie en bucle (pediría un control de pausa, WCAG 2.2.2) y el nombre que se encoge con el scroll. Estado oculto solo con la clase `motion` del `<head>` (hash nuevo en la CSP) y respaldo CSS a los 2,5 s; con reduced-motion no se parte ni se oculta nada. Los e2e corren sin movimiento por defecto; `movimiento.spec.ts` (4) y el de la CSP lo activan. 68 e2e en verde*
-- [ ] R09 Afinado con transitions-polish
+- [x] R09 Afinado con transitions-polish — *hecha 2026-11-18. El review encontró 14 valores que ajustar y el usuario los aprobó; se aplicaron con los valores literales de los tokens, sin copiar `_root.css`:*
+  - *Curva única `--curva` a smooth-out `(0.22, 1, 0.36, 1)`.*
+  - *Ola del nombre a 500 ms con escalonado de 18 ms (antes la última letra empezaba 544 ms tarde).*
+  - *Revelados a 500 ms, escalonado de 40 ms y 12 px.*
+  - *«Reservar →» a 250 ms.*
+  - *Muestra en la funda: 400 ms al entrar y 350 ms al salir. Catálogo a 150 ms.*
+  - *Menú: abre en 250 ms y cierra en 150 ms. Barberos a 250 ms, con la vuelta del zoom a 350 ms.*
+  - *Ficha: línea a 250 ms, giro a 500 ms y sello de 500 ms tras 300 ms, con desenfoque de 8 px. Paso nuevo a 250 ms, 8 px y 3 px de desenfoque.*
+  - *Sin token que encaje, se quedan: la entrada del retrato, el asentado del ritual con el scroll y el zoom de los barberos (1,04).*
+  - *Detector de impeccable sin hallazgos después.*
 
 ## Fase 5 — Cierre y despliegue (20 nov)
 

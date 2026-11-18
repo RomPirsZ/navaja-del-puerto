@@ -113,12 +113,17 @@ const enlaces = [
   /* Narrow layout only: on wide screens the list is inline and never a popover */
   @media (prefers-reduced-motion: no-preference) and (width < 48rem) {
     .cabecera-lista {
+      /* Closing gets out of the way faster than opening (dropdown: 250 ms in, 150 ms out) */
       transition:
-        opacity 250ms var(--curva),
-        translate 250ms var(--curva),
-        display 250ms,
-        overlay 250ms;
+        opacity 150ms var(--curva),
+        translate 150ms var(--curva),
+        display 150ms,
+        overlay 150ms;
       transition-behavior: allow-discrete;
+    }
+
+    .cabecera-lista:popover-open {
+      transition-duration: 250ms;
     }
 
     .cabecera-lista:not(:popover-open) {
