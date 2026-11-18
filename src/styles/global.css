@@ -1,3 +1,103 @@
 @import 'tailwindcss';
 
-/* Tokens of the «Lado A» direction arrive in R02 (plan §8) */
+/* Tokens of the «Lado A» direction (plan §8, surface contract). Colours live only here:
+   components use the roles (tokens.test.ts checks it). One tonal scale from sand to black,
+   plus the orange of the record sleeve, which fills whole fields rather than accents. */
+:root {
+  --papel: #f2e8d4; /* text on the dark bands, the lightest step */
+  --arena-clara: #e6d8bd; /* one step above the ground: active rows, panels */
+  --arena: #d6c3a0; /* ground: the sleeve's cardboard */
+  --arena-oscura: #c2ab82; /* one step below the ground: bars, pressed states */
+  --tinta-suave: #4a3d2f; /* secondary text on sand */
+  --vinilo: #231c16; /* raised surfaces on the dark bands */
+  --tinta: #16120e; /* ink, the dark bands and the record label */
+  --papel-suave: #c9b896; /* secondary text on the dark bands */
+  --funda: #f05a24; /* the sleeve orange: whole fields and the primary action */
+
+  color-scheme: only light;
+}
+
+@theme inline {
+  --color-papel: var(--papel);
+  --color-arena-clara: var(--arena-clara);
+  --color-arena: var(--arena);
+  --color-arena-oscura: var(--arena-oscura);
+  --color-tinta-suave: var(--tinta-suave);
+  --color-vinilo: var(--vinilo);
+  --color-tinta: var(--tinta);
+  --color-papel-suave: var(--papel-suave);
+  --color-funda: var(--funda);
+
+  /* One family, Archivo with a width axis: extra condensed for the name, normal for text */
+  --font-display: 'Archivo Variable', 'Arial Narrow', 'Nimbus Sans Narrow', sans-serif;
+  --font-sans: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Five steps, fluid from 390 px to 1440 px */
+  --text-monumento: clamp(5.5rem, 1rem + 19vw, 19rem);
+  --text-titulo: clamp(2.75rem, 1.6rem + 4.6vw, 5.75rem);
+  --text-tema: clamp(1.25rem, 1.12rem + 0.55vw, 1.625rem);
+  --text-cuerpo: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-nota: 0.875rem;
+}
+
+@layer base {
+  html {
+    background: var(--arena);
+    color: var(--tinta);
+    font-family: var(--font-sans);
+    font-size: 100%;
+    text-size-adjust: 100%;
+    scrollbar-color: var(--tinta) var(--arena);
+  }
+
+  body {
+    font-size: var(--text-cuerpo);
+    line-height: 1.5;
+    /* Keeps fallback text the size of Archivo while the font loads (no visible jump) */
+    font-size-adjust: from-font;
+    caret-color: var(--tinta);
+  }
+
+  /* Browser surfaces belong to the design too (impeccable craft floor) */
+  ::selection {
+    background: var(--funda);
+    color: var(--tinta);
+  }
+
+  /* currentColor is the surface's own ink, so the ring keeps 3:1 on sand, orange and black */
+  :focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 2px;
+  }
+}
+
+@layer components {
+  /* The stacked, extra-condensed voice of the sleeve: the name and section titles */
+  .display {
+    font-family: var(--font-display);
+    font-stretch: 62%;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 0.82;
+    font-size-adjust: none;
+  }
+
+  /* Hours, durations and prices line up like a tracklist */
+  .cifras {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The engraved razor: body in the surface's ink, engraving lines in the ground colour */
+  .navaja {
+    color: var(--tinta);
+  }
+  .navaja-grabado {
+    stroke: var(--arena);
+  }
+}

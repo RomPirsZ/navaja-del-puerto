@@ -1,4 +1,7 @@
 ---
+import '@fontsource-variable/archivo/wdth.css';
+// The latin subset is the one every page uses: preloaded so the name lands in Archivo
+import archivoUrl from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
 import '../styles/global.css';
 import { t } from '../i18n';
 
@@ -18,6 +21,10 @@ const { title = t('sitio.titulo'), description = t('sitio.descripcion') } = Astr
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href={archivoUrl} as="font" type="font/woff2" crossorigin />
+    <!-- Same value as --tinta: the mobile browser bar continues the black top band -->
+    <meta name="theme-color" content="#16120e" />
+    <meta name="color-scheme" content="only light" />
   </head>
   <body>
     <slot />

@@ -23,3 +23,26 @@ test.describe('sin JavaScript', () => {
     await expect(page.locator('[data-reserva]')).toContainText('necesita JavaScript');
   });
 });
+
+test('Archivo carga desde el propio origen', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => document.fonts.ready);
+  // document.fonts.check() da true también si la fuente no existe: se mira cada FontFace
+  const cargadas = await page.evaluate(() =>
+    [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, '')),
+  );
+  expect(cargadas).toContain('Archivo Variable');
+});
+
+test('theme-color coincide con la tinta de la barra superior', async ({ page }) => {
+  // La meta no admite variables CSS: este test evita que se desincronice de --tinta
+  await page.goto('/');
+  const tinta = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--tinta').trim());
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', tinta);
+});
+
+test('la navaja es decorativa: no llega al árbol de accesibilidad', async ({ page }) => {
+  await page.goto('/');
+  const navaja = page.locator('svg.navaja').first();
+  await expect(navaja).toHaveAttribute('aria-hidden', 'true');
+});

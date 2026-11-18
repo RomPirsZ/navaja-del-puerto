@@ -1,0 +1,29 @@
+---
+/**
+ * The engraved straight razor, the page's single motif (surface contract: once per view).
+ * Decorative: the text next to it carries the meaning.
+ */
+interface Props {
+  class?: string;
+}
+const { class: clase = '' } = Astro.props;
+---
+
+<svg class:list={['navaja', clase]} viewBox="0 0 240 80" aria-hidden="true" focusable="false">
+  <!-- Blade: straight spine falling to the pivot, square toe, edge with a slight belly -->
+  <path fill="currentColor" d="M16 14 L118 30 L122 44 Q70 56 14 52 Q6 52 6 44 L6 22 Q6 13 16 14 Z" />
+  <!-- Tang beyond the pivot, with the jimps where the thumb rests -->
+  <path fill="currentColor" d="M116 30 L152 24 L154 28 L150 29 L152 32 L148 33 L150 36 L122 44 Z" />
+  <!-- Scales of the handle, open at an angle from the pivot -->
+  <path fill="currentColor" d="M116 36 Q178 44 228 62 Q240 67 228 72 Q176 62 116 48 Z" />
+  <!-- Engraving: hollow grind along the spine, the bevel of the edge and the line of the scales -->
+  <g class="navaja-grabado" fill="none" stroke-width="1.5" stroke-linecap="round">
+    <path d="M18 22 L108 35" />
+    <path d="M16 30 L100 40" />
+    <path d="M14 45 Q64 49 112 43" />
+    <path d="M130 44 Q178 51 222 65" />
+  </g>
+  <!-- Pivot and end pins -->
+  <circle class="navaja-grabado" cx="120" cy="40" r="3.5" fill="none" stroke-width="1.5" />
+  <circle class="navaja-grabado" cx="222" cy="67" r="2" fill="none" stroke-width="1.5" />
+</svg>

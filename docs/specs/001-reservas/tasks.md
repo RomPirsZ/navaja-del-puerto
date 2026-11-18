@@ -13,7 +13,7 @@
 ## Fase 1 — Base (18 nov)
 
 - [x] R01 Proyecto Astro + React + Anime.js + Tailwind + TypeScript estricto con las dependencias del plan §2; Vitest, Playwright y `npm test` (puerto 4359); `wrangler.jsonc`, `_headers` y CSP con la isla; CI — *hecha 2026-11-18: todas las versiones del plan, 0 vulnerabilidades. La isla de prueba (`client:visible`) se pinta en el servidor con el aviso «necesita JavaScript» y al hidratarse marca `data-lista`. La CSP lleva los hashes de los dos scripts y el estilo en línea que Astro pone para hidratar (los de `astro-island` coinciden con los del portafolio); `seguridad.spec.ts` los recalcula del HTML servido y comprueba que la isla se hidrata sin violaciones. Tests de dependencias fijadas y de i18n. `@lhci/cli` se aplaza a R10 (plan §2)*
-- [ ] R02 Tokens de la dirección en `global.css` + test de contraste; fuentes; `Base.astro`; navaja SVG
+- [x] R02 Tokens de la dirección en `global.css` + test de contraste; fuentes; `Base.astro`; navaja SVG — *hecha 2026-11-18 (impeccable: craft floor antes, detector sin hallazgos después). 9 roles en una escala tonal de arena a negro más `--funda` (#f05a24, elegido por contraste: la tinta sobre él da 5,5:1); el test exige 12 pares en AA, que la escala baje de clara a oscura y ningún hex fuera de `:root`. Archivo variable (eje de ancho 62–125) precargada, `font-size-adjust: from-font` (modern-web-guidance) y clase `.display` extra condensada a 62 %. Foco con `currentColor` para tener 3:1 sobre arena, naranja y negro; selección, cursor y barra de desplazamiento en la paleta. Navaja de barbero abierta en SVG propio (hoja, espiga con muescas, mango en ángulo y grabado), decorativa*
 
 **Hecho cuando:** `npm test` en verde con una isla de React hidratada bajo la CSP.
 
