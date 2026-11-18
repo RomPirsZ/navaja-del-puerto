@@ -55,7 +55,13 @@
   - *Procedencia incrustada en las 13 fotos (`embed-prompt`: 0 sin procedencia).*
   - *`DESIGN.md` y `.impeccable/design.json` escritos por el documentador a partir del build. Desvíos registrados: `--text-monumento` sin uso, el nombre que encoge con el scroll y la capitular de los barberos sin construir.*
   - *Lighthouse móvil (lighthouse 13.6.0 por `npx`, con el permiso del usuario y sin añadirlo al proyecto; `@lhci/cli` no cumplía los 7 días): 99 / 100 / 100 / 100 en las tres pasadas, LCP 2,2 s, TBT 10–60 ms, CLS 0. `lighthouserc.cjs` queda listo para la CI en R11.*
-- [ ] R11 Despliegue: repo en GitHub (revisar el historial antes), Workers Builds y URL en vivo comprobada; e2e 10 contra producción
+- [x] R11 Despliegue: repo en GitHub (revisar el historial antes), Workers Builds y URL en vivo comprobada; e2e 10 contra producción — *hecha 2026-11-18.*
+  - *Historial revisado antes del push: sin datos personales, `referencias/` ni `.env`.*
+  - *Repo público https://github.com/RomPirsZ/navaja-del-puerto (nombre y visibilidad elegidos por el usuario). Push con el helper puntual de `gh`. Primera CI en verde en 2 min 17 s.*
+  - *Worker `navaja-del-puerto` conectado por el usuario con Workers Builds. La primera compilación falló porque el comando de compilación quedó en «Ninguno» (sin `dist/`); con `npm run build` pasó.*
+  - *En vivo en https://navaja-del-puerto.ankordev.workers.dev. La CSP servida es idéntica a `_headers` y están las demás cabeceras. Reserva y cancelación completas en producción a 1440 y 390 px, sin errores, sin violaciones de la CSP y sin peticiones fuera del origen.*
+  - *Lighthouse móvil sobre la URL real: 99 / 100 / 100 / 100, LCP 1,7–1,8 s y CLS 0.*
+  - *Pendiente: el paso de Lighthouse en la CI, al instalar `@lhci/cli` 0.16.1 cuando cumpla los 7 días (2026-11-18 23:40 UTC).*
 - [ ] R12 En el portafolio (T30): caso de estudio 003 con capturas reales y enlaces, ES y EN
 
 **Al terminar cada fase:** parar y esperar revisión.
