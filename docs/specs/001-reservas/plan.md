@@ -94,7 +94,7 @@ misReservas(): Promise<Reserva[]>
 - **Preselección:** las filas de Servicios y la tira de Barberos llevan a `#reservar?servicio=…` / `barbero=…` mediante un evento del documento que la isla escucha, y por la URL si se entra directo. Sin JS siguen siendo enlaces a `#reservar`.
 - **Accesibilidad:** cada paso es un `<fieldset>` con `<legend>` y botones de opción nativos con aspecto propio (los días y las horas son `radio` en rejilla, con flechas del teclado). Al avanzar, el foco va al título del paso. Una región `aria-live="polite"` anuncia «Cargando horas», «Quedan N horas» y los errores.
 - **Ficha:** componente aparte que recibe el estado. En el móvil se convierte en barra fija abajo, sin tapar el foco (`scroll-padding-bottom`).
-- **Calendario y compartir:** el `.ics` se genera en el cliente (`ics.ts`, con `TZID` de America/Caracas y la hora en UTC) y se descarga con un `Blob`. «Compartir» usa `navigator.share` si existe; si no, copia el resumen al portapapeles.
+- **Calendario y compartir:** el `.ics` se genera en el cliente (`ics.ts`, con las horas en UTC: cada calendario las muestra en su zona, sin bloque `VTIMEZONE`) y se descarga con un `Blob`. «Compartir» usa `navigator.share` si existe; si no, copia el resumen al portapapeles.
 
 ## 7. Movimiento (Anime.js 4)
 
