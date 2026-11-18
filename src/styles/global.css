@@ -14,6 +14,11 @@
   --papel-suave: #c9b896; /* secondary text on the dark bands */
   --funda: #f05a24; /* the sleeve orange: whole fields and the primary action */
 
+  /* One pair of outer margins, one gap and one section rhythm for the whole page */
+  --margen: clamp(1rem, 0.55rem + 1.8vw, 2rem);
+  --hueco: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+  --seccion: clamp(4.5rem, 2.5rem + 8vw, 9rem);
+
   color-scheme: only light;
 }
 
@@ -70,6 +75,14 @@
     outline-offset: 3px;
   }
 
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+
+  body {
+    margin: 0;
+  }
+
   a {
     text-underline-offset: 0.2em;
     text-decoration-thickness: 2px;
@@ -86,6 +99,27 @@
     letter-spacing: -0.01em;
     line-height: 0.82;
     font-size-adjust: none;
+  }
+
+  /* The one button shape: square, flat, sleeve orange, ink text */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding-inline: 1.5rem;
+    background: var(--funda);
+    color: var(--tinta);
+    font-weight: 800;
+    font-size: var(--text-tema);
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .boton:hover {
+    background: var(--tinta);
+    color: var(--funda);
   }
 
   /* Hours, durations and prices line up like a tracklist */

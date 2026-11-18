@@ -1,17 +1,65 @@
 ---
 import Base from '../layouts/Base.astro';
+import Barberos from '../components/Barberos.astro';
+import Cabecera from '../components/Cabecera.astro';
+import Horario from '../components/Horario.astro';
+import Pie from '../components/Pie.astro';
+import Portada from '../components/Portada.astro';
 import Reserva from '../components/reserva/Reserva.tsx';
-import Navaja from '../components/Navaja.astro';
 import { t } from '../i18n';
 ---
 
 <Base>
+  <p class="aviso">{t('aviso.concepto')}</p>
+  <Cabecera />
   <main>
-    <h1 class="display text-monumento">{t('marca.nombre')}</h1>
-    <Navaja class="w-60" />
-    <section id="reservar" aria-labelledby="reservar-titulo">
-      <h2 id="reservar-titulo">{t('reserva.titulo')}</h2>
+    <Portada />
+    <Barberos />
+    <section id="reservar" class="reservar" aria-labelledby="reservar-titulo">
+      <div class="reservar-cabeza">
+        <h2 id="reservar-titulo" class="display">{t('reserva.titulo')}</h2>
+        <p>{t('reserva.frase')}</p>
+      </div>
       <Reserva client:visible />
     </section>
+    <Horario />
   </main>
+  <Pie />
 </Base>
+
+<style>
+  /* The concept notice is visible without scrolling at every width (spec §11) */
+  .aviso {
+    margin: 0;
+    padding: 0.4rem var(--margen);
+    background: var(--arena-oscura);
+    color: var(--tinta);
+    font-size: var(--text-nota);
+    font-weight: 600;
+  }
+
+  .reservar {
+    padding: var(--seccion) var(--margen);
+    background: var(--tinta);
+    color: var(--papel);
+  }
+
+  .reservar-cabeza {
+    display: grid;
+    gap: 1rem;
+    margin-block-end: 2rem;
+  }
+
+  .reservar-cabeza h2 {
+    margin: 0;
+    font-size: var(--text-titulo);
+  }
+
+  .reservar-cabeza p {
+    margin: 0;
+    max-width: 44ch;
+    font-size: var(--text-tema);
+    line-height: 1.3;
+    color: var(--papel-suave);
+  }
+</style>

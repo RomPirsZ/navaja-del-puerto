@@ -1,0 +1,150 @@
+---
+// One navigation tree at every width (modern-web-guidance «navbar»): a native popover on
+// narrow screens, which works without JavaScript, and the same list inline on wide ones.
+import { t } from '../i18n';
+
+const enlaces = [
+  { href: '#servicios', texto: t('nav.servicios') },
+  { href: '#barberos', texto: t('nav.barberos') },
+  { href: '#horario', texto: t('nav.horario') },
+];
+---
+
+<header class="cabecera">
+  <div class="cabecera-fila">
+    <a class="cabecera-marca display" href="#" aria-label={t('nav.inicio')}>{t('marca.nombre')}</a>
+    <nav class="cabecera-nav" aria-label={t('nav.etiqueta')}>
+      <button class="cabecera-menu" type="button" popovertarget="menu-principal" aria-controls="menu-principal">
+        {t('nav.menu')}
+      </button>
+      <ul id="menu-principal" class="cabecera-lista" popover="auto">
+        {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
+      </ul>
+    </nav>
+    <a class="cabecera-accion" href="#reservar">{t('nav.reservarCorto')}<span class="solo-ancho">&nbsp;{t('nav.reservarResto')}</span></a>
+  </div>
+</header>
+
+<script>
+  // A link inside the popover closes it, so the page under it is visible again
+  const lista = document.getElementById('menu-principal');
+  lista?.addEventListener('click', (evento) => {
+    if (evento.target instanceof HTMLAnchorElement && lista.matches(':popover-open')) lista.hidePopover();
+  });
+</script>
+
+<style>
+  .cabecera {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--tinta);
+    color: var(--papel);
+  }
+
+  .cabecera-fila {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 4rem;
+    padding-inline: var(--margen);
+  }
+
+  .cabecera-marca {
+    font-size: clamp(1.25rem, 1rem + 1vw, 1.75rem);
+    white-space: nowrap;
+    line-height: 1;
+    text-decoration: none;
+    margin-inline-end: auto;
+  }
+
+  .cabecera-menu,
+  .cabecera-lista a,
+  .cabecera-accion {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .cabecera-menu {
+    padding-inline: 0.75rem;
+    color: inherit;
+    background: transparent;
+    border: 2px solid var(--papel-suave);
+    cursor: pointer;
+    anchor-name: --menu-principal;
+  }
+
+  .cabecera-accion {
+    padding-inline: 0.875rem;
+    white-space: nowrap;
+    background: var(--funda);
+    color: var(--tinta);
+  }
+
+  /* Narrow: the list is a popover under the header; the page behind blurs (as in Swap) */
+  .cabecera-lista {
+    position: fixed;
+    inset: auto;
+    inset-block-start: 4.5rem;
+    inset-block-start: anchor(--menu-principal bottom);
+    inset-inline: var(--margen);
+    margin: 0.5rem 0 0;
+    padding: 0.5rem 1.25rem;
+    list-style: none;
+    background: var(--tinta);
+    color: var(--papel);
+    border: 0;
+  }
+
+  .cabecera-lista a {
+    width: 100%;
+    font-size: var(--text-tema);
+    min-height: 3.25rem;
+  }
+
+  .cabecera-lista::backdrop {
+    background: color-mix(in oklab, var(--tinta) 35%, transparent);
+    backdrop-filter: blur(10px);
+  }
+
+  .cabecera-accion:hover,
+  .cabecera-lista a:hover {
+    text-decoration: underline;
+  }
+
+  .solo-ancho {
+    display: none;
+  }
+
+  /* Wide: the same list, inline; the menu button goes away */
+  @media (width >= 48rem) {
+    .solo-ancho {
+      display: inline;
+    }
+
+    .cabecera-menu {
+      display: none;
+    }
+
+    .cabecera-lista {
+      position: static;
+      display: flex;
+      gap: 1.75rem;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+    }
+
+    .cabecera-lista a {
+      font-size: var(--text-cuerpo);
+      min-height: 2.75rem;
+    }
+
+    .cabecera-lista::backdrop {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,182 @@
+---
+// Side A of the record: the services as a tracklist, with duration and sample price. A row
+// leads to the booking with that service chosen (script below; without it, to #reservar).
+import { SERVICIOS } from '../data/servicios';
+import { t, type Clave } from '../i18n';
+---
+
+<section id="servicios" class="servicios" aria-labelledby="servicios-titulo">
+  <h2 id="servicios-titulo" class="servicios-titulo">
+    <span class="display">{t('servicios.lado')}</span>{' '}
+    <span class="servicios-sub">{t('servicios.titulo')}</span>
+  </h2>
+  <ol class="pistas">
+    {
+      SERVICIOS.map((s, i) => {
+        const nombre = t(`servicio.${s.id}.nombre` as Clave);
+        return (
+          <li class="pista">
+            <span class="pista-numero cifras" aria-hidden="true">{t('servicios.pista', { n: String(i + 1) })}</span>
+            <span class="pista-texto">
+              <a
+                class="pista-nombre"
+                href="#reservar"
+                data-preseleccionar-servicio={s.id}
+                aria-label={t('servicios.reservarServicio', { servicio: nombre })}
+                aria-describedby={`pista-${s.id}`}
+              >
+                {nombre}
+              </a>
+              <span class="pista-descripcion">{t(`servicio.${s.id}.descripcion` as Clave)}</span>
+            </span>
+            <span class="pista-datos cifras" id={`pista-${s.id}`}>
+              <span class="pista-duracion">{t('servicios.duracion', { min: String(s.duracion) })}</span>{' '}
+              <span class="pista-precio">{t('servicios.precio', { monto: String(s.precio) })}</span>
+              <span class="pista-reservar" aria-hidden="true">{t('servicios.reservar')} →</span>
+            </span>
+          </li>
+        );
+      })
+    }
+  </ol>
+  <p class="servicios-nota">{t('servicios.nota')}</p>
+</section>
+
+<script>
+  import { preseleccionar } from '../lib/preseleccion';
+
+  for (const enlace of document.querySelectorAll<HTMLAnchorElement>('[data-preseleccionar-servicio]')) {
+    enlace.addEventListener('click', () => preseleccionar({ servicioId: enlace.dataset['preseleccionarServicio'] ?? '' }));
+  }
+</script>
+
+<style>
+  .servicios-titulo {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .servicios-titulo .display {
+    font-size: var(--text-titulo);
+  }
+
+  .servicios-sub {
+    font-size: var(--text-tema);
+    font-weight: 700;
+  }
+
+  .pistas {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-block-start: 2px solid var(--tinta);
+  }
+
+  /* The whole row is the link: the name's ::after stretches over it */
+  .pista {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 0.6rem 0.5rem;
+    border-block-end: 2px solid var(--tinta);
+  }
+
+  .pista-nombre::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .pista-nombre:focus-visible {
+    outline: none;
+  }
+
+  .pista:has(.pista-nombre:focus-visible) {
+    outline: 3px solid var(--tinta);
+    outline-offset: 2px;
+  }
+
+  .pista-numero {
+    font-weight: 700;
+  }
+
+  .pista-texto {
+    display: grid;
+    justify-items: start;
+  }
+
+  .pista-nombre {
+    font-size: var(--text-tema);
+    font-weight: 700;
+    line-height: 1.2;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pista-descripcion {
+    color: var(--tinta-suave);
+    line-height: 1.35;
+  }
+
+  .pista-datos {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .pista-duracion {
+    font-weight: 400;
+  }
+
+  .pista-precio {
+    font-size: var(--text-tema);
+    min-width: 2.5ch;
+    text-align: end;
+  }
+
+  /* «Reservar →» waits under the price and takes its place on hover or focus */
+  .pista-reservar {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    padding: 0.15rem 0.6rem;
+    background: var(--funda);
+    color: var(--tinta);
+    white-space: nowrap;
+    visibility: hidden;
+  }
+
+  .pista:has(.pista-nombre:hover),
+  .pista:has(.pista-nombre:focus-visible) {
+    background: var(--tinta);
+    color: var(--papel);
+  }
+
+  .pista:has(.pista-nombre:hover) .pista-descripcion,
+  .pista:has(.pista-nombre:focus-visible) .pista-descripcion {
+    color: var(--papel-suave);
+  }
+
+  .pista:has(.pista-nombre:hover) .pista-reservar,
+  .pista:has(.pista-nombre:focus-visible) .pista-reservar {
+    visibility: visible;
+  }
+
+  .pista:has(.pista-nombre:hover) .pista-precio,
+  .pista:has(.pista-nombre:focus-visible) .pista-precio {
+    visibility: hidden;
+  }
+
+  .servicios-nota {
+    margin: 0.75rem 0 0;
+    font-size: var(--text-nota);
+    color: var(--tinta-suave);
+  }
+</style>

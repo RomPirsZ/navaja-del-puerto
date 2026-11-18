@@ -1,0 +1,113 @@
+---
+// The close of the record: the name comes back at full width in inverted colours.
+import { SERVICIOS } from '../data/servicios';
+import { t, type Clave } from '../i18n';
+import { PORTAFOLIO_URL } from '../lib/sitio';
+import Navaja from './Navaja.astro';
+---
+
+<footer class="pie">
+  <p class="pie-cinta" aria-hidden="true">
+    {SERVICIOS.map((s) => t(`servicio.${s.id}.nombre` as Clave)).join(' · ')}
+  </p>
+  <div class="pie-cuerpo">
+    <div class="pie-texto">
+      <Navaja class="pie-navaja" />
+      <p>{t('pie.concepto')}</p>
+      <p><a href={PORTAFOLIO_URL}>{t('pie.portafolio')}</a></p>
+    </div>
+    <nav aria-label={t('pie.navegacion')}>
+      <ul class="pie-enlaces">
+        <li><a href="#servicios">{t('nav.servicios')}</a></li>
+        <li><a href="#barberos">{t('nav.barberos')}</a></li>
+        <li><a href="#reservar">{t('nav.reservar')}</a></li>
+        <li><a href="#horario">{t('nav.horario')}</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="pie-nombre display" aria-hidden="true">{t('marca.nombre')}</p>
+  <p class="pie-legal cifras">{t('pie.anio', { anio: '2026' })}</p>
+</footer>
+
+<style>
+  .pie {
+    container-type: inline-size;
+    overflow: hidden;
+    background: var(--tinta);
+    color: var(--papel);
+    padding: 0 var(--margen) 1.5rem;
+  }
+
+  .pie-cinta {
+    margin: 0 calc(var(--margen) * -1);
+    padding: 0.85rem var(--margen);
+    background: var(--arena);
+    color: var(--tinta);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .pie-cuerpo {
+    display: grid;
+    gap: 2rem;
+    padding-block: 3rem 2rem;
+  }
+
+  .pie-texto {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 46ch;
+  }
+
+  .pie-texto p {
+    margin: 0;
+  }
+
+  .pie :global(.pie-navaja) {
+    width: 9rem;
+    color: var(--papel);
+  }
+
+  .pie :global(.pie-navaja .navaja-grabado) {
+    stroke: var(--tinta);
+  }
+
+  .pie a {
+    color: inherit;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 600;
+  }
+
+  .pie-enlaces {
+    display: grid;
+    gap: 0.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* The name across the whole width; cropped at the bottom edge, never at the top */
+  .pie-nombre {
+    margin: 0;
+    font-size: 13.4cqi;
+    line-height: 0.78;
+    white-space: nowrap;
+    color: var(--papel);
+  }
+
+  .pie-legal {
+    margin: 1rem 0 0;
+    font-size: var(--text-nota);
+    color: var(--papel-suave);
+  }
+
+  @media (width >= 48rem) {
+    .pie-cuerpo {
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+    }
+  }
+</style>

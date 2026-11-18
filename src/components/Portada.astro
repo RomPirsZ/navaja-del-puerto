@@ -1,0 +1,172 @@
+---
+// First viewport (surface contract): the orange sleeve with the name stacked as a monument
+// and the portrait slipping between its letters; beside it, side A: the services.
+import { t } from '../i18n';
+import Foto from './Foto.astro';
+import Servicios from './Servicios.astro';
+---
+
+<div class="portada">
+  <div class="funda">
+    <h1 class="funda-nombre display">
+      <span class="linea linea-navaja">Navaja</span>{' '}
+      <span class="linea linea-del">del</span>{' '}
+      <span class="linea linea-puerto">Puerto</span>
+    </h1>
+    <div class="funda-retrato">
+      <Foto
+        nombre="hero-retrato"
+        alt={t('hero.retrato')}
+        aspecto="aspect-[4/5]"
+        anchos={[320, 480, 640, 900]}
+        sizes="(width >= 64rem) 28vw, 52vw"
+        prioridad
+      />
+    </div>
+    <p class="funda-catalogo cifras">{t('hero.catalogo')}</p>
+  </div>
+
+  <div class="portada-lado">
+    <p class="portada-frase">{t('hero.frase')}</p>
+    <Servicios />
+    <div class="portada-accion">
+      <a class="boton" href="#reservar">{t('nav.reservar')}</a>
+      <div class="etiqueta-vinilo" aria-hidden="true">
+        <span>Tu turno</span>
+        <i></i>
+        <span class="cifras">NP-····</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .portada {
+    display: grid;
+    gap: 1.5rem var(--hueco);
+    padding: var(--margen);
+  }
+
+  /* The sleeve: an orange field whose width sizes the name (container query units) */
+  .funda {
+    position: relative;
+    container-type: inline-size;
+    overflow: hidden;
+    background: var(--funda);
+    color: var(--tinta);
+    /* An LP sleeve is square; on wide screens it never grows taller than the viewport */
+    aspect-ratio: 1;
+    width: 100%;
+    padding: 3cqi 4cqi;
+  }
+
+  .funda-nombre {
+    position: relative;
+    display: grid;
+    margin: 0;
+    font-size: max(3rem, 33.6cqi);
+    line-height: 0.8;
+  }
+
+  .linea {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .linea-navaja {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* «del» smaller and to the right: the portrait fills the gap to its left */
+  .linea-del {
+    justify-self: end;
+    font-size: 0.56em;
+    margin-block: 0.06em 0.04em;
+  }
+
+  .linea-puerto {
+    position: relative;
+    z-index: 3;
+    font-size: 1.015em;
+  }
+
+  /* The portrait sits in front of «del» and behind «Puerto», inside the name */
+  .funda-retrato {
+    position: absolute;
+    z-index: 2;
+    inset-inline-start: 6cqi;
+    inset-block-end: 0;
+    width: 57cqi;
+    mix-blend-mode: multiply;
+  }
+
+  /* Decorative catalogue line: only where it clears the portrait */
+  .funda-catalogo {
+    display: none;
+    position: absolute;
+    inset-inline-end: 4cqi;
+    inset-block-end: 3cqi;
+    margin: 0;
+    font-weight: 700;
+    font-size: var(--text-nota);
+  }
+
+  .portada-lado {
+    display: grid;
+    align-content: start;
+    gap: 1.25rem;
+  }
+
+  .portada-frase {
+    margin: 0;
+    font-size: var(--text-tema);
+    line-height: 1.3;
+    max-width: 30ch;
+    text-wrap: pretty;
+  }
+
+  .portada-accion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  /* The record label: the page's only circle, and the booking ticket to come */
+  .etiqueta-vinilo {
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 0.35rem;
+    width: 7rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--tinta);
+    color: var(--papel);
+    font-weight: 700;
+    font-size: var(--text-nota);
+    flex-shrink: 0;
+  }
+
+  .etiqueta-vinilo i {
+    width: 0.85rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--arena);
+  }
+
+  @media (width >= 48rem) {
+    .funda-catalogo {
+      display: block;
+    }
+  }
+
+  @media (width >= 64rem) {
+    /* The square sleeve is as wide as the viewport is tall, at most 58 % of the row */
+    .portada {
+      grid-template-columns: min(58%, calc(100svh - 4rem - 2 * var(--margen))) minmax(0, 1fr);
+      align-items: start;
+    }
+  }
+</style>

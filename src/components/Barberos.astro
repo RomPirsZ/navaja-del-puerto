@@ -1,0 +1,146 @@
+---
+// The record's credits: the three fictional barbers. Each one leads to the booking with
+// that barber chosen. The opening of a portrait (Shora's strip) is motion, added in R08.
+import { BARBEROS } from '../data/barberos';
+import { describirDias } from '../lib/apertura';
+import { t, type Clave } from '../i18n';
+import Foto from './Foto.astro';
+---
+
+<section id="barberos" class="barberos" aria-labelledby="barberos-titulo">
+  <div class="barberos-cabeza">
+    <h2 id="barberos-titulo" class="display">{t('barberos.titulo')}</h2>
+    <p>{t('barberos.frase')}</p>
+  </div>
+  <ul class="tira">
+    {
+      BARBEROS.map((b) => {
+        const nombre = t(`barbero.${b.id}.nombre` as Clave);
+        return (
+          <li class="credito">
+            <Foto
+              nombre={`barbero-${b.id}`}
+              alt={t('barberos.retrato', { nombre })}
+              aspecto="aspect-[4/5]"
+              anchos={[320, 480, 720]}
+              sizes="(width >= 48rem) 30vw, 90vw"
+            />
+            <div class="credito-texto">
+              <h3 class="display">{nombre}</h3>
+              <p>{t(`barbero.${b.id}.especialidad` as Clave)}</p>
+              <p class="credito-dias">{describirDias(b.dias)}</p>
+              <a href="#reservar" data-preseleccionar-barbero={b.id}>{t('barberos.reservarCon', { nombre })}</a>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
+  <p class="barberos-nota">{t('barberos.ficticios')}</p>
+</section>
+
+<script>
+  import { preseleccionar } from '../lib/preseleccion';
+
+  for (const enlace of document.querySelectorAll<HTMLAnchorElement>('[data-preseleccionar-barbero]')) {
+    enlace.addEventListener('click', () => preseleccionar({ barberoId: enlace.dataset['preseleccionarBarbero'] ?? '' }));
+  }
+</script>
+
+<style>
+  .barberos {
+    padding: var(--seccion) var(--margen);
+  }
+
+  .barberos-cabeza {
+    display: grid;
+    gap: 1rem;
+    margin-block-end: 2rem;
+  }
+
+  .barberos-cabeza h2 {
+    margin: 0;
+    font-size: var(--text-titulo);
+  }
+
+  .barberos-cabeza p {
+    margin: 0;
+    max-width: 40ch;
+    font-size: var(--text-tema);
+    line-height: 1.3;
+  }
+
+  /* Narrow: a strip that slides sideways, one credit and a peek of the next */
+  .tira {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: min(78%, 22rem);
+    gap: var(--hueco);
+    margin: 0 calc(var(--margen) * -1);
+    padding: 0 var(--margen) 0.5rem;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margen);
+    overscroll-behavior-x: contain;
+  }
+
+  .credito {
+    scroll-snap-align: start;
+  }
+
+  .credito {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+
+  .credito-texto {
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .credito h3 {
+    margin: 0;
+    font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+
+  .credito p {
+    margin: 0;
+  }
+
+  .credito-dias {
+    font-weight: 700;
+  }
+
+  .credito a {
+    justify-self: start;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+    color: inherit;
+  }
+
+  .barberos-nota {
+    margin: 1.5rem 0 0;
+    font-size: var(--text-nota);
+    color: var(--tinta-suave);
+  }
+
+  @media (width >= 48rem) {
+    .barberos-cabeza {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: end;
+      column-gap: var(--hueco);
+    }
+
+    .tira {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+    }
+  }
+</style>
