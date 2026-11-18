@@ -43,7 +43,7 @@
   "nav.inicio": "Navaja del Puerto, inicio",
   "hero.frase": "Barbería en Puerto Cabello. Reserva tu turno y llega a la hora exacta, con el barbero que elijas.",
   "hero.catalogo": "NP · Lado A · Puerto Cabello",
-  "hero.retrato": "Retrato de perfil de un hombre con barba, en blanco y negro sobre el naranja de la funda.",
+  "hero.retrato": "Retrato de perfil de un hombre con el pelo ondulado y la barba larga, en negro sobre el naranja de la funda.",
   "foto.pendiente": "Imagen pendiente",
   "servicios.lado": "Lado A",
   "servicios.titulo": "Servicios",
@@ -138,5 +138,6 @@
   "ics.descripcion": "{barbero}. Código {codigo}. Demo: esta barbería no existe y nada se envió.",
   "ics.lugar": "Zona colonial de Puerto Cabello (dirección ficticia)",
   "compartir.texto": "Mi turno en Navaja del Puerto: {servicio}, {barbero} · {dia}, {hora} · Código {codigo}. Es una demo de [A]nkordev.",
-  "confirmado.resumen": "{servicio}, {barbero} · {dia}, {hora} · {total}"
+  "confirmado.resumen": "{servicio}, {barbero} · {dia}, {hora} · {total}",
+  "pie.imagenes": "Las fotos son imágenes generadas con IA; las personas no existen."
 }

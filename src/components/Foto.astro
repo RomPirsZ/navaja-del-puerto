@@ -31,6 +31,7 @@ const archivo = Object.entries(archivos).find(([ruta]) => ruta.split('/').pop()?
       widths={anchos}
       sizes={sizes}
       formats={['avif', 'webp']}
+      fallbackFormat="webp"
       class:list={['foto block h-auto w-full object-cover', aspecto, clase]}
       loading={prioridad ? 'eager' : 'lazy'}
       fetchpriority={prioridad ? 'high' : 'auto'}

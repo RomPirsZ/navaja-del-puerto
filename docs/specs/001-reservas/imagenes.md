@@ -39,8 +39,11 @@ En el ritual el sujeto va **centrado**: en el móvil se recorta en vertical por 
 ## Prompts
 
 **hero-retrato.jpg**
+
+Mismo estilo de pelo y barba que el retrato de la referencia «The Gentleman's Club», pero con una persona ficticia, no una copia de esa persona. La cabeza va en el tercio superior: en la funda, la cara asoma entre «NAVAJA» y «DEL» y los hombros quedan detrás de «PUERTO».
+
 ```
-Side profile portrait of a Venezuelan man in his thirties with a full well-groomed dark beard and short textured hair, looking right, calm and proud, wearing a plain dark shirt with an open collar, head and shoulders, generous empty space above the head, 4:5 vertical
+Side profile portrait of a man in his thirties, facing right, calm and proud expression, thick voluminous wavy hair swept back and up with loose waves falling over the ears and the nape, a full long dense beard about a fist in length, neatly groomed and rounded at the bottom, moustache blending into the beard, wearing a dark textured wool overcoat with a high collar over a light shirt, head and upper chest, head in the upper third of the frame, 4:5 vertical
 ```
 
 **barbero-ramon.jpg**

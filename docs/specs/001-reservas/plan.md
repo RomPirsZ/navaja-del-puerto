@@ -124,6 +124,12 @@ Las genera el usuario con IA a partir de los prompts de `docs/specs/001-reservas
 
 Se guardan en `src/assets/fotos/`, se acreditan en el pie como generadas con IA y llevan su procedencia incrustada (`impeccable embed-prompt`). Mientras no lleguen, se usan marcadores en la paleta con su relación de aspecto final.
 
+**Cambio 2026-11-18 (fotos recibidas):**
+- Llegaron las 13 imágenes, generadas por el usuario con Gemini. Los originales están en `referencias/fotos-originales/`, fuera de git. En `src/assets/fotos/` van copias con su nombre, redimensionadas al tamaño de `imagenes.md`, sin metadatos y en JPEG de calidad 86; el build pasó de 9,6 a 5 MB.
+- **Retrato del hero recortado:** con `multiply`, las letras negras siempre tapaban la cara. `scripts/retrato-hero.sh` quita el fondo de estudio rellenando desde las cuatro esquinas, suaviza el borde y hace el duotono en la imagen (negro → `--tinta`, blanco → `--funda`; si cambian esos tokens, se vuelve a ejecutar). Así el retrato va delante de «PUERTO», como en la referencia de The Gentleman's Club.
+- El `<img>` de reserva del retrato pasa a WebP, porque en PNG pesaba demasiado.
+- La procedencia incrustada (`embed-prompt`) queda para R10.
+
 ## 10. Cabeceras y despliegue
 
 - `public/_headers` como el de Molienda (CSP solo `self` más el hash de los scripts en línea que haga falta). La hidratación de islas de Astro necesita su script en línea: se resuelve como en el portafolio, que ya tiene una isla de React (`astro.config.mjs`, scripts y estilos como archivos), y un e2e vigila que la CSP coincida.

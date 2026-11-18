@@ -19,7 +19,7 @@ import Servicios from './Servicios.astro';
         alt={t('hero.retrato')}
         aspecto="aspect-[4/5]"
         anchos={[320, 480, 640, 900]}
-        sizes="(width >= 64rem) 28vw, 52vw"
+        sizes="(width >= 64rem) 34vw, 60vw"
         prioridad
       />
     </div>
@@ -91,14 +91,14 @@ import Servicios from './Servicios.astro';
     font-size: 1.015em;
   }
 
-  /* The portrait sits in front of «del» and behind «Puerto», inside the name */
+  /* The cut-out duotone portrait (scripts/retrato-hero.sh) stands in front of the name, as in
+     the reference: the head over «Puerto», the shoulders in the sleeve's lower third */
   .funda-retrato {
     position: absolute;
-    z-index: 2;
-    inset-inline-start: 6cqi;
+    z-index: 4;
+    inset-inline-start: -5cqi;
     inset-block-end: 0;
-    width: 57cqi;
-    mix-blend-mode: multiply;
+    width: 62cqi;
   }
 
   /* Decorative catalogue line: only where it clears the portrait */
