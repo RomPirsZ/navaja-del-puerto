@@ -45,8 +45,13 @@ import Navaja from './Navaja.astro';
     background: var(--arena);
     color: var(--tinta);
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
+  }
+
+  @media (width >= 48rem) {
+    .pie-cinta {
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 
   .pie-cuerpo {

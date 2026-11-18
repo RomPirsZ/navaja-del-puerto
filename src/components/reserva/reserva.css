@@ -190,10 +190,6 @@
   color: var(--funda);
 }
 
-.campo-error::before {
-  content: '× ';
-}
-
 .aviso-error {
   margin: 0;
   padding: 0.75rem 1rem;
@@ -431,7 +427,7 @@
     aspect-ratio: 1;
     border-radius: 50%;
     background: var(--vinilo);
-    /* The grooves: two rings of the band's black around the label */
+    /* The grooves: two rings of the band's black around the label. Drawn rings, not elevation (taste-skill-ignore) */
     box-shadow:
       inset 0 0 0 1.75rem var(--vinilo),
       inset 0 0 0 calc(1.75rem + 2px) var(--tinta),

@@ -5,11 +5,15 @@ import { BARBEROS } from '../data/barberos';
 import { describirDias } from '../lib/apertura';
 import { t, type Clave } from '../i18n';
 import Foto from './Foto.astro';
+import Navaja from './Navaja.astro';
 ---
 
 <section id="barberos" class="barberos" aria-labelledby="barberos-titulo">
   <div class="barberos-cabeza" data-revelar-grupo>
-    <h2 id="barberos-titulo" class="display" data-revelar>{t('barberos.titulo')}</h2>
+    <div class="barberos-titulo" data-revelar>
+      <h2 id="barberos-titulo" class="display">{t('barberos.titulo')}</h2>
+      <Navaja class="barberos-navaja" />
+    </div>
     <p data-revelar>{t('barberos.frase')}</p>
   </div>
   <ul class="tira" data-revelar-grupo>
@@ -31,7 +35,7 @@ import Foto from './Foto.astro';
               <h3 class="display">{nombre}</h3>
               <p>{t(`barbero.${b.id}.especialidad` as Clave)}</p>
               <p class="credito-dias">{describirDias(b.dias)}</p>
-              <a href="#reservar" data-preseleccionar-barbero={b.id}>{t('barberos.reservarCon', { nombre })}</a>
+              <a class="credito-reservar" href="#reservar" data-preseleccionar-barbero={b.id}>{t('barberos.reservarCon', { nombre })} →</a>
             </div>
           </li>
         );
@@ -72,38 +76,43 @@ import Foto from './Foto.astro';
     line-height: 1.3;
   }
 
-  /* Narrow: a strip that slides sideways, one credit and a peek of the next */
+  /* Narrow: compact credit rows, a small portrait beside the text */
   .tira {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: min(78%, 22rem);
-    gap: var(--hueco);
-    margin: 0 calc(var(--margen) * -1);
-    padding: 0 var(--margen) 0.5rem;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
     list-style: none;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--margen);
-    overscroll-behavior-x: contain;
   }
 
-  .credito {
-    scroll-snap-align: start;
+  /* The razor hangs right under the heading, on its left edge, at every width */
+  .barberos-titulo {
+    display: grid;
+    justify-items: start;
+    gap: 0.5rem;
+  }
+
+  .barberos :global(.barberos-navaja) {
+    width: 6rem;
   }
 
   .credito {
     display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
     gap: 1rem;
     align-content: start;
     transition: opacity 250ms var(--curva);
   }
 
+  /* The studio white is printed onto the cardboard: multiply turns it into sand */
   .credito-foto {
     overflow: clip;
+    background: var(--arena);
   }
 
   /* Hover in is quick; the return is softer */
   .credito-foto :global(img) {
+    mix-blend-mode: multiply;
     transition: transform 350ms var(--curva);
   }
 
@@ -137,13 +146,21 @@ import Foto from './Foto.astro';
     font-weight: 700;
   }
 
-  .credito a {
+  /* The booking link reads as an action, not as one more line of data */
+  .credito-reservar {
     justify-self: start;
     min-height: 2.75rem;
     display: inline-flex;
     align-items: center;
     font-weight: 700;
     color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.25em;
+  }
+
+  .credito-reservar:hover {
+    text-decoration-color: var(--funda);
   }
 
   .barberos-nota {
@@ -160,11 +177,12 @@ import Foto from './Foto.astro';
     }
 
     .tira {
-      grid-auto-flow: row;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin: 0;
-      padding: 0;
-      overflow: visible;
+      gap: var(--hueco);
+    }
+
+    .credito {
+      grid-template-columns: 1fr;
     }
   }
 </style>

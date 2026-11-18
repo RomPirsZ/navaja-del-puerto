@@ -154,5 +154,6 @@
   "ritual.locion.verbo": "Loción",
   "ritual.locion.texto": "Loción fría para cerrar. Listo para salir al malecón.",
   "ritual.locion.alt": "Un barbero vierte loción de un frasco de vidrio en la palma de la mano.",
-  "servicios.muestra": "Foto de muestra de {servicio}"
+  "servicios.muestra": "Foto de muestra de {servicio}",
+  "nav.cerrar": "Cerrar menú"
 }

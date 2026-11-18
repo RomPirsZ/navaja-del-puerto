@@ -4,6 +4,7 @@
 import { SERVICIOS } from '../data/servicios';
 import { t, type Clave } from '../i18n';
 import Foto from './Foto.astro';
+import Navaja from './Navaja.astro';
 import Servicios from './Servicios.astro';
 ---
 
@@ -39,7 +40,7 @@ import Servicios from './Servicios.astro';
         ))
       }
     </div>
-    <p class="funda-catalogo cifras">{t('hero.catalogo')}</p>
+    <p class="funda-catalogo cifras"><Navaja class="funda-navaja" />{t('hero.catalogo')}</p>
   </div>
 
   <div class="portada-lado" data-revelar-grupo>
@@ -161,6 +162,40 @@ import Servicios from './Servicios.astro';
 
     .portada:has(.pista :is(:hover, :focus-visible)) .funda-catalogo {
       opacity: 0;
+    }
+  }
+
+  .funda :global(.funda-navaja) {
+    width: 3.5rem;
+    margin-inline-end: 0.5rem;
+    vertical-align: middle;
+  }
+
+  .funda :global(.funda-navaja .navaja-grabado) {
+    stroke: var(--funda);
+  }
+
+  /* Phones: the sleeve fills the first screen under the notice and the header, so the name
+     and the portrait own it; the portrait sits under «Puerto» and only bites its foot */
+  @media (width < 48rem) {
+    .funda {
+      aspect-ratio: auto;
+      min-block-size: calc(100svh - 7.75rem - 2 * var(--margen));
+    }
+
+    /* The portrait box runs from the foot of «Puerto» to the bottom edge; the photo covers
+       it from the top, so the hair rides over the lower part of the letters as on desktop */
+    .funda-retrato {
+      inset: 27cqi -15cqi 0 -25cqi;
+      width: auto;
+    }
+
+    .funda-retrato :global(img) {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
+      object-position: 50% top;
     }
   }
 

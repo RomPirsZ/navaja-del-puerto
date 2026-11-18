@@ -19,6 +19,12 @@ const enlaces = [
       </button>
       <ul id="menu-principal" class="cabecera-lista" popover="auto">
         {enlaces.map((e) => <li><a href={e.href}>{e.texto}</a></li>)}
+        <li class="solo-menu"><a class="cabecera-lista-accion" href="#reservar">{t('nav.reservar')}</a></li>
+        <li class="solo-menu">
+          <button class="cabecera-cerrar" type="button" popovertarget="menu-principal" popovertargetaction="hide">
+            {t('nav.cerrar')}
+          </button>
+        </li>
       </ul>
     </nav>
     <a class="cabecera-accion" href="#reservar">{t('nav.reservarCorto')}<span class="solo-ancho">&nbsp;{t('nav.reservarResto')}</span></a>
@@ -91,6 +97,8 @@ const enlaces = [
     inset-block-start: 4.5rem;
     inset-block-start: anchor(--menu-principal bottom);
     inset-inline: var(--margen);
+    /* The UA gives popovers fit-content: here the menu spans the margins */
+    width: auto;
     margin: 0.5rem 0 0;
     padding: 0.5rem 1.25rem;
     list-style: none;
@@ -144,6 +152,28 @@ const enlaces = [
     text-decoration: underline;
   }
 
+  /* Inside the narrow panel: the booking action and a visible way out (the page behind,
+     header included, is blurred) */
+  .cabecera-lista .cabecera-lista-accion {
+    margin-block: 0.5rem;
+    padding-inline: 1rem;
+    justify-content: center;
+    background: var(--funda);
+    color: var(--tinta);
+  }
+
+  .cabecera-cerrar {
+    width: 100%;
+    min-height: 3rem;
+    margin-block-end: 0.5rem;
+    font: inherit;
+    font-weight: 700;
+    color: var(--papel);
+    background: transparent;
+    border: 2px solid var(--papel-suave);
+    cursor: pointer;
+  }
+
   .solo-ancho {
     display: none;
   }
@@ -152,6 +182,10 @@ const enlaces = [
   @media (width >= 48rem) {
     .solo-ancho {
       display: inline;
+    }
+
+    .solo-menu {
+      display: none;
     }
 
     .cabecera-menu {

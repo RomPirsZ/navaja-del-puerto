@@ -40,10 +40,20 @@ const pasos = ['toalla', 'espuma', 'navaja', 'locion'] as const;
     color: var(--papel);
   }
 
+  /* One tone step above the booking band: the ritual starts as its own chapter */
   .ritual-cabeza {
     display: grid;
     gap: 1rem;
-    padding: var(--seccion) var(--margen) 3rem;
+    padding: 4rem var(--margen);
+    background: var(--vinilo);
+  }
+
+  @media (width >= 48rem) {
+    .ritual-cabeza {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: end;
+      column-gap: var(--hueco);
+    }
   }
 
   .ritual-cabeza h2 {
@@ -71,6 +81,8 @@ const pasos = ['toalla', 'espuma', 'navaja', 'locion'] as const;
     display: grid;
     min-height: 100svh;
     overflow: clip;
+    /* Whites print as paper, not as screen white (one tonal scale) */
+    background: var(--papel);
   }
 
   .ritual-paso :global(.ritual-foto) {
@@ -80,6 +92,7 @@ const pasos = ['toalla', 'espuma', 'navaja', 'locion'] as const;
     height: 100%;
     aspect-ratio: auto;
     object-fit: cover;
+    mix-blend-mode: multiply;
   }
 
   .ritual-texto {
