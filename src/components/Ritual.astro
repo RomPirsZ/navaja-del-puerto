@@ -1,0 +1,136 @@
+---
+// The straight-razor shave in four screens (Taste: one verb at a time). Each verb stays put
+// while its photo passes behind it; the verbs, read in order, are the ritual.
+import { t, type Clave } from '../i18n';
+import Foto from './Foto.astro';
+
+const pasos = ['toalla', 'espuma', 'navaja', 'locion'] as const;
+---
+
+<section id="ritual" class="ritual" aria-labelledby="ritual-titulo">
+  <div class="ritual-cabeza" data-revelar-grupo>
+    <h2 id="ritual-titulo" class="display" data-revelar>{t('ritual.titulo')}</h2>
+    <p data-revelar>{t('ritual.frase')}</p>
+  </div>
+  <ol class="ritual-pasos">
+    {
+      pasos.map((p) => (
+        <li class="ritual-paso">
+          <Foto
+            nombre={`ritual-${p}`}
+            alt={t(`ritual.${p}.alt` as Clave)}
+            aspecto="aspect-[3/2]"
+            clase="ritual-foto"
+            anchos={[640, 1024, 1600, 2385]}
+            sizes="100vw"
+          />
+          <div class="ritual-texto">
+            <h3 class="ritual-verbo display">{t(`ritual.${p}.verbo` as Clave)}</h3>
+            <p>{t(`ritual.${p}.texto` as Clave)}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .ritual {
+    background: var(--tinta);
+    color: var(--papel);
+  }
+
+  .ritual-cabeza {
+    display: grid;
+    gap: 1rem;
+    padding: var(--seccion) var(--margen) 3rem;
+  }
+
+  .ritual-cabeza h2 {
+    margin: 0;
+    font-size: var(--text-titulo);
+  }
+
+  .ritual-cabeza p {
+    margin: 0;
+    max-width: 40ch;
+    font-size: var(--text-tema);
+    line-height: 1.3;
+    color: var(--papel-suave);
+  }
+
+  .ritual-pasos {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Each step is a full screen; the photo covers it and the verb sticks inside it */
+  .ritual-paso {
+    position: relative;
+    display: grid;
+    min-height: 100svh;
+    overflow: clip;
+  }
+
+  .ritual-paso :global(.ritual-foto) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+
+  .ritual-texto {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    min-height: 100svh;
+    padding: 2rem var(--margen);
+  }
+
+  /* The verb on a strip of ink, like a sticker on the sleeve: it reads on any photo,
+     dark or white foam alike */
+  .ritual-verbo {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+    justify-self: start;
+    margin: 0;
+    padding: 0.06em 0.12em 0;
+    font-size: clamp(5rem, 1rem + 16vw, 16rem);
+    line-height: 0.82;
+    color: var(--papel);
+    background: var(--tinta);
+  }
+
+  .ritual-texto p {
+    margin: 0;
+    max-width: 30ch;
+    padding: 0.75rem 1rem;
+    background: var(--tinta);
+    font-size: var(--text-tema);
+    line-height: 1.3;
+  }
+
+  /* The photo settles as its screen scrolls through (CSS scroll-driven, where supported) */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .ritual-paso :global(.ritual-foto) {
+        animation: ritual-asentar linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 60%;
+      }
+    }
+  }
+
+  @keyframes ritual-asentar {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+</style>

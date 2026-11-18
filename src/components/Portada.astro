@@ -1,7 +1,8 @@
 ---
 // First viewport (surface contract): the orange sleeve with the name stacked as a monument
 // and the portrait slipping between its letters; beside it, side A: the services.
-import { t } from '../i18n';
+import { SERVICIOS } from '../data/servicios';
+import { t, type Clave } from '../i18n';
 import Foto from './Foto.astro';
 import Servicios from './Servicios.astro';
 ---
@@ -23,13 +24,28 @@ import Servicios from './Servicios.astro';
         prioridad
       />
     </div>
+    <div class="funda-muestras" aria-hidden="true">
+      {
+        SERVICIOS.map((s) => (
+          <div class="funda-muestra" data-muestra={s.id}>
+            <Foto
+              nombre={`servicio-${s.id}`}
+              alt={t('servicios.muestra', { servicio: t(`servicio.${s.id}.nombre` as Clave) })}
+              aspecto="aspect-square"
+              anchos={[320, 480]}
+              sizes="22vw"
+            />
+          </div>
+        ))
+      }
+    </div>
     <p class="funda-catalogo cifras">{t('hero.catalogo')}</p>
   </div>
 
-  <div class="portada-lado">
-    <p class="portada-frase">{t('hero.frase')}</p>
+  <div class="portada-lado" data-revelar-grupo>
+    <p class="portada-frase" data-revelar>{t('hero.frase')}</p>
     <Servicios />
-    <div class="portada-accion">
+    <div class="portada-accion" data-revelar>
       <a class="boton" href="#reservar">{t('nav.reservar')}</a>
       <div class="etiqueta-vinilo" aria-hidden="true">
         <span>Tu turno</span>
@@ -71,6 +87,13 @@ import Servicios from './Servicios.astro';
   .linea {
     display: block;
     white-space: nowrap;
+    perspective: 900px;
+  }
+
+  /* Letters split by the motion module turn on their baseline, in a wave */
+  .linea :global(span) {
+    display: inline-block;
+    transform-origin: 50% 85%;
   }
 
   .linea-navaja {
@@ -101,8 +124,47 @@ import Servicios from './Servicios.astro';
     width: 62cqi;
   }
 
+  /* Side A as cover art: hovering a track wipes its photo into the sleeve's free corner,
+     multiplied into the orange like the portrait (only with a mouse, on wide screens) */
+  .funda-muestras {
+    display: none;
+  }
+
+  @media (width >= 64rem) and (hover: hover) {
+    .funda-muestras {
+      display: block;
+      position: absolute;
+      z-index: 3;
+      inset-inline-end: 4cqi;
+      inset-block-end: 7cqi;
+      width: 30cqi;
+      aspect-ratio: 1;
+      mix-blend-mode: multiply;
+    }
+
+    .funda-muestra {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 450ms var(--curva);
+    }
+
+    .portada:has([data-servicio='corte'] :is(:hover, :focus-visible)) [data-muestra='corte'],
+    .portada:has([data-servicio='corte-barba'] :is(:hover, :focus-visible)) [data-muestra='corte-barba'],
+    .portada:has([data-servicio='barba'] :is(:hover, :focus-visible)) [data-muestra='barba'],
+    .portada:has([data-servicio='afeitado'] :is(:hover, :focus-visible)) [data-muestra='afeitado'],
+    .portada:has([data-servicio='infantil'] :is(:hover, :focus-visible)) [data-muestra='infantil'] {
+      clip-path: inset(0);
+    }
+
+    .portada:has(.pista :is(:hover, :focus-visible)) .funda-catalogo {
+      opacity: 0;
+    }
+  }
+
   /* Decorative catalogue line: only where it clears the portrait */
   .funda-catalogo {
+    transition: opacity 250ms var(--curva);
     display: none;
     position: absolute;
     inset-inline-end: 4cqi;

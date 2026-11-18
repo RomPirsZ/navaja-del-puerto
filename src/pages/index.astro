@@ -6,6 +6,7 @@ import Horario from '../components/Horario.astro';
 import Pie from '../components/Pie.astro';
 import Portada from '../components/Portada.astro';
 import Reserva from '../components/reserva/Reserva.tsx';
+import Ritual from '../components/Ritual.astro';
 import { t } from '../i18n';
 ---
 
@@ -16,12 +17,13 @@ import { t } from '../i18n';
     <Portada />
     <Barberos />
     <section id="reservar" class="reservar" aria-labelledby="reservar-titulo">
-      <div class="reservar-cabeza">
-        <h2 id="reservar-titulo" class="display">{t('reserva.titulo')}</h2>
-        <p>{t('reserva.frase')}</p>
+      <div class="reservar-cabeza" data-revelar-grupo>
+        <h2 id="reservar-titulo" class="display" data-revelar>{t('reserva.titulo')}</h2>
+        <p data-revelar>{t('reserva.frase')}</p>
       </div>
       <Reserva client:visible />
     </section>
+    <Ritual />
     <Horario />
   </main>
   <Pie />

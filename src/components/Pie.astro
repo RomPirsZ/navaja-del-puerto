@@ -10,14 +10,14 @@ import Navaja from './Navaja.astro';
   <p class="pie-cinta" aria-hidden="true">
     {SERVICIOS.map((s) => t(`servicio.${s.id}.nombre` as Clave)).join(' · ')}
   </p>
-  <div class="pie-cuerpo">
-    <div class="pie-texto">
+  <div class="pie-cuerpo" data-revelar-grupo>
+    <div class="pie-texto" data-revelar>
       <Navaja class="pie-navaja" />
       <p>{t('pie.concepto')}</p>
       <p>{t('pie.imagenes')}</p>
       <p><a href={PORTAFOLIO_URL}>{t('pie.portafolio')}</a></p>
     </div>
-    <nav aria-label={t('pie.navegacion')}>
+    <nav aria-label={t('pie.navegacion')} data-revelar>
       <ul class="pie-enlaces">
         <li><a href="#servicios">{t('nav.servicios')}</a></li>
         <li><a href="#barberos">{t('nav.barberos')}</a></li>

@@ -467,3 +467,88 @@
     line-height: 1;
   }
 }
+
+/* ——— Motion (plan §7): the label writes each choice in and seals the code ——— */
+
+/* The razor marks the step in progress, in the label's own ink (spec §7: the single motif) */
+.ficha-linea [aria-current='step']::before {
+  content: '';
+  display: inline-block;
+  width: 1.6em;
+  height: 0.55em;
+  margin-inline-end: 0.35em;
+  background: currentColor;
+  mask: url('/navaja.svg') no-repeat center / contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ficha-linea[data-llena] > * {
+    animation: ficha-escribir 420ms var(--curva) both;
+  }
+
+  .ficha[data-confirmada] .ficha-disco {
+    animation: ficha-girar 900ms var(--curva) both;
+  }
+
+  .ficha[data-confirmada] .ficha-codigo {
+    animation: ficha-sellar 520ms 380ms var(--curva) both;
+  }
+
+  .opcion {
+    transition:
+      background-color 180ms var(--curva),
+      border-color 180ms var(--curva),
+      color 180ms var(--curva);
+  }
+
+  .opcion:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .paso,
+  .confirmacion {
+    animation: paso-entrar 450ms var(--curva) both;
+  }
+}
+
+@keyframes ficha-escribir {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 -0.5em 0 0);
+  }
+}
+
+/* A quarter turn into place, as a record set on the platter */
+@keyframes ficha-girar {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ficha-sellar {
+  from {
+    opacity: 0;
+    transform: scale(1.6) rotate(-8deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes paso-entrar {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

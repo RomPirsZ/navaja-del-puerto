@@ -8,16 +8,17 @@ import Foto from './Foto.astro';
 ---
 
 <section id="barberos" class="barberos" aria-labelledby="barberos-titulo">
-  <div class="barberos-cabeza">
-    <h2 id="barberos-titulo" class="display">{t('barberos.titulo')}</h2>
-    <p>{t('barberos.frase')}</p>
+  <div class="barberos-cabeza" data-revelar-grupo>
+    <h2 id="barberos-titulo" class="display" data-revelar>{t('barberos.titulo')}</h2>
+    <p data-revelar>{t('barberos.frase')}</p>
   </div>
-  <ul class="tira">
+  <ul class="tira" data-revelar-grupo>
     {
       BARBEROS.map((b) => {
         const nombre = t(`barbero.${b.id}.nombre` as Clave);
         return (
-          <li class="credito">
+          <li class="credito" data-revelar>
+            <div class="credito-foto">
             <Foto
               nombre={`barbero-${b.id}`}
               alt={t('barberos.retrato', { nombre })}
@@ -25,6 +26,7 @@ import Foto from './Foto.astro';
               anchos={[320, 480, 720]}
               sizes="(width >= 48rem) 30vw, 90vw"
             />
+            </div>
             <div class="credito-texto">
               <h3 class="display">{nombre}</h3>
               <p>{t(`barbero.${b.id}.especialidad` as Clave)}</p>
@@ -93,6 +95,26 @@ import Foto from './Foto.astro';
     display: grid;
     gap: 1rem;
     align-content: start;
+    transition: opacity 300ms var(--curva);
+  }
+
+  .credito-foto {
+    overflow: clip;
+  }
+
+  .credito-foto :global(img) {
+    transition: transform 600ms var(--curva);
+  }
+
+  /* With a mouse, the credit under the pointer comes forward and the others step back */
+  @media (hover: hover) {
+    .tira:has(.credito:hover) .credito:not(:hover) {
+      opacity: 0.5;
+    }
+
+    .credito:hover .credito-foto :global(img) {
+      transform: scale(1.04);
+    }
   }
 
   .credito-texto {

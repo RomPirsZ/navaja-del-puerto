@@ -25,8 +25,23 @@ const { title = t('sitio.titulo'), description = t('sitio.descripcion') } = Astr
     <!-- Same value as --tinta: the mobile browser bar continues the black top band -->
     <meta name="theme-color" content="#16120e" />
     <meta name="color-scheme" content="only light" />
+    <!--
+      `motion`: with JS and no reduced-motion, what will be revealed starts hidden
+      (global.css) until the motion module takes it. If the module never arrives, CSS shows
+      it anyway after 2.5 s: content never depends on JS (constitution I).
+      Under the CSP this script needs its hash (public/_headers).
+    -->
+    <script is:inline>
+      if (matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        document.documentElement.classList.add('motion');
+      }
+    </script>
   </head>
   <body>
     <slot />
+    <script>
+      import { iniciarMovimiento } from '../lib/animations';
+      iniciarMovimiento();
+    </script>
   </body>
 </html>

@@ -6,7 +6,7 @@ import { t, type Clave } from '../i18n';
 ---
 
 <section id="servicios" class="servicios" aria-labelledby="servicios-titulo">
-  <h2 id="servicios-titulo" class="servicios-titulo">
+  <h2 id="servicios-titulo" class="servicios-titulo" data-revelar>
     <span class="display">{t('servicios.lado')}</span>{' '}
     <span class="servicios-sub">{t('servicios.titulo')}</span>
   </h2>
@@ -15,7 +15,7 @@ import { t, type Clave } from '../i18n';
       SERVICIOS.map((s, i) => {
         const nombre = t(`servicio.${s.id}.nombre` as Clave);
         return (
-          <li class="pista">
+          <li class="pista" data-servicio={s.id} data-revelar>
             <span class="pista-numero cifras" aria-hidden="true">{t('servicios.pista', { n: String(i + 1) })}</span>
             <span class="pista-texto">
               <a
@@ -141,16 +141,24 @@ import { t, type Clave } from '../i18n';
     text-align: end;
   }
 
-  /* «Reservar →» waits under the price and takes its place on hover or focus */
+  /* «Reservar →» wipes in over duration and price on hover or focus (clip-path) */
   .pista-reservar {
     position: absolute;
-    inset-block-end: 0;
-    inset-inline-end: 0;
-    padding: 0.15rem 0.6rem;
+    inset: -0.15rem -0.5rem;
+    display: grid;
+    place-items: center end;
+    padding-inline: 0.6rem;
     background: var(--funda);
     color: var(--tinta);
     white-space: nowrap;
-    visibility: hidden;
+    clip-path: inset(0 0 0 100%);
+    transition: clip-path 300ms var(--curva);
+  }
+
+  .pista {
+    transition:
+      background-color 200ms var(--curva),
+      color 200ms var(--curva);
   }
 
   .pista:has(.pista-nombre:hover),
@@ -166,12 +174,7 @@ import { t, type Clave } from '../i18n';
 
   .pista:has(.pista-nombre:hover) .pista-reservar,
   .pista:has(.pista-nombre:focus-visible) .pista-reservar {
-    visibility: visible;
-  }
-
-  .pista:has(.pista-nombre:hover) .pista-precio,
-  .pista:has(.pista-nombre:focus-visible) .pista-precio {
-    visibility: hidden;
+    clip-path: inset(0);
   }
 
   .servicios-nota {

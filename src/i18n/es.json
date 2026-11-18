@@ -139,5 +139,20 @@
   "ics.lugar": "Zona colonial de Puerto Cabello (dirección ficticia)",
   "compartir.texto": "Mi turno en Navaja del Puerto: {servicio}, {barbero} · {dia}, {hora} · Código {codigo}. Es una demo de [A]nkordev.",
   "confirmado.resumen": "{servicio}, {barbero} · {dia}, {hora} · {total}",
-  "pie.imagenes": "Las fotos son imágenes generadas con IA; las personas no existen."
+  "pie.imagenes": "Las fotos son imágenes generadas con IA; las personas no existen.",
+  "ritual.titulo": "El afeitado de navaja",
+  "ritual.frase": "Cuatro pasos, sin prisa. Lo hace Ramón, de martes a sábado.",
+  "ritual.toalla.verbo": "Toalla",
+  "ritual.toalla.texto": "Toalla caliente para abrir el poro y ablandar la barba.",
+  "ritual.toalla.alt": "Manos sosteniendo una toalla blanca doblada que suelta vapor.",
+  "ritual.espuma.verbo": "Espuma",
+  "ritual.espuma.texto": "Espuma de brocha, batida en la taza y aplicada a contrapelo.",
+  "ritual.espuma.alt": "Una brocha de afeitar bate espuma blanca en un cuenco de metal.",
+  "ritual.navaja.verbo": "Navaja",
+  "ritual.navaja.texto": "Navaja recién asentada, a favor del pelo y con pulso firme.",
+  "ritual.navaja.alt": "Una navaja abierta pasa por una mejilla cubierta de espuma.",
+  "ritual.locion.verbo": "Loción",
+  "ritual.locion.texto": "Loción fría para cerrar. Listo para salir al malecón.",
+  "ritual.locion.alt": "Un barbero vierte loción de un frasco de vidrio en la palma de la mano.",
+  "servicios.muestra": "Foto de muestra de {servicio}"
 }

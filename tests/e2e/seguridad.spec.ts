@@ -31,7 +31,10 @@ test('cada script y estilo en línea tiene su hash en la CSP, y no hay atributos
   expect(html).not.toMatch(/\sstyle="/);
 });
 
-test('con la CSP de producción, la isla se hidrata sin violaciones', async ({ page, request }) => {
+test.describe('con movimiento', () => {
+  test.use({ reducedMotion: 'no-preference' });
+
+test('con la CSP de producción, la isla se hidrata y el movimiento corre sin violaciones', async ({ page, request }) => {
   const csp = await leerCsp(request);
   // astro preview no aplica public/_headers: se añade la CSP a la respuesta del HTML
   await page.route('**/*', async (ruta) => {
@@ -49,5 +52,8 @@ test('con la CSP de producción, la isla se hidrata sin violaciones', async ({ p
   const isla = page.locator('[data-reserva]');
   await isla.scrollIntoViewIfNeeded();
   await expect(isla).toHaveAttribute('data-lista', 'true');
+  await expect(page.locator('html')).toHaveClass(/\bmotion-ready\b/);
+  await page.locator('footer').scrollIntoViewIfNeeded();
   expect(await page.evaluate(() => (window as unknown as { violaciones: string[] }).violaciones)).toEqual([]);
+});
 });

@@ -14,6 +14,9 @@ export default defineConfig({
   reporter: 'list',
   use: {
     baseURL: `http://localhost:${PORT}`,
+    // Without motion by default: fixed clocks and axe never meet half-finished animations.
+    // motion.spec.ts and seguridad.spec.ts switch it back on.
+    reducedMotion: 'reduce',
     trace: 'on-first-retry',
     // Sin los navegadores de Playwright descargados, se puede usar el Chromium del sistema:
     // CHROMIUM_PATH=/usr/bin/chromium npm test

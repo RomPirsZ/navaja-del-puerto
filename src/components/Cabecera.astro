@@ -110,6 +110,30 @@ const enlaces = [
     backdrop-filter: blur(10px);
   }
 
+  /* Narrow layout only: on wide screens the list is inline and never a popover */
+  @media (prefers-reduced-motion: no-preference) and (width < 48rem) {
+    .cabecera-lista {
+      transition:
+        opacity 250ms var(--curva),
+        translate 250ms var(--curva),
+        display 250ms,
+        overlay 250ms;
+      transition-behavior: allow-discrete;
+    }
+
+    .cabecera-lista:not(:popover-open) {
+      opacity: 0;
+      translate: 0 -0.5rem;
+    }
+
+    @starting-style {
+      .cabecera-lista:popover-open {
+        opacity: 0;
+        translate: 0 -0.5rem;
+      }
+    }
+  }
+
   .cabecera-accion:hover,
   .cabecera-lista a:hover {
     text-decoration: underline;

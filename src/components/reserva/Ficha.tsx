@@ -34,7 +34,8 @@ export default function Ficha({ estado, onEditar }: Props) {
               const actual = estado.paso === l.paso;
               const abrible = !confirmado && i <= tope && !actual;
               return (
-                <li key={l.paso} className="ficha-linea" data-llena={l.valor ? 'true' : undefined}>
+                // Keyed by value: a new choice remounts the line, so it is written in again
+                <li key={`${l.paso}-${l.valor ?? ''}`} className="ficha-linea" data-llena={l.valor ? 'true' : undefined}>
                   {abrible && l.valor ? (
                     <button type="button" onClick={() => onEditar(l.paso)} aria-label={t('ficha.cambiar', { valor: l.valor })}>
                       {l.valor}
