@@ -1,16 +1,16 @@
 ---
 name: Navaja del Puerto
-description: Barbería ficticia de Puerto Cabello con reserva de demostración, presentada como un LP de salsa de los setenta.
+description: Barbería ficticia de Puerto Cabello con reserva de demostración, presentada como un LP de salsa de los setenta en carbón, hueso y rojo de barbero.
 colors:
-  funda: "#f05a24"
-  papel: "#f2e8d4"
-  arena-clara: "#e6d8bd"
-  arena: "#d6c3a0"
-  arena-oscura: "#c2ab82"
-  papel-suave: "#c9b896"
-  tinta-suave: "#4a3d2f"
-  vinilo: "#231c16"
-  tinta: "#16120e"
+  rojo: "#b3261e"
+  rojo-claro: "#f26b60"
+  hueso-claro: "#f6f1e7"
+  hueso: "#ede6d8"
+  hueso-oscuro: "#dcd2bf"
+  carbon-suave: "#524b43"
+  carbon-alto: "#2a2826"
+  carbon: "#1c1c1c"
+  hueso-suave: "#b2aa9b"
 typography:
   display:
     fontFamily: "Archivo Variable, Arial Narrow, Nimbus Sans Narrow, sans-serif"
@@ -19,6 +19,20 @@ typography:
     lineHeight: 0.82
     letterSpacing: "-0.01em"
     fontVariation: "'wdth' 62"
+  headline-hero:
+    fontFamily: "Archivo Variable, Arial Narrow, Nimbus Sans Narrow, sans-serif"
+    fontSize: "clamp(2.5rem, 1.4rem + 3.2vw, 4.5rem)"
+    fontWeight: 900
+    lineHeight: 0.86
+    letterSpacing: "-0.01em"
+    fontVariation: "'wdth' 62"
+  hero-word:
+    fontFamily: "Archivo Variable, Arial Narrow, Nimbus Sans Narrow, sans-serif"
+    fontSize: "calc((100cqi - 2 * var(--margen)) / 5.35)"
+    fontWeight: 900
+    lineHeight: 0.74
+    letterSpacing: "-0.02em"
+    fontVariation: "'wdth' 125"
   title:
     fontFamily: "Archivo Variable, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(1.25rem, 1.12rem + 0.55vw, 1.625rem)"
@@ -48,59 +62,62 @@ spacing:
   seccion: "clamp(4.5rem, 2.5rem + 8vw, 9rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.funda}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.rojo}"
+    textColor: "{colors.hueso}"
     typography: "{typography.title}"
     rounded: "{rounded.none}"
     padding: "0 1.5rem"
     height: "3.25rem"
   button-primary-hover:
-    backgroundColor: "{colors.tinta}"
-    textColor: "{colors.funda}"
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.hueso}"
   button-primary-on-dark-hover:
-    backgroundColor: "{colors.papel}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.hueso}"
+    textColor: "{colors.carbon}"
   button-secondary:
     backgroundColor: "transparent"
-    textColor: "{colors.papel}"
+    textColor: "{colors.hueso}"
     rounded: "{rounded.none}"
     padding: "0 1.25rem"
     height: "3rem"
   button-secondary-hover:
-    backgroundColor: "{colors.papel}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.hueso}"
+    textColor: "{colors.carbon}"
   option:
-    backgroundColor: "{colors.vinilo}"
-    textColor: "{colors.papel}"
+    backgroundColor: "{colors.carbon-alto}"
+    textColor: "{colors.hueso}"
     rounded: "{rounded.none}"
     padding: "0.75rem 1rem"
     height: "3.5rem"
   option-pressed:
-    backgroundColor: "{colors.funda}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.rojo}"
+    textColor: "{colors.hueso}"
   option-disabled:
     backgroundColor: "transparent"
-    textColor: "{colors.papel-suave}"
+    textColor: "{colors.hueso-suave}"
   input:
-    backgroundColor: "{colors.papel}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.hueso}"
+    textColor: "{colors.carbon}"
     rounded: "{rounded.none}"
     padding: "0.7rem 0.85rem"
     height: "3rem"
   track-row:
     backgroundColor: "transparent"
-    textColor: "{colors.tinta}"
+    textColor: "{colors.carbon}"
     padding: "0.6rem 0.5rem"
   track-row-active:
-    backgroundColor: "{colors.tinta}"
-    textColor: "{colors.papel}"
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.hueso}"
   nav-bar:
-    backgroundColor: "{colors.tinta}"
-    textColor: "{colors.papel}"
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.hueso}"
     height: "4rem"
+  hero:
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.hueso}"
   record-label:
-    backgroundColor: "{colors.funda}"
-    textColor: "{colors.tinta}"
+    backgroundColor: "{colors.rojo}"
+    textColor: "{colors.hueso}"
     rounded: "{rounded.etiqueta}"
 ---
 
@@ -110,78 +127,84 @@ components:
 
 **Creative North Star: "Lado A"**
 
-La barbería es un LP de salsa de los setenta. La página es la funda de cartón: un fondo arena, campos enteros de naranja de funda y bandas casi negras de vinilo y contraportada. Los servicios son la lista de temas del Lado A, con duración y precio alineados como en una contraportada; los barberos son los créditos; el turno reservado es la etiqueta del disco, que se rellena mientras eliges y se sella con su número de catálogo `NP-XXXX`.
+La barbería es un LP de salsa de los setenta, ahora impreso en carbón, hueso y rojo de barbero. La página es la funda: un fondo hueso, bandas enteras de carbón y campos de rojo que nunca son un acento suelto. Los servicios son la lista de temas del Lado A, con duración y precio alineados como en una contraportada; los barberos son los créditos; el turno reservado es la etiqueta del disco, que se rellena mientras eliges y se sella con su número de catálogo `NP-XXXX`.
 
-El sistema es plano, cuadrado y tipográfico. La voz es una sola familia, Archivo con eje de anchura: extra condensada, negra y apilada para el nombre y los títulos; ancho normal para leer. La densidad es la de una contraportada: filas apretadas separadas por filetes de tinta de 2 px, cifras tabulares, márgenes cortos. Las fotos no flotan sobre la página: se imprimen en ella (`multiply` sobre el cartón o el papel) o, en el retrato de la portada, se recortan en duotono tinta y naranja para colarse entre las letras.
+El primer pantallazo es un escenario oscuro a sangre (enmienda del usuario del 2026-11-21, a partir de su propia referencia): titular, frase y botón rojo arriba a la izquierda; Leo, el barbero de la casa, recortado en duotono carbón→hueso delante de «NAVAJA», que va de margen a margen en la anchura más ancha de Archivo y se funde en un resplandor rojo; una franja al pie con tres servicios y el estado en vivo. Del hero hacia abajo, el sistema vuelve a ser plano, cuadrado y tipográfico: filas apretadas separadas por filetes de 2 px, cifras tabulares, márgenes cortos, fotos impresas sobre la página con `multiply`.
 
-Se rechazan, de forma confirmada en el contrato de dirección, el hero partido (titular, foto y botón) con tres tarjetas de servicios y el oscuro con dorado de las barberías.
+Sigue rechazado el dorado de las barberías: el oscuro de este sistema va con rojo.
 
 **Key Characteristics:**
-- Una sola escala tonal de arena a negro más un naranja de funda que llena campos enteros (estrategia Committed).
-- Archivo Variable al 62 % de anchura y peso 900 para lo monumental; ancho normal para el texto; cifras tabulares en horas, duraciones y precios.
+- Una sola escala tonal de hueso a carbón más un rojo de barbero que llena campos enteros (estrategia Committed); sobre el rojo siempre se escribe en hueso.
+- Archivo Variable en tres anchuras: 62 % y 900 para los títulos, normal para leer y 125 % solo para la palabra del hero.
 - Esquinas rectas y superficies planas; el único círculo es la etiqueta del disco.
-- Filetes de tinta de 2 px entre temas, días y filas.
+- Filetes de 2 px entre temas, días y filas, en la tinta de la superficie.
 - Una navaja grabada por vista, como único motivo.
 - Movimiento con una sola curva y estados que se leen igual con movimiento reducido.
 
 ## Colors
 
-Cartón de funda en una escala tonal de arena a negro, con un solo color saturado que nunca es un acento suelto.
+Hueso y carbón en una sola escala tonal, con un único color saturado, el rojo de barbero, que siempre ocupa campos enteros.
 
 ### Primary
-- **Naranja de funda** (`funda`): llena campos enteros, no detalles. Es la funda de la portada, el capítulo del horario, la etiqueta del disco y la barra fija del turno en el móvil, la acción principal y la opción elegida en la reserva. Sobre él siempre va `tinta` (5,50:1). Sobre las bandas oscuras sirve también como texto: el código del turno, los errores del formulario (5,50:1 sobre `tinta`, 4,96:1 sobre `vinilo`).
+- **Rojo de barbero** (`rojo`): llena campos, no detalles. Es el resplandor del hero, el capítulo del horario, la etiqueta del disco y la barra fija del turno en el móvil, la acción principal, la opción elegida en la reserva, «Reservar →» en la lista y el aviso de error. Sobre él siempre va `hueso` (5,26:1): el carbón sobre el rojo da 2,61:1 y el test lo prohíbe. También es el borde de un campo inválido sobre su fondo hueso y el color de la selección de texto.
+- **Rojo claro** (`rojo-claro`): el rojo cuando tiene que ser texto sobre carbón, donde el rojo de barbero se queda en 2,61:1. Código de la confirmación, mensajes de error de los campos, contorno de error y el paso en curso de la barra del turno.
 
 ### Neutral
 La escala, de claro a oscuro (el test exige que cada paso sea más oscuro que el anterior):
-- **Papel** (`papel`): el paso más claro. Texto sobre las bandas oscuras, fondo de los campos de formulario y el blanco con el que se imprimen las fotos del ritual.
-- **Arena clara** (`arena-clara`): un paso por encima del fondo, para filas activas y paneles sobre el cartón.
-- **Arena** (`arena`): el fondo de la página, el cartón de la funda. También la tira de temas del pie y el agujero de la etiqueta.
-- **Arena oscura** (`arena-oscura`): un paso por debajo del fondo. La franja del aviso de concepto.
-- **Tinta suave** (`tinta-suave`): texto secundario sobre arena (descripciones de temas, notas).
-- **Vinilo** (`vinilo`): superficies elevadas en tono dentro de las bandas oscuras: opciones de la reserva, turnos guardados, la cabeza del capítulo del ritual, el disco de la ficha.
-- **Tinta** (`tinta`): la tinta del texto sobre arena y naranja, y el color de las bandas oscuras (cabecera, reserva, ritual, pie) y de la etiqueta de la portada.
+- **Hueso claro** (`hueso-claro`): un paso por encima del fondo, para filas activas y paneles sobre el hueso.
+- **Hueso** (`hueso`): el fondo de la página, el texto de todas las bandas carbón y del rojo, el fondo de los campos de formulario, la tira de temas del pie y el blanco con el que se imprimen las fotos del ritual y de los créditos.
+- **Hueso oscuro** (`hueso-oscuro`): un paso por debajo del fondo. La franja del aviso de concepto.
+- **Carbón suave** (`carbon-suave`): texto secundario sobre hueso (descripciones de temas, notas).
+- **Carbón alto** (`carbon-alto`): superficies elevadas en tono dentro de las bandas carbón: opciones de la reserva, turnos guardados, la cabeza del capítulo del ritual, el disco de la ficha, el hueco de una foto pendiente.
+- **Carbón** (`carbon`): la tinta del texto sobre hueso y el color del hero, la cabecera, la reserva, el ritual y el pie.
 
 Fuera de la escala:
-- **Papel suave** (`papel-suave`): texto secundario sobre las bandas oscuras y bordes de controles en ellas.
+- **Hueso suave** (`hueso-suave`): texto secundario sobre carbón (frases de entrada, ayudas de campo, pie legal) y bordes de los controles en las bandas carbón. Sobre el resplandor rojo del hero no se usa: ahí baja a unos 3,5:1 y el texto va en `hueso`.
 
 ### Pares de contraste garantizados
 `tests/unit/tokens.test.ts` exige AA (4,5:1) para cada par que el sitio usa como texto sobre fondo:
 
 | Texto | Fondo | Ratio |
 |---|---|---|
-| tinta | arena / arena-clara / arena-oscura | 10,80 / 13,24 / 8,38 |
-| tinta-suave | arena / arena-clara | 6,09 / 7,46 |
-| tinta | funda | 5,50 |
-| papel | tinta / vinilo | 15,32 / 13,82 |
-| papel-suave | tinta / vinilo | 9,57 / 8,63 |
-| funda | tinta / vinilo | 5,50 / 4,96 |
+| carbon | hueso / hueso-claro / hueso-oscuro | 13,72 / 15,14 / 11,37 |
+| carbon-suave | hueso / hueso-claro | 6,91 / 7,63 |
+| rojo | hueso | 5,26 |
+| hueso | rojo | 5,26 |
+| hueso | carbon / carbon-alto | 13,72 / 11,83 |
+| hueso-suave | carbon / carbon-alto | 7,40 / 6,38 |
+| rojo-claro | carbon / carbon-alto | 5,72 / 4,93 |
 
-Un par nuevo de texto sobre fondo entra en esa tabla y en el test antes de usarse.
+El mismo test comprueba que el carbón sobre el rojo no llega a AA y que ningún bloque con fondo `rojo` pone el texto en `carbon` o `carbon-suave`. Un par nuevo de texto sobre fondo entra en esa tabla y en el test antes de usarse.
 
 ### Named Rules
-**The Committed Orange Rule.** El naranja ocupa del 30 al 60 % de las vistas principales como campo entero (funda, capítulo, etiqueta, barra). Nunca aparece como un acento suelto, un subrayado de color o un icono pintado.
+**The Committed Red Rule.** El rojo ocupa campos enteros (resplandor del hero, capítulo del horario, etiqueta, barra del turno, botón, opción elegida). Nunca aparece como un acento suelto, un subrayado de color o un icono pintado.
 
-**The One Scale Rule.** Todo neutro sale de la escala arena→negro. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `papel` o `arena` con `multiply`.
+**The Bone On Red Rule.** Sobre el rojo se escribe en hueso, siempre. Cuando el rojo es el texto y el fondo es carbón, se usa `rojo-claro`.
 
-**The Roles Only Rule.** Los hex viven solo en `:root` de `src/styles/global.css`; los componentes usan los roles. El test falla si aparece un hex fuera de `:root`. Las dos copias aceptadas fuera del CSS (la `theme-color` de `Base.astro` y el duotono de `scripts/retrato-hero.sh`) repiten `tinta` y `funda` y se actualizan con ellos.
+**The One Scale Rule.** Todo neutro sale de la escala hueso→carbón. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `hueso` con `multiply`.
+
+**The Roles Only Rule.** Los hex viven solo en `:root` de `src/styles/global.css`; los componentes usan los roles. El test falla si aparece un hex fuera de `:root` o un rol de la paleta anterior. Las copias aceptadas fuera del CSS (la `theme-color` de `Base.astro` y el duotono de `scripts/retrato-hero.sh`) repiten `hueso` y `carbon` y se actualizan con ellos; el extremo oscuro del duotono es un carbón un paso por debajo de `carbon`, para que la camiseta negra de Leo se lea sobre el hero.
 
 ## Typography
 
 **Display Font:** Archivo Variable, eje `wdth` al 62 % (con Arial Narrow, Nimbus Sans Narrow)
 **Body Font:** Archivo Variable, anchura normal (con ui-sans-serif, system-ui)
+**Hero Word:** Archivo Variable, eje `wdth` al 125 %
 
-**Character:** una sola familia con dos voces. La condensada negra y apilada es la tipografía de carátula: el nombre, los títulos, los verbos del ritual, el estado del horario y los códigos. La de anchura normal lee la lista de temas como una contraportada.
+**Character:** una sola familia con tres anchuras. La condensada negra es la tipografía de carátula: titulares, títulos de sección, verbos del ritual, estado del horario y códigos. La de anchura normal lee la lista de temas como una contraportada. La ancha, al 125 %, existe para una sola palabra: «NAVAJA» en el hero.
 
 ### Hierarchy
-La escala tiene cinco pasos en `@theme`, fluidos de 390 a 1440 px salvo la nota:
-- **Monumento** (`--text-monumento`, `clamp(5.5rem, 1rem + 19vw, 19rem)`): definido para el nombre como monumento. Hoy ningún componente lo consume: el nombre de la funda se mide con la anchura de la funda (`33.6cqi`) y el del pie a `13.4cqi`.
-- **Display / Título** (900, `--text-titulo`, 0.82): títulos de sección con la clase `display` (mayúsculas, `-0.01em`). Las piezas monumentales usan tamaños propios del mismo registro: verbo del ritual `clamp(5rem, 1rem + 16vw, 16rem)`, estado del horario `clamp(3.5rem, 1rem + 10vw, 11rem)`, código de la confirmación `clamp(3.5rem, 2rem + 6vw, 6rem)`, nombres de barberos `clamp(2.5rem, 2rem + 2vw, 3.5rem)`, títulos de paso `clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem)`.
-- **Tema** (700, `--text-tema`, 1.2 a 1.3): nombres de temas, frases de entrada (30 a 44ch), el botón, los precios.
-- **Cuerpo** (400, `--text-cuerpo`, 1.5): texto corrido y descripciones. `font-size-adjust: from-font` evita el salto mientras carga Archivo.
-- **Nota** (600, `--text-nota`, `0.875rem`): aviso de concepto, notas de ficción, la etiqueta del turno, el pie legal.
+La escala tiene cinco pasos en `@theme`, fluidos de 390 a 1440 px; las piezas monumentales y el hero usan tamaños propios del mismo registro, documentados aquí como parte del sistema:
+- **Palabra del hero** (900, `wdth` 125, medida con el ancho del hero para ir de margen a margen, 0.74, `-0.02em`, mayúsculas): solo «NAVAJA», decorativa (`aria-hidden`).
+- **Titular del hero** (900, `wdth` 62, `clamp(2.5rem, 1.4rem + 3.2vw, 4.5rem)`, 0.86): «Corte moderno, navaja de siempre» en dos líneas con la clase `display`. Va por debajo de `--text-titulo` a propósito, para que la palabra del hero sea la que manda.
+- **Monumentales** (900, `wdth` 62): verbo del ritual `clamp(5rem, 1rem + 16vw, 16rem)`, estado del horario `clamp(3.5rem, 1rem + 10vw, 11rem)`, código de la confirmación `clamp(3.5rem, 2rem + 6vw, 6rem)`, nombre del pie a `13.4cqi` (todo el ancho), nombres de barberos `clamp(2.5rem, 2rem + 2vw, 3.5rem)`, títulos de paso de la reserva `clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem)`. El token `--text-monumento` (`clamp(5.5rem, 1rem + 19vw, 19rem)`) está definido pero ningún componente lo consume.
+- **Display / Título** (900, `--text-titulo`, 0.82): títulos de sección con la clase `display` (mayúsculas, `-0.01em`).
+- **Tema** (700 a 800, `--text-tema`, 1.2 a 1.3): nombres de temas, frases de entrada (30 a 44ch), el botón, los precios, el estado en vivo de la franja del hero.
+- **Cuerpo** (400, `--text-cuerpo`, 1.5): texto corrido, descripciones, la frase del hero (34ch). `font-size-adjust: from-font` evita el salto mientras carga Archivo.
+- **Nota** (600, `--text-nota`, `0.875rem`): aviso de concepto, notas de ficción, la franja del hero, la etiqueta del turno, el pie legal.
 
 ### Named Rules
-**The Two Widths Rule.** Una familia, dos anchuras: 62 % y 900 para lo que se mira, normal para lo que se lee. Nada intermedio, ninguna segunda familia.
+**The Three Widths Rule.** Una familia, tres anchuras con papel fijo: 62 % y 900 para lo que se mira, normal para lo que se lee, 125 % solo para la palabra del hero. Nada intermedio, ninguna segunda familia, y el 125 % no sale del hero.
 
 **The Tracklist Figures Rule.** Horas, duraciones, precios, números de tema y códigos van con cifras tabulares (`.cifras`, `tnum`), para que se alineen como en una contraportada.
 
@@ -189,7 +212,9 @@ La escala tiene cinco pasos en `@theme`, fluidos de 390 a 1440 px salvo la nota:
 
 Una sola columna en el móvil y una retícula de dos en escritorio. El ritmo lo marcan tres medidas: `--margen` para los márgenes laterales de toda la página, `--hueco` para el espacio entre columnas y créditos, y `--seccion` para el relleno vertical de cada capítulo. Dentro de los componentes, los espacios son fijos y pequeños (0.25 a 2.5rem), propios de una contraportada.
 
-- **Portada:** a partir de 64rem, la funda cuadrada ocupa `min(58%, alto de la ventana)` y la lista del Lado A va a su derecha. Por debajo de 48rem, la funda llena el primer pantallazo bajo el aviso y la cabecera.
+- **Hero:** a sangre en cualquier ancho, alto del primer pantallazo bajo el aviso y la cabecera (`100svh − 7rem`; desde 48rem, al menos 34rem). Es su propio contenedor: la palabra, la navaja de fondo y el resplandor se miden con su ancho. Tres filas: texto arriba a la izquierda, escenario y franja. En el móvil, Leo ocupa la fila del medio y sube un poco junto al botón; desde 48rem el escenario abarca todo el hero, Leo se levanta junto al titular (alrededor del 57 al 60 % del ancho), el texto se limita a `min(40rem, 54cqi)` y la franja va en una línea, servicios a la izquierda y estado a la derecha.
+- **Servicios:** sección propia bajo el hero. Desde 64rem y solo con ratón (`hover: hover`), columnas 7/5 con un panel cuadrado de fotos fijo con `sticky` al lado de la lista.
+- **Cabecera:** desde 48rem, nombre, enlaces centrados y acción en tres columnas.
 - **Créditos:** filas compactas con retrato de 7.5rem en el móvil; tres columnas desde 48rem.
 - **Reserva:** desde 64rem, los pasos a la izquierda y el disco de la ficha a la derecha (`min(26rem, 38%)`), fijo con `sticky`. Por debajo, la ficha es una barra fija abajo y la página reserva 7rem de `scroll-padding` para que el foco no quede tapado.
 - **Ritual:** un paso por pantalla (`100svh`), la foto a sangre y el verbo fijo con `sticky`.
@@ -198,99 +223,107 @@ Una sola columna en el móvil y una retícula de dos en escritorio. El ritmo lo 
 
 ## Elevation & Depth
 
-El sistema es plano en reposo. No hay sombras de elevación: la profundidad la dan los pasos de la escala tonal (`vinilo` sobre `tinta`, `arena-clara` sobre `arena`) y las bandas que alternan cartón, naranja y negro. La única capa con desenfoque es el fondo del menú del móvil (`backdrop-filter: blur(10px)` sobre `tinta` al 35 %).
+El sistema es plano en reposo. No hay sombras de elevación: la profundidad la dan los pasos de la escala tonal (`carbon-alto` sobre `carbon`, `hueso-claro` sobre `hueso`) y las bandas que alternan hueso, carbón y rojo. La única capa con desenfoque es el fondo del menú del móvil (`backdrop-filter: blur(10px)` sobre `carbon` al 35 %).
+
+El hero es la excepción luminosa, decidida por el usuario a partir de su referencia: un resplandor rojo radial que sube desde el pie del escenario (dos degradados radiales de `rojo` mezclado con transparente sobre `carbon`) y máscaras de degradado que funden la palabra «NAVAJA» hacia abajo y los bordes del retrato de Leo en la oscuridad. Es luz de escena, no elevación, y no sale del hero.
 
 ### Shadow Vocabulary
-- **Surcos del disco** (`box-shadow: inset 0 0 0 1.75rem var(--vinilo), inset 0 0 0 calc(1.75rem + 2px) var(--tinta), inset 0 0 0 3.5rem var(--vinilo), inset 0 0 0 calc(3.5rem + 2px) var(--tinta)`): dibuja dos anillos de tinta alrededor de la etiqueta en el disco de la ficha. Es dibujo, no elevación, y es su único uso.
+- **Surcos del disco** (`box-shadow: inset 0 0 0 1.75rem var(--carbon-alto), inset 0 0 0 calc(1.75rem + 2px) var(--carbon), inset 0 0 0 3.5rem var(--carbon-alto), inset 0 0 0 calc(3.5rem + 2px) var(--carbon)`): dibuja dos anillos alrededor de la etiqueta en el disco de la ficha. Es dibujo, no elevación, y es su único uso.
 
 ### Named Rules
 **The Flat Sleeve Rule.** Nada se levanta en reposo ni al pasar el puntero. La única `box-shadow` del sistema son los surcos dibujados del disco.
 
+**The Stage Light Rule.** Los degradados son del hero y solo del hero: el resplandor rojo radial y las máscaras que funden la palabra y el retrato. Ninguna otra superficie lleva degradados.
+
 ## Shapes
 
-Esquinas rectas en todo: botones, opciones, campos (`border-radius: 0` explícito), fotos, paneles. Los bordes son de 2 px: `tinta` como filetes sobre arena y naranja, `papel-suave` o `vinilo` en los controles de las bandas oscuras.
+Esquinas rectas en todo: botones, opciones, campos (`border-radius: 0` explícito), fotos, paneles. Los bordes son de 2 px: `carbon` como filetes sobre hueso, `hueso` como filetes sobre el rojo del horario, `hueso-suave` o `carbon-alto` en los controles de las bandas carbón.
 
-El único círculo es la etiqueta del disco (`50%`): la de la portada (negra con agujero arena) y la ficha del turno en escritorio (naranja dentro del disco de vinilo). El nombre del pie se recorta por abajo, nunca por arriba.
+El único círculo es la etiqueta del disco (`50%`): la ficha del turno en escritorio, roja dentro del disco de carbón alto. El nombre del pie se recorta por abajo, nunca por arriba.
 
-La navaja grabada (`Navaja.astro`, SVG decorativo con `aria-hidden`) es el motivo: cuerpo en la tinta de la superficie y líneas de grabado en el color del fondo. Aparece una vez por vista: en la línea de catálogo de la funda, bajo el título de los barberos, en el pie y, como máscara, marcando el paso en curso de la ficha.
+La navaja grabada (`Navaja.astro`, SVG decorativo con `aria-hidden`) es el motivo: cuerpo en la tinta de la superficie y líneas de grabado en el color del fondo. Aparece una vez por vista: grande y tenue en el fondo del hero (hueso al 6 %, girada), bajo el título de los barberos, en el pie y, como máscara, marcando el paso en curso de la ficha.
+
+En la franja del hero, tres pictogramas propios en SVG de trazo (tijeras, brocha y peine; 1.5rem, trazo 1.6 redondeado en `currentColor`) acompañan los tres servicios. Son de esa franja, no un juego de iconos de interfaz.
 
 ### Named Rules
 **The Only Circle Rule.** Ningún otro elemento es redondo. Ni avatares, ni puntos de estado, ni botones con píldora.
 
-**The 2px Groove Rule.** Lo que se lista se separa con filetes de tinta de 2 px entre filas (temas, días). No se usan tarjetas para agrupar filas.
+**The 2px Groove Rule.** Lo que se lista se separa con filetes de 2 px en la tinta de la superficie entre filas (temas, días). No se usan tarjetas para agrupar filas.
 
 **The One Razor Rule.** Una navaja por vista, como mucho. No se convierte en icono de interfaz ni se repite como patrón.
 
 ## Components
 
 ### Buttons
-Una sola forma de botón: cuadrado, plano, naranja con texto de tinta.
+Una sola forma de botón: cuadrado, plano, rojo con texto hueso.
 - **Shape:** esquinas rectas (0), alto mínimo 3.25rem, `padding-inline: 1.5rem`, 800 a `--text-tema`.
-- **Primary:** `funda` con `tinta`. Al pasar el puntero se invierte a `tinta` con `funda`; dentro de la banda negra de la reserva pasa a `papel` con `tinta`, y deshabilitado (enviando) a `papel-suave` con cursor de progreso.
-- **Secondary:** solo en las bandas oscuras: transparente con borde de 2 px de `papel` y texto `papel`; se rellena de `papel` al pasar el puntero.
-- **Focus:** el anillo global, `outline: 3px solid currentColor` con 3 px de separación, que toma la tinta de la superficie y mantiene 3:1 sobre arena, naranja y negro.
+- **Primary:** `rojo` con `hueso`. Al pasar el puntero sobre hueso pasa a `carbon` con `hueso`; sobre las superficies carbón (hero, reserva) pasa a `hueso` con `carbon`, y deshabilitado (enviando) a `hueso-suave` con cursor de progreso.
+- **Secondary:** solo en las bandas carbón: transparente con borde de 2 px de `hueso` y texto `hueso`; se rellena de `hueso` al pasar el puntero.
+- **Focus:** el anillo global, `outline: 3px solid currentColor` con 3 px de separación, que toma la tinta de la superficie y mantiene 3:1 sobre hueso, rojo y carbón.
 
 ### Opciones de la reserva
-- **Style:** cada elección (servicio, barbero, día, hora) es un `<button>` con `aria-pressed`. Fondo `vinilo`, borde de 2 px del mismo tono, texto `papel`, alto mínimo 3.5rem.
-- **State:** al pasar el puntero el borde pasa a `papel-suave`; elegida (`aria-pressed="true"`) se rellena de `funda` con texto `tinta`; ocupada (`disabled`) queda transparente con texto `papel-suave`. Al pulsar, `scale(0.98)`.
+- **Style:** cada elección (servicio, barbero, día, hora) es un `<button>` con `aria-pressed`. Fondo `carbon-alto`, borde de 2 px del mismo tono, texto `hueso`, alto mínimo 3.5rem.
+- **State:** al pasar el puntero el borde pasa a `hueso-suave`; elegida (`aria-pressed="true"`) se rellena de `rojo` con texto `hueso`; ocupada (`disabled`) queda transparente con texto `hueso-suave`. Al pulsar, `scale(0.98)`.
 - Los días usan el número en la voz condensada (2.25rem) sobre el día y el mes en nota; las horas, una rejilla de piezas idénticas (`minmax(7.5rem, 1fr)`).
 
 ### Inputs / Fields
-- **Style:** fondo `papel`, texto `tinta`, borde de 2 px de `papel-suave`, esquinas rectas, alto mínimo 3rem, nunca menos de 16 px de letra.
+- **Style:** fondo `hueso`, texto `carbon`, borde de 2 px de `hueso-suave`, esquinas rectas, alto mínimo 3rem, nunca menos de 16 px de letra.
 - **Focus:** el anillo global.
-- **Error:** borde y contorno de 2 px en `funda`, mensaje en 700 y `funda` sobre la banda; el aviso general es un bloque `funda` con texto `tinta`.
+- **Error:** borde `rojo` sobre el campo y contorno de 2 px en `rojo-claro` hacia la banda; mensaje en 700 y `rojo-claro`. El aviso general es un bloque `rojo` con texto `hueso`.
 
 ### Navigation
-Barra fija `tinta` de 4rem con el nombre en la voz condensada, Servicios · Barberos · Horario y «Reservar turno» en un bloque `funda`. En el móvil, la misma lista es un `popover` nativo bajo la barra (funciona sin JS), con la página detrás desenfocada; abre en 250 ms y cierra en 150 ms.
+Barra fija `carbon` de 4rem con el nombre en la voz condensada, Servicios · Barberos · Horario y «Reservar turno» en un bloque `rojo`. Desde 48rem los enlaces van centrados entre el nombre y la acción. En el móvil, la misma lista es un `popover` nativo bajo la barra (funciona sin JS), con la página detrás desenfocada; abre en 250 ms y cierra en 150 ms.
 
-### Funda (portada)
-Campo cuadrado `funda` medido con unidades de contenedor. El nombre «NAVAJA / DEL / PUERTO» apilado en la voz condensada; «del» más pequeño y a la derecha. El retrato en duotono recortado se pone delante de las letras. En escritorio con ratón, al pasar por un tema su foto entra con un barrido `clip-path` en la esquina libre, impresa con `multiply` sobre el naranja.
+### Hero (primer pantallazo)
+Escenario `carbon` a sangre. Arriba a la izquierda, el titular en la voz condensada, la frase en `hueso-suave` y el botón rojo. Detrás, la palabra «NAVAJA» en la anchura del 125 %, de margen a margen, fundida hacia abajo con `mask-image` en el resplandor rojo; delante, Leo recortado en duotono carbón→hueso (`scripts/retrato-hero.sh`), con las manos y el borde inferior disueltos por máscara. La navaja de la vista, grande y tenue, al fondo. Al pie, la franja en nota con los tres servicios y sus pictogramas y, si hay JS, el estado en vivo en `--text-tema` sobre «Hora de Puerto Cabello» (en `hueso`, nunca `hueso-suave`, por el resplandor). Con colores forzados, la palabra pasa a `GrayText`.
 
 ### Lado A (lista de temas)
-Título «Lado A» en la voz condensada y la lista como `<ol>` con filetes de 2 px. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `tinta` con `papel`, y «Reservar →» entra en un bloque `funda` sobre la duración y el precio con un barrido `clip-path` de 250 ms.
+Título «Lado A» en la voz condensada junto a «Servicios» en tema, y la lista como `<ol>` con filetes de 2 px de `carbon`. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `carbon` con `hueso`, y «Reservar →» entra en un bloque `rojo` con texto `hueso` sobre la duración y el precio con un barrido `clip-path` de 250 ms. Con ratón en ancho ≥ 64rem, el panel de al lado muestra la foto del primer tema, impresa con `multiply` sobre el hueso, y la del tema señalado entra con un barrido `clip-path`.
 
 ### Créditos (barberos)
-Retrato 4:5 impreso con `multiply` sobre `arena`, nombre en la voz condensada, especialidad, días en 700 y un enlace subrayado de 2 px que lleva a la reserva con ese barbero. Con ratón, el crédito señalado se acerca (`scale(1.04)`) y los demás bajan a opacidad 0.5.
+Retrato 4:5 impreso con `multiply` sobre `hueso`, nombre en la voz condensada, especialidad, días en 700 y un enlace subrayado de 2 px que lleva a la reserva con ese barbero. Con ratón, el crédito señalado se acerca (`scale(1.04)`) y los demás bajan a opacidad 0.5.
 
 ### Ritual
-Cuatro pantallas, una por verbo (TOALLA, ESPUMA, NAVAJA, LOCIÓN). La foto cubre la pantalla, impresa con `multiply` sobre `papel`, y se asienta con el scroll (`scale(1.12)` a 1, solo con `animation-timeline: view()`). El verbo, en la voz condensada, va sobre una tira de `tinta` como una pegatina en la funda, para leerse sobre cualquier foto; el texto, en otro bloque de `tinta`.
+Una cabeza de capítulo en `carbon-alto` y cuatro pantallas, una por verbo (TOALLA, ESPUMA, NAVAJA, LOCIÓN). La foto cubre la pantalla, impresa con `multiply` sobre `hueso`, y se asienta con el scroll (`scale(1.12)` a 1, solo con `animation-timeline: view()`). El verbo, en la voz condensada, va sobre una tira de `carbon` como una pegatina en la funda, para leerse sobre cualquier foto; el texto, en otro bloque de `carbon`.
 
 ### Capítulo del horario
-Banda entera `funda` con el estado en vivo en exposición («Abierto hasta las 7», hora de Puerto Cabello) y la semana como lista con filetes de 2 px; el día de hoy se marca con algo más que color: la fila se invierte a la banda negra (`aria-current="date"`).
+Banda entera `rojo` con texto y filetes de 2 px en `hueso`. El estado en vivo en exposición («Abierto hasta las 7», hora de Puerto Cabello) y la semana como lista; el día de hoy se marca con algo más que color: la fila se invierte a la banda `carbon` (`aria-current="date"`).
 
 ### Etiqueta del disco (ficha del turno)
-La firma del sistema. En escritorio es un disco `vinilo` con los surcos dibujados y la etiqueta `funda` en el centro; cada elección se escribe en su renglón (barrido `clip-path` de 250 ms) y, al confirmar, el disco gira un cuarto de vuelta (500 ms) y el código se sella (500 ms tras 300 ms, de `scale(1.6)` y 8 px de desenfoque a nítido). En el móvil es una barra fija abajo en `funda`; el paso en curso va en `tinta` con texto `funda`, marcado con la navaja como máscara.
+La firma del sistema. En escritorio es un disco `carbon-alto` con los surcos dibujados y la etiqueta `rojo` con texto `hueso` en el centro; cada elección se escribe en su renglón (barrido `clip-path` de 250 ms) y, al confirmar, el disco gira un cuarto de vuelta (500 ms) y el código se sella (500 ms tras 300 ms, de `scale(1.6)` y 8 px de desenfoque a nítido). En el móvil es una barra fija abajo en `rojo`; el paso en curso va en `carbon` con texto `rojo-claro`, marcado con la navaja como máscara.
 
 ### Pie
-Tira `arena` con los temas en una línea, el cuerpo en `tinta` con la navaja, el aviso de concepto y el enlace al portafolio, y el nombre a todo el ancho en `papel`, recortado por abajo.
+Banda `carbon` que abre con una tira `hueso` con los temas en una línea; luego la navaja en `hueso`, el aviso de concepto y el enlace al portafolio, y el nombre a todo el ancho en `hueso`, recortado por abajo.
 
 ### Movimiento
 
-Una sola curva para todo: `--curva`, `cubic-bezier(0.22, 1, 0.36, 1)` (en Anime.js, `out(4)`). Duraciones afinadas en R09:
-- **Ola del nombre:** cada letra gira sobre su línea base (`rotateX` de -95° a 0, sube 0.25em), 500 ms con escalonado de 18 ms; el retrato entra después (1100 ms, retraso de 420 ms).
+Una sola curva para todo: `--curva`, `cubic-bezier(0.22, 1, 0.36, 1)` (en Anime.js, `out(4)`).
+- **Ola de «NAVAJA»:** cada letra gira sobre su línea base (`rotateX` de -95° a 0, sube 0.25em), 500 ms con escalonado de 18 ms; Leo entra después (sube un 6 % y baja de `scale(1.05)`, 1100 ms, retraso de 420 ms). El titular nunca se trocea.
 - **Revelados escalonados:** las piezas de cada grupo suben 12 px y aparecen, 500 ms con escalonado de 40 ms, una vez, al entrar en pantalla.
-- **Transiciones de estado en CSS:** fila del Lado A 200 ms y «Reservar →» 250 ms; muestra de la funda 400 ms al entrar y 350 ms al salir; catálogo 150 ms; menú 250/150 ms; créditos 250 ms con la vuelta del zoom a 350 ms; opciones 180 ms; paso nuevo 250 ms (8 px y 3 px de desenfoque). Lo que se cierra sale más rápido de lo que entra.
+- **Transiciones de estado en CSS:** fila del Lado A 200 ms y «Reservar →» 250 ms; panel de fotos de servicios 400 ms al entrar y 350 ms al salir; menú 250/150 ms; créditos 250 ms con la vuelta del zoom a 350 ms; opciones 180 ms; paso nuevo 250 ms (8 px y 3 px de desenfoque). Lo que se cierra sale más rápido de lo que entra.
 - **Movimiento reducido:** el módulo no arranca (la clase `motion` no se pone) y todas las animaciones y transiciones duran 0 s. Los estados cambian igual, al instante.
 - **Sin JS o si el módulo no llega:** lo que se revela empieza oculto solo con la clase `motion`; a los 2.5 s el CSS lo muestra de todos modos. El contenido nunca depende de JS.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** usar los roles (`var(--funda)`, `var(--tinta)`…) y nunca un hex en un componente; un par nuevo de texto sobre fondo entra antes en `tokens.test.ts`.
-- **Do** dar al naranja campos enteros (funda, capítulo, etiqueta, barra, botón), del 30 al 60 % de las vistas principales.
-- **Do** separar filas con filetes de tinta de 2 px y alinear cifras con `.cifras`.
-- **Do** imprimir las fotos sobre el fondo con `multiply` (`arena`, `papel` o `funda`), y producir el retrato de portada con `scripts/retrato-hero.sh` (duotono `tinta`→`funda` recortado).
+- **Do** usar los roles (`var(--rojo)`, `var(--carbon)`…) y nunca un hex en un componente; un par nuevo de texto sobre fondo entra antes en `tokens.test.ts`.
+- **Do** escribir en `hueso` sobre el rojo y usar `rojo-claro` cuando el rojo sea texto sobre carbón.
+- **Do** dar al rojo campos enteros (resplandor del hero, capítulo, etiqueta, barra, botón, opción elegida).
+- **Do** separar filas con filetes de 2 px en la tinta de la superficie y alinear cifras con `.cifras`.
+- **Do** imprimir las fotos sobre el fondo con `multiply` (`hueso`), y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).
 - **Do** usar la forma única de botón y, para elegir, botones con `aria-pressed`.
 - **Do** dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).
 - **Do** animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).
 - **Do** rotular la ficción: aviso de concepto visible, barberos, precios, horario y dirección marcados como ficticios.
 
 ### Don't:
+- **Don't** escribir en carbón sobre el rojo (2,61:1).
 - **Don't** animar `width`, `height`, `top`, `left`, `margin` ni nada que recalcule el diseño (constitución II).
 - **Don't** escribir atributos `style=""` ni scripts o estilos en línea sin su hash: la CSP solo admite `self` y los hashes de los bloques conocidos, y `tests/e2e/seguridad.spec.ts` lo comprueba.
 - **Don't** inventar prueba social: ni reseñas, ni estrellas, ni testimonios, ni cifras de clientes, tampoco dentro de la ficción.
 - **Don't** redondear esquinas ni añadir otro círculo que no sea la etiqueta del disco.
 - **Don't** levantar nada con sombras; la única `box-shadow` son los surcos dibujados del disco.
-- **Don't** usar el naranja como acento suelto ni introducir un segundo color saturado, dorado incluido.
+- **Don't** llevar degradados fuera del hero ni usar la anchura del 125 % fuera de su palabra.
+- **Don't** usar el rojo como acento suelto ni introducir un segundo color saturado, dorado incluido.
 - **Don't** repetir la navaja más de una vez por vista ni usarla como icono de interfaz.
-- **Don't** volver al hero partido (titular, foto y botón) con tres tarjetas de servicios, ni al oscuro con dorado de las barberías.

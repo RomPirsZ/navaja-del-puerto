@@ -159,8 +159,9 @@ import Navaja from './Navaja.astro';
     text-underline-offset: 0.25em;
   }
 
+  /* The red fills whole fields, never a loose accent: hover thickens the underline instead */
   .credito-reservar:hover {
-    text-decoration-color: var(--rojo);
+    text-decoration-thickness: 4px;
   }
 
   .barberos-nota {

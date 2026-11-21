@@ -20,7 +20,7 @@ Entrega cada imagen en JPG o PNG al tamaño indicado (o mayor, con la misma prop
 
 | Archivo | Proporción y tamaño | Qué es | Dónde va |
 |---|---|---|---|
-| `hero-retrato.jpg` | 4:5 · 1600×2000 | Hombre de perfil con barba | Hero, entre las letras del nombre |
+| `hero-retrato.jpg` | 4:5 · 1600×2000 | Hombre de perfil con barba | Hero, entre las letras del nombre *(hasta el rediseño del 2026-11-21: desde R14 el hero usa la foto de Leo, `barbero-leo`, recortada con `scripts/retrato-hero.sh` en `hero-retrato.webp`)* |
 | `barbero-ramon.jpg` | 4:5 · 1200×1500 | Ramón, el veterano de la navaja | Barberos |
 | `barbero-leo.jpg` | 4:5 · 1200×1500 | Leo, degradados y diseño | Barberos |
 | `barbero-jesus.jpg` | 4:5 · 1200×1500 | Jesús, cortes clásicos e infantiles | Barberos |

@@ -110,7 +110,11 @@ misReservas(): Promise<Reserva[]>
 
 ## 8. Tokens y tipografía
 
-Dirección «Lado A» (contrato en `.impeccable/surfaces/src-pages-index-astro.md`). En R02 se escriben en `global.css` como variables expuestas con `@theme`. Ningún hex en los componentes. Roles: una escala tonal de arena a negro para fondos y bandas, `--funda` (naranja a campo entero), `--tinta` y `--papel` para el texto en bandas oscuras. Un test unitario mide el contraste AA de cada par texto/fondo usado, también el texto sobre la funda naranja y sobre las bandas oscuras. El duotono de las fotos se hace con `mix-blend-mode: multiply` sobre la funda, sin procesar las imágenes.
+Dirección «Lado A» (contrato en `.impeccable/surfaces/src-pages-index-astro.md`). En R02 se escriben en `global.css` como variables expuestas con `@theme`. Ningún hex en los componentes. Un test unitario mide el contraste AA de cada par texto/fondo usado.
+
+**Desde R13 (2026-11-21), paleta del usuario:** una escala de hueso a carbón (`--hueso-claro`, `--hueso` #EDE6D8, `--hueso-oscuro`, `--carbon-suave`, `--carbon-alto`, `--carbon` #1C1C1C), `--hueso-suave` para el texto secundario sobre carbón, `--rojo` #B3261E para campos enteros y la acción (siempre con texto hueso: el carbón sobre él da 2,6:1) y `--rojo-claro` para el rojo como texto sobre carbón. `tokens.test.ts` exige los tres colores exactos, los pares AA y que ningún bloque con fondo rojo ponga el texto en carbón. Las fotos se imprimen con `mix-blend-mode: multiply` sobre el hueso.
+
+**Hero (R14):** sección carbón con `container-type: inline-size`. «NAVAJA» en Archivo al 125 % de anchura, medida con `(100cqi − 2 × margen) / 5,35` y fundida con `mask-image`; el resplandor es un degradado radial de `--rojo` con `color-mix`. El retrato va en una «escena» que en el móvil ocupa la fila entre el texto y la franja y desde 48rem abarca todo el hero. El estado en vivo reutiliza `apertura.ts` y el script del horario, que pinta todos los `[data-estado-apertura]`.
 
 ## 9. Imágenes
 
@@ -126,7 +130,7 @@ Se guardan en `src/assets/fotos/`, se acreditan en el pie como generadas con IA 
 
 **Cambio 2026-11-18 (fotos recibidas):**
 - Llegaron las 13 imágenes, generadas por el usuario con Gemini. Los originales están en `referencias/fotos-originales/`, fuera de git. En `src/assets/fotos/` van copias con su nombre, redimensionadas al tamaño de `imagenes.md`, sin metadatos y en JPEG de calidad 86; el build pasó de 9,6 a 5 MB.
-- **Retrato del hero recortado:** con `multiply`, las letras negras siempre tapaban la cara. `scripts/retrato-hero.sh` quita el fondo de estudio rellenando desde las cuatro esquinas, suaviza el borde y hace el duotono en la imagen (negro → `--tinta`, blanco → `--funda`; si cambian esos tokens, se vuelve a ejecutar). Así el retrato va delante de «PUERTO», como en la referencia de The Gentleman's Club.
+- **Retrato del hero recortado:** con `multiply`, las letras siempre tapaban la cara. `scripts/retrato-hero.sh` quita el fondo de estudio rellenando desde las cuatro esquinas, ciñe y suaviza el borde y hace el duotono en la imagen. Desde R14 recibe los colores como argumentos (por defecto, un carbón algo más oscuro que `--carbon` → `--hueso`) y se aplica a la foto de Leo, que va delante de «NAVAJA».
 - El `<img>` de reserva del retrato pasa a WebP, porque en PNG pesaba demasiado.
 - La procedencia incrustada (`embed-prompt`) queda para R10.
 

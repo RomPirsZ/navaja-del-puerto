@@ -255,9 +255,14 @@ import Navaja from './Navaja.astro';
     flex: none;
   }
 
-  /* Without the script there is no live state: the whole block stays out */
+  /* Without the script there is no live state: the block stays invisible but keeps its place,
+     so the stage does not shrink (layout shift) when the script paints the state */
   .hero-estado:has([data-estado-apertura][hidden]) {
-    display: none;
+    visibility: hidden;
+  }
+
+  .hero-estado-texto[hidden] {
+    display: block;
   }
 
   .hero-estado p {
@@ -265,6 +270,7 @@ import Navaja from './Navaja.astro';
   }
 
   .hero-estado-texto {
+    min-block-size: 1.2em;
     font-size: var(--text-tema);
     font-weight: 800;
     line-height: 1.2;
@@ -283,8 +289,11 @@ import Navaja from './Navaja.astro';
 
   /* Tablet and up: the strip runs in one line, services left and the live state right */
   @media (width >= 48rem) {
+    /* The stage spans the hero here, so the middle row needs no floor of its own: short
+       wide windows keep the strip inside the first screen */
     .hero {
-      min-block-size: max(36rem, calc(100svh - 6rem));
+      grid-template-rows: auto minmax(2rem, 1fr) auto;
+      min-block-size: max(34rem, calc(100svh - 6rem));
     }
 
     .hero-escena {
@@ -300,8 +309,9 @@ import Navaja from './Navaja.astro';
       inset-inline-start: 60%;
     }
 
+    /* Wide enough for «navaja de siempre» on one line at 768 px (about 7.4 em of the title) */
     .hero-texto {
-      max-width: min(40rem, 50cqi);
+      max-width: min(40rem, 54cqi);
     }
 
     .hero-franja {

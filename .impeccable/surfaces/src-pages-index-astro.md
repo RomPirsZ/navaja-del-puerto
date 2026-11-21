@@ -25,6 +25,14 @@ Referencias de composición tomadas de la hoja «The name as a monument» de des
 - **Pie:** el nombre vuelve a todo el ancho en los colores invertidos y cierra la página como un corchete (recortado por abajo o por un lado, nunca por arriba).
 - **Movimiento firma de Taste:** el nombre se reduce unos puntos con el scroll al salir del primer pantallazo (menos del 8 %).
 
+## Enmienda del usuario (2026-11-21)
+
+El usuario cambia la paleta y el primer pantallazo a partir de una referencia propia. Manda sobre el contrato de abajo donde choquen:
+- **Paleta:** Charcoal Black `#1C1C1C`, Bone White `#EDE6D8` y Barber Red `#B3261E`, aplicada 1:1 (arena → hueso, bandas casi negras → carbón, naranja → rojo; texto hueso sobre el rojo). El rojo hereda la estrategia Committed del naranja.
+- **Primer pantallazo:** hero carbón a sangre en cualquier ancho. Titular «Corte moderno, navaja de siempre», frase y botón rojo arriba a la izquierda; Leo recortado en duotono carbón → hueso delante de «NAVAJA», en Archivo al 125 % y de margen a margen, fundida en un resplandor rojo; la navaja grande y tenue de fondo; franja con tres servicios con icono y el estado en vivo. Sin valoraciones.
+- **Se retiran** el rechazo del «hero partido» y del hero oscuro (sigue rechazado el dorado), la funda cuadrada con «NAVAJA / DEL / PUERTO» y la etiqueta «Tu turno» de adorno. Servicios pasa a su propia sección bajo el hero.
+- El resto («Lado A», créditos, etiqueta del vinilo como ficha del turno, ritual, capítulo del horario, pie) se mantiene con la paleta nueva.
+
 ## Direction contract
 
 THESIS: la barbería como un LP de salsa de los setenta. Los servicios son la lista de temas del «Lado A», con duración y precio; los barberos son los créditos; el turno reservado es la etiqueta del vinilo con su número de catálogo `NP-XXXX`. Rechaza el hero partido (titular, foto y botón) con tres tarjetas de servicios, y el oscuro con dorado de las barberías.

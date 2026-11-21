@@ -43,8 +43,9 @@ Todo el movimiento de las referencias se reproduce con propiedades que admite la
 ## 4. Página (una sola, en español)
 
 1. **Cabecera:** logotipo, enlaces a Servicios, Barberos y Horario, y la acción «Reservar turno». En el móvil, menú accesible que desenfoca la página de detrás.
-2. **Hero:** «Navaja del Puerto» como monumento, a todo el ancho, con un retrato que se cuela entre las letras. Debajo, una frase que dice qué es: barbería en Puerto Cabello y reserva del turno a la hora exacta. Acción «Reservar turno» y aviso de concepto visibles sin hacer scroll.
-3. **Servicios:** lista con nombre, una línea de descripción, duración y precio. Al pasar por una fila (o al enfocarla), el precio cede el sitio a «Reservar». Pulsarla abre la reserva con ese servicio ya elegido.
+2. **Hero** *(rediseñado el 2026-11-21 a partir de una referencia del usuario)***:** carbón a sangre en cualquier ancho. Arriba a la izquierda, el titular «Corte moderno, navaja de siempre», una frase que dice qué es (barbería en Puerto Cabello y reserva del turno a la hora exacta) y la acción «Reservar turno». En el centro, Leo recortado delante de «NAVAJA», que va de margen a margen y se funde en un resplandor rojo. Abajo, una franja con tres servicios con icono y el estado en vivo («Abierto hasta las 7», hora de Puerto Cabello); sin valoraciones ni estrellas (PRODUCT.md). Aviso de concepto, titular y acción visibles sin hacer scroll.
+3. **Servicios** (sección propia desde el rediseño): ver abajo.
+   **Servicios:** lista con nombre, una línea de descripción, duración y precio. Al pasar por una fila (o al enfocarla), el precio cede el sitio a «Reservar». Pulsarla abre la reserva con ese servicio ya elegido.
 4. **Barberos:** tira de retratos. El elegido se abre con su nombre, su especialidad y los días que trabaja, y lleva a la reserva con él ya elegido.
 5. **Reservar:** la app (§5). Los precios y los barberos son ficticios, y la sección lo dice.
 6. **El afeitado de navaja** *(recortable)*: el ritual en cuatro pantallas a sangre, una por verbo («Toalla», «Espuma», «Navaja», «Loción»), con su foto y una frase.
@@ -112,6 +113,8 @@ Los nombres, las descripciones y las fotos se pueden ajustar en R00. Las fotos d
 
 **Decisiones del usuario (2026-11-18):** fondo **arena** cálido con **bandas casi negras** y **acento naranja**, como en Buzzcuts. Fotos generadas con IA por el usuario.
 
+**Rediseño del usuario (2026-11-21):** la paleta pasa a **Charcoal Black `#1C1C1C`**, **Bone White `#EDE6D8`** y **Barber Red `#B3261E`**, aplicada 1:1 sobre la misma estructura (arena → hueso, bandas negras → carbón, naranja → rojo, con texto hueso sobre el rojo). El hero se rehace como el de su referencia (§4.2): oscuro, a sangre, con el retrato delante de una palabra gigante y un resplandor rojo. Lo que sigue de «Lado A» vale para el resto de la página; donde habla de naranja, arena o funda, léase rojo, hueso y carbón. El hero ya no es la funda cuadrada.
+
 **Dirección elegida el 2026-11-18 en la ronda de impeccable: «Lado A».** La barbería se presenta como un LP de salsa de los setenta:
 - Los servicios son la lista de temas del «Lado A», con duración y precio.
 - Los barberos son los créditos.
@@ -125,7 +128,7 @@ El contrato completo (con las composiciones por sección que aportó Taste) est�
 
 ## 8. Movimiento (Anime.js)
 
-- **Hero:** las letras de «Navaja del Puerto» entran girando en ola, y el retrato entra entre ellas (Shopify Supply).
+- **Hero:** las letras de «NAVAJA» entran girando en ola y Leo se asienta delante (Shopify Supply).
 - **Servicios:** el precio cede el sitio a «Reservar» con un barrido `clip-path`, y la foto de muestra se cambia con el mismo barrido.
 - **Barberos:** la miniatura elegida se abre con `transform` y `clip-path` (Shora).
 - **Menú del móvil:** la página de detrás se desenfoca (Swap).

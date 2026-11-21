@@ -17,7 +17,7 @@ Textos de interfaz siempre en `src/i18n/es.json`.
 
 - `PRODUCT.md`: público, propósito y límites. **Sin backend:** la API se simula en el navegador y la demo se rotula. Sin WhatsApp ni teléfonos de la barbería. Nada de reseñas, valoraciones, cifras ni premios. Lo ficticio se rotula.
 - Fotos generadas con IA por el usuario y acreditadas como tales; nunca se presentan como clientes, barberos o locales reales.
-- Dirección visual: **«Lado A»** (la barbería como un LP de salsa de los setenta), elegida el 2026-11-18 con impeccable. Su contrato, con las composiciones por sección de Taste, está en `.impeccable/surfaces/src-pages-index-astro.md`; al terminar se documenta en `DESIGN.md`. Imágenes: prompts en `docs/specs/001-reservas/imagenes.md`.
+- Dirección visual: **«Lado A»** (la barbería como un LP de salsa de los setenta), elegida el 2026-11-18 con impeccable. Su contrato, con las composiciones por sección de Taste, está en `.impeccable/surfaces/src-pages-index-astro.md`. **Rediseño del usuario (2026-11-21):** paleta carbón `#1C1C1C`, hueso `#EDE6D8` y rojo `#B3261E` en toda la web, y un hero oscuro a todo el ancho con Leo delante de «NAVAJA» (spec §4.2 y §7). El sistema vigente está en `DESIGN.md`. Imágenes: prompts en `docs/specs/001-reservas/imagenes.md`.
 - Orden de autoridad: **constitución → spec/plan → PRODUCT.md / contrato / DESIGN.md → guía de cualquier skill**.
 
 ## Herramientas
