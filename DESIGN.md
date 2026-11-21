@@ -241,7 +241,7 @@ Esquinas rectas en todo: botones, opciones, campos (`border-radius: 0` explícit
 
 El único círculo es la etiqueta del disco (`50%`): la ficha del turno en escritorio, roja dentro del disco de carbón alto. El nombre del pie se recorta por abajo, nunca por arriba.
 
-La navaja grabada (`Navaja.astro`, SVG decorativo con `aria-hidden`) es el motivo: cuerpo en la tinta de la superficie y líneas de grabado en el color del fondo. Aparece una vez por vista: grande y tenue en el fondo del hero (hueso al 6 %, girada), bajo el título de los barberos, en el pie y, como máscara, marcando el paso en curso de la ficha.
+La navaja es el motivo, una vez por vista. En el hero es una foto generada con IA por el usuario (Nano Banana, R19): una navaja abierta sobre negro cuya luz se convierte en el canal alfa de una imagen plana en `hueso` (`scripts/navaja-hero.sh`, `hero-navaja.webp`). Va arriba a la derecha, grande y tenue (opacidad 0,2, girada −8°), con `alt=""` y como mucho `min(54cqi, 70svh)` de ancho, para que nunca supere a Leo y se convierta en el LCP. En el resto de la página es la navaja grabada (`Navaja.astro`, SVG decorativo con `aria-hidden`): cuerpo en la tinta de la superficie y líneas de grabado en el color del fondo, bajo el título de los barberos, en el pie y, como máscara, marcando el paso en curso de la ficha.
 
 En la franja del hero, tres pictogramas propios en SVG de trazo (tijeras, brocha y peine; 1.5rem, trazo 1.6 redondeado en `currentColor`) acompañan los tres servicios. Son de esa franja, no un juego de iconos de interfaz.
 
@@ -250,7 +250,7 @@ En la franja del hero, tres pictogramas propios en SVG de trazo (tijeras, brocha
 
 **The 2px Groove Rule.** Lo que se lista se separa con filetes de 2 px en la tinta de la superficie entre filas (temas, días). No se usan tarjetas para agrupar filas.
 
-**The One Razor Rule.** Una navaja por vista, como mucho. No se convierte en icono de interfaz ni se repite como patrón.
+**The One Razor Rule.** Una navaja por vista, como mucho: en el hero, la foto IA tratada en hueso; en el resto, la navaja grabada en SVG. No se convierte en icono de interfaz ni se repite como patrón.
 
 ## Components
 
@@ -275,7 +275,7 @@ Una sola forma de botón: cuadrado, plano, rojo con texto hueso.
 Barra fija `carbon` de 4rem con el nombre en la voz condensada, Servicios · Barberos · Horario y «Reservar turno» en un bloque `rojo`. Desde 48rem los enlaces van centrados entre el nombre y la acción. En el móvil, la misma lista es un `popover` nativo bajo la barra (funciona sin JS), con la página detrás desenfocada; abre en 250 ms y cierra en 150 ms.
 
 ### Hero (primer pantallazo)
-Escenario `carbon` a sangre. Arriba a la izquierda, el titular en la voz condensada, la frase en `hueso-suave` y el botón rojo. Detrás, la palabra «NAVAJA» en la anchura del 125 %, de margen a margen, fundida hacia abajo con `mask-image` en el resplandor rojo; delante, Leo recortado en duotono carbón→hueso (`scripts/retrato-hero.sh`), con las manos y el borde inferior disueltos por máscara. La navaja de la vista, grande y tenue, al fondo. Al pie, la franja en nota con los tres servicios y sus pictogramas y, si hay JS, el estado en vivo en `--text-tema` sobre «Hora de Puerto Cabello» (en `hueso`, nunca `hueso-suave`, por el resplandor). Con colores forzados, la palabra pasa a `GrayText`.
+Escenario `carbon` a sangre. Arriba a la izquierda, el titular en la voz condensada, la frase en `hueso-suave` y el botón rojo. Detrás, la palabra «NAVAJA» en la anchura del 125 %, de margen a margen, fundida hacia abajo con `mask-image` en el resplandor rojo; delante, Leo recortado en duotono carbón→hueso (`scripts/retrato-hero.sh`), con las manos y el borde inferior disueltos por máscara. La navaja de la vista, una foto IA en hueso, grande y tenue, al fondo arriba a la derecha. Al pie, la franja en nota con los tres servicios y sus pictogramas y, si hay JS, el estado en vivo en `--text-tema` sobre «Hora de Puerto Cabello» (en `hueso`, nunca `hueso-suave`, por el resplandor). Con colores forzados, la palabra pasa a `GrayText`.
 
 ### Servicios (lista de temas)
 Título «Servicios» en la voz condensada a `--text-titulo` (desde R17 ya no dice «Lado A»; los números A1…A5 de la lista se quedan), y la lista como `<ol>` con filetes de 2 px de `carbon`. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `carbon` con `hueso`, y «Reservar →» entra en un bloque `rojo` con texto `hueso` sobre la duración y el precio con un barrido `clip-path` de 250 ms. Con ratón en ancho ≥ 64rem, el panel de al lado muestra la foto del primer tema, impresa con `multiply` sobre el hueso, y la del tema señalado entra con un barrido `clip-path`.

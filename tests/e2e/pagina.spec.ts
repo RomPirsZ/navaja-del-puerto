@@ -84,6 +84,18 @@ test('la palabra gigante es decorativa y los rasgos del hero son servicios reale
   await expect(page.locator('.hero-rasgos svg[aria-hidden="true"]')).toHaveCount(3);
 });
 
+// R19: la navaja del fondo del hero es una foto generada con IA, decorativa (alt vacío)
+test('la navaja del hero es una foto decorativa y no el dibujo SVG', async ({ page }) => {
+  await page.goto('/');
+  const foto = page.locator('.hero-fondo img');
+  await expect(foto).toHaveCount(1);
+  await expect(foto).toHaveAttribute('alt', '');
+  await expect(page.locator('.hero svg.navaja')).toHaveCount(0);
+  // Decorative: it must never outgrow Leo, or it would become the LCP element
+  const [navaja, retrato] = await Promise.all([foto.boundingBox(), page.locator('.hero-retrato').boundingBox()]);
+  expect((navaja?.width ?? 0) * (navaja?.height ?? 0)).toBeLessThan((retrato?.width ?? 0) * (retrato?.height ?? 0));
+});
+
 test.describe('móvil', () => {
   test.use({ viewport: { width: 390, height: 844 } });
 

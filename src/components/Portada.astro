@@ -1,16 +1,24 @@
 ---
 // First viewport (user's redesign of 2026-11-21): a charcoal hero, full bleed at every width.
+// Behind everything, the view's one razor: an AI photo, large and faint (R19).
 // The headline, the line that says what this is and the main action sit top left; Leo, cut
 // out of his studio photo, stands in front of «NAVAJA», which spans the whole width and fades
 // into a red glow; a strip at the foot carries three real services and the live opening state.
 import { t } from '../i18n';
 import Foto from './Foto.astro';
-import Navaja from './Navaja.astro';
 ---
 
 <section class="hero" aria-labelledby="hero-titulo">
   <div class="hero-fondo" aria-hidden="true">
-    <Navaja class="hero-navaja" />
+    <div class="hero-navaja">
+      <Foto
+        nombre="hero-navaja"
+        alt=""
+        aspecto="aspect-[1600/1073]"
+        anchos={[480, 800, 1200, 1600]}
+        sizes="(width >= 48rem) 54vw, 80vw"
+      />
+    </div>
   </div>
 
   <div class="hero-texto">
@@ -99,17 +107,17 @@ import Navaja from './Navaja.astro';
     pointer-events: none;
   }
 
-  .hero :global(.hero-navaja) {
+  /* The AI photo of an open razor (R19), its light already turned into a bone image with a
+     clear ground (scripts/navaja-hero.sh): here it only gets its place and how faint it is.
+     It stays smaller than Leo, so it never becomes the largest paint (LCP): Leo grows with
+     the hero's height, so in wide, short windows the razor is capped by the height too */
+  .hero-navaja {
     position: absolute;
-    inset-block-start: 4%;
-    inset-inline-end: -30cqi;
-    width: 72cqi;
-    rotate: -20deg;
-    color: color-mix(in oklab, var(--hueso) 6%, transparent);
-  }
-
-  .hero :global(.hero-navaja .navaja-grabado) {
-    stroke: var(--carbon);
+    inset-block-start: 3%;
+    inset-inline-end: -6cqi;
+    width: min(54cqi, 70svh);
+    rotate: -8deg;
+    opacity: 0.2;
   }
 
   .hero-texto {
