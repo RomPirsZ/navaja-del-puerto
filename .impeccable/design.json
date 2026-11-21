@@ -487,7 +487,7 @@
       },
       {
         "name": "The One Scale Rule",
-        "body": "Todo neutro sale de la escala hueso→carbón. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `hueso` con `multiply`.",
+        "body": "Todo neutro sale de la escala hueso→carbón. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `hueso`, con `multiply` o en el duotono de los recortes.",
         "section": "colors"
       },
       {
@@ -512,7 +512,7 @@
       },
       {
         "name": "The Stage Light Rule",
-        "body": "Los degradados son del hero y solo del hero: el resplandor rojo radial y las máscaras que funden la palabra y el retrato. Ninguna otra superficie lleva degradados.",
+        "body": "Los degradados son del hero y de los retratos de los créditos. En el hero, el resplandor rojo radial y las máscaras que funden la palabra y el retrato. En los créditos, una máscara que funde el pie y los costados de cada barbero recortado en la página (decisión del usuario, R20). Ninguna otra superficie lleva degradados.",
         "section": "elevation"
       },
       {
@@ -536,7 +536,7 @@
       "Do escribir en `hueso` sobre el rojo y usar `rojo-claro` cuando el rojo sea texto sobre carbón.",
       "Do dar al rojo campos enteros (resplandor del hero, capítulo, etiqueta, barra, botón, opción elegida).",
       "Do separar filas con filetes de 2 px en la tinta de la superficie y alinear cifras con `.cifras`.",
-      "Do imprimir las fotos sobre el fondo con `multiply` (`hueso`), aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso, y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).",
+      "Do imprimir las fotos de servicios y del ritual sobre el fondo con `multiply` (`hueso`); las de servicios, aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (32 px fuera de cada borde, gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso. Producir los retratos recortados en duotono carbón→hueso: el del hero con `scripts/retrato-hero.sh` y los de los créditos con `scripts/retratos-barberos.sh`.",
       "Do usar la forma única de botón y, para elegir, botones con `aria-pressed`.",
       "Do dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).",
       "Do animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).",

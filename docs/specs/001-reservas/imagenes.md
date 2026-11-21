@@ -22,9 +22,9 @@ Entrega cada imagen en JPG o PNG al tamaño indicado (o mayor, con la misma prop
 |---|---|---|---|
 | `hero-retrato.jpg` | 4:5 · 1600×2000 | Hombre de perfil con barba | Hero, entre las letras del nombre *(hasta el rediseño del 2026-11-21: desde R14 el hero usa la foto de Leo, `barbero-leo`, recortada con `scripts/retrato-hero.sh` en `hero-retrato.webp`)* |
 | `hero-navaja` | 3:2 · 3000×2000 (Nano Banana) | Navaja de barbero abierta sobre negro | Hero, de fondo, grande y tenue (R19, en lugar de la navaja SVG). Se trata con `scripts/navaja-hero.sh`: la luminancia pasa a canal alfa en hueso |
-| `barbero-ramon.jpg` | 4:5 · 1200×1500 | Ramón, el veterano de la navaja | Barberos |
-| `barbero-leo.jpg` | 4:5 · 1200×1500 | Leo, degradados y diseño | Barberos |
-| `barbero-jesus.jpg` | 4:5 · 1200×1500 | Jesús, cortes clásicos e infantiles | Barberos |
+| `barbero-ramon.webp` | 4:5 · 1200×1490 | Ramón, el veterano de la navaja | Barberos, recortado sin fondo con `scripts/retratos-barberos.sh` (R20); el original sigue siendo el de este prompt |
+| `barbero-leo.webp` | 4:5 · 1200×1490 | Leo, degradados y diseño | Barberos, recortado sin fondo con `scripts/retratos-barberos.sh` (R20); el original sigue siendo el de este prompt |
+| `barbero-jesus.webp` | 4:5 · 1200×1490 | Jesús, cortes clásicos e infantiles | Barberos, recortado sin fondo con `scripts/retratos-barberos.sh` (R20); el original sigue siendo el de este prompt |
 | `servicio-corte.jpg` | 1:1 · 1200×1200 | Tijera y peine en un corte | Servicios (muestra al pasar) |
 | `servicio-corte-barba.jpg` | 1:1 · 1200×1200 | Corte y barba terminados | Servicios |
 | `servicio-barba.jpg` | 1:1 · 1200×1200 | Arreglo de barba con máquina | Servicios |

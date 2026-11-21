@@ -181,7 +181,7 @@ El mismo test comprueba que el carbón sobre el rojo no llega a AA y que ningún
 
 **The Bone On Red Rule.** Sobre el rojo se escribe en hueso, siempre. Cuando el rojo es el texto y el fondo es carbón, se usa `rojo-claro`.
 
-**The One Scale Rule.** Todo neutro sale de la escala hueso→carbón. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `hueso` con `multiply`.
+**The One Scale Rule.** Todo neutro sale de la escala hueso→carbón. Ni blanco de pantalla ni negro puro: los blancos de las fotos se imprimen como `hueso`, con `multiply` o en el duotono de los recortes.
 
 **The Roles Only Rule.** Los hex viven solo en `:root` de `src/styles/global.css`; los componentes usan los roles. El test falla si aparece un hex fuera de `:root` o un rol de la paleta anterior. Las copias aceptadas fuera del CSS (la `theme-color` de `Base.astro` y el duotono de `scripts/retrato-hero.sh`) repiten `hueso` y `carbon` y se actualizan con ellos; el extremo oscuro del duotono es un carbón un paso por debajo de `carbon`, para que la camiseta negra de Leo se lea sobre el hero.
 
@@ -233,7 +233,7 @@ El hero es la excepción luminosa, decidida por el usuario a partir de su refere
 ### Named Rules
 **The Flat Sleeve Rule.** Nada se levanta en reposo ni al pasar el puntero. La única `box-shadow` del sistema son los surcos dibujados del disco.
 
-**The Stage Light Rule.** Los degradados son del hero y solo del hero: el resplandor rojo radial y las máscaras que funden la palabra y el retrato. Ninguna otra superficie lleva degradados.
+**The Stage Light Rule.** Los degradados son del hero y de los retratos de los créditos. En el hero, el resplandor rojo radial y las máscaras que funden la palabra y el retrato. En los créditos, una máscara que funde el pie y los costados de cada barbero recortado en la página (decisión del usuario, R20). Ninguna otra superficie lleva degradados.
 
 ## Shapes
 
@@ -281,7 +281,7 @@ Escenario `carbon` a sangre. Arriba a la izquierda, el titular en la voz condens
 Título «Servicios» en la voz condensada a `--text-titulo` (desde R17 ya no dice «Lado A»; los números A1…A5 de la lista se quedan), y la lista como `<ol>` con filetes de 2 px de `carbon`. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `carbon` con `hueso`, y «Reservar →» entra en un bloque `rojo` con texto `hueso` sobre la duración y el precio con un barrido `clip-path` de 250 ms. Con ratón en ancho ≥ 64rem, el panel de al lado muestra la foto del primer tema, impresa con `multiply` sobre el hueso, y la del tema señalado entra con un barrido `clip-path`.
 
 ### Créditos (barberos)
-Retrato 4:5 impreso con `multiply` sobre `hueso`, nombre en la voz condensada, especialidad, días en 700 y un enlace subrayado de 2 px que lleva a la reserva con ese barbero. Con ratón, el crédito señalado se acerca (`scale(1.04)`) y los demás bajan a opacidad 0.5.
+Retrato 4:5 recortado y sin fondo (R20, `scripts/retratos-barberos.sh`): duotono carbón→hueso con el fondo transparente, sobre la página misma. El marco lo funde hacia abajo (`mask-image`, opaco hasta el 62 %, transparente al 97 %) y suaviza los costados (9 %), porque las fotos cortan los hombros. Ramón lleva chaqueta blanca tan clara como la pared del estudio; donde el recorte no encuentra borde, el blanco impreso en `hueso` se confunde con el fondo y no se nota. Después, nombre en la voz condensada, especialidad, días en 700 y un enlace subrayado de 2 px que lleva a la reserva con ese barbero. Con ratón, el crédito señalado se acerca (`scale(1.04)`) y los demás bajan a opacidad 0.5.
 
 ### Ritual
 Una cabeza de capítulo en `carbon-alto` y cuatro pantallas, una por verbo (TOALLA, ESPUMA, NAVAJA, LOCIÓN). La foto cubre la pantalla, impresa con `multiply` sobre `hueso`, y se asienta con el scroll (`scale(1.12)` a 1, solo con `animation-timeline: view()`). El verbo, en la voz condensada, va sobre una tira de `carbon` como una pegatina en la funda, para leerse sobre cualquier foto; el texto, en otro bloque de `carbon`.
@@ -311,7 +311,7 @@ Una sola curva para todo: `--curva`, `cubic-bezier(0.22, 1, 0.36, 1)` (en Anime.
 - **Do** escribir en `hueso` sobre el rojo y usar `rojo-claro` cuando el rojo sea texto sobre carbón.
 - **Do** dar al rojo campos enteros (resplandor del hero, capítulo, etiqueta, barra, botón, opción elegida).
 - **Do** separar filas con filetes de 2 px en la tinta de la superficie y alinear cifras con `.cifras`.
-- **Do** imprimir las fotos sobre el fondo con `multiply` (`hueso`), aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso, y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).
+- **Do** imprimir las fotos de servicios y del ritual sobre el fondo con `multiply` (`hueso`); las de servicios, aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (32 px fuera de cada borde, gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso. Producir los retratos recortados en duotono carbón→hueso: el del hero con `scripts/retrato-hero.sh` y los de los créditos con `scripts/retratos-barberos.sh`.
 - **Do** usar la forma única de botón y, para elegir, botones con `aria-pressed`.
 - **Do** dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).
 - **Do** animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).

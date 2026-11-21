@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-# Lighter service samples and barber portraits (R18, user's request of 2026-11-21: they read
-# too dark once multiplied onto the bone ground). Each photo is rebuilt from its original in
-# referencias/fotos-originales/ (out of git): resized to 1200 px wide as before, midtones
+# Lighter service samples (R18, user's request of 2026-11-21: they read too dark once
+# multiplied onto the bone ground). The barbers' portraits left this script in R20: they are
+# cut-outs now, made by scripts/retratos-barberos.sh. Each photo is rebuilt from its original in
+# referencias/fotos-originales/ (out of git): 32 px shaved off every side first (R21: the
+# «corte» original came with a dark frame about 20 px deep along its top and right edges,
+# which showed as a line round the photo panel), resized to 1200 px wide as before, midtones
 # lifted with a gamma of 1.45 and the black point raised to 10 %, so the studio white still
 # melts into the ground and the deep blacks of the prompts open up. Running it twice gives
 # the same files (it always starts from the originals).
@@ -19,14 +22,11 @@ declare -A ORIGEN=(
   [servicio-barba]=pg3mk5pg3mk5pg3m
   [servicio-afeitado]=grbon9grbon9grbo
   [servicio-infantil]=i66jvzi66jvzi66j
-  [barbero-ramon]=e4brmhe4brmhe4br
-  [barbero-leo]=kl81j2kl81j2kl81
-  [barbero-jesus]=hw085vhw085vhw08
 )
 
 for nombre in "${!ORIGEN[@]}"; do
   original="$originales/Gemini_Generated_Image_${ORIGEN[$nombre]}.jpeg"
-  magick "$original" -resize '1200x' -colorspace gray \
+  magick "$original" -shave 32x32 -resize '1200x' -colorspace gray \
     -level 0%,100%,1.45 +level 10%,100% \
     -strip -quality 90 "$salida/$nombre.jpg"
   echo "$nombre.jpg ← $(basename "$original")"

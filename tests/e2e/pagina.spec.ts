@@ -42,6 +42,61 @@ test('los barberos dicen sus días en palabras', async ({ page }) => {
   await expect(page.locator('#barberos')).toContainText('De martes a domingo');
 });
 
+// Reads one photo's pixels in the page: the file the <img> would load, drawn on a canvas
+async function pixeles(page: import('@playwright/test').Page, selector: string) {
+  return page.locator(selector).evaluate(async (img: HTMLImageElement) => {
+    const foto = new Image();
+    foto.src = img.currentSrc || img.src;
+    await foto.decode();
+    const lienzo = document.createElement('canvas');
+    lienzo.width = foto.naturalWidth;
+    lienzo.height = foto.naturalHeight;
+    const ctx = lienzo.getContext('2d')!;
+    ctx.drawImage(foto, 0, 0);
+    const { width: w, height: h } = lienzo;
+    const fila = ctx.getImageData(0, 0, w, 4).data;
+    let luz = 0;
+    for (let i = 0; i < fila.length; i += 4) luz += (fila[i]! + fila[i + 1]! + fila[i + 2]!) / 765;
+    return {
+      esquinaAlfa: ctx.getImageData(2, 2, 1, 1).data[3],
+      lateralAlfa: ctx.getImageData(w - 3, Math.round(h / 4), 1, 1).data[3],
+      luzFilaSuperior: luz / (fila.length / 4),
+    };
+  });
+}
+
+// Decisión del usuario (2026-11-21, R20): los retratos de los barberos van recortados, sin
+// fondo, y su parte de abajo se funde en la página
+test('los retratos de los barberos van sin fondo y se funden por abajo', async ({ page }) => {
+  await page.goto('/');
+  const fotos = page.locator('#barberos .credito-foto');
+  await expect(fotos).toHaveCount(3);
+  for (let i = 0; i < 3; i++) {
+    const marco = fotos.nth(i);
+    await marco.scrollIntoViewIfNeeded();
+    const estilo = await marco.evaluate((el) => {
+      const img = el.querySelector('img')!;
+      const s = getComputedStyle(el);
+      return { mascara: s.maskImage, fondo: s.backgroundColor, mezcla: getComputedStyle(img).mixBlendMode };
+    });
+    expect(estilo.mascara).toMatch(/linear-gradient\(.*(transparent|rgba\(0, 0, 0, 0\))/);
+    expect(estilo.fondo).toBe('rgba(0, 0, 0, 0)');
+    expect(estilo.mezcla).toBe('normal');
+    const p = await pixeles(page, `#barberos .credito-foto >> nth=${i} >> img`);
+    expect(p.esquinaAlfa, 'la esquina del retrato es transparente').toBe(0);
+    expect(p.lateralAlfa, 'el fondo junto al hombro es transparente').toBe(0);
+  }
+});
+
+// R21: la foto de «Corte clásico» traía un marco oscuro en el borde de arriba (filete en el panel)
+test('las fotos de los servicios no traen un marco oscuro en el borde', async ({ page }) => {
+  await page.goto('/');
+  for (const id of ['corte', 'corte-barba', 'barba', 'afeitado', 'infantil']) {
+    const p = await pixeles(page, `[data-muestra='${id}'] img`);
+    expect(p.luzFilaSuperior, id).toBeGreaterThan(0.3);
+  }
+});
+
 test('el horario y el hero muestran el estado en vivo con la hora de Puerto Cabello', async ({ page }) => {
   // Martes 24 de noviembre, 10:00 en Puerto Cabello
   await page.clock.setFixedTime(new Date('2026-11-24T14:00:00Z'));

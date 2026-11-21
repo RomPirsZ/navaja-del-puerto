@@ -104,15 +104,26 @@ import Navaja from './Navaja.astro';
     transition: opacity 250ms var(--curva);
   }
 
-  /* The studio white is printed onto the ground: multiply turns it into bone */
+  /* The portraits are cut-outs with a clear ground (scripts/retratos-barberos.sh, R20): the
+     barber stands on the page itself, and the frame's mask fades the hem of the photo into it
+     (user's request of 2026-11-21). The photos crop the shoulders at their sides, so a short
+     side fade softens those straight cuts too. The mask sits on the frame, so the hover zoom
+     moves the portrait under a fade that stays put */
   .credito-foto {
     overflow: clip;
-    background: var(--hueso);
+    -webkit-mask-image:
+      linear-gradient(to bottom, black 62%, transparent 97%),
+      linear-gradient(to right, transparent, black 9%, black 91%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to bottom, black 62%, transparent 97%),
+      linear-gradient(to right, transparent, black 9%, black 91%, transparent);
+    mask-composite: intersect;
   }
 
   /* Hover in is quick; the return is softer */
   .credito-foto :global(img) {
-    mix-blend-mode: multiply;
+    transform-origin: 50% 30%;
     transition: transform 350ms var(--curva);
   }
 
