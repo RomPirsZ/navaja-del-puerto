@@ -34,16 +34,16 @@ import Navaja from './Navaja.astro';
   .pie {
     container-type: inline-size;
     overflow: hidden;
-    background: var(--tinta);
-    color: var(--papel);
+    background: var(--carbon);
+    color: var(--hueso);
     padding: 0 var(--margen) 1.5rem;
   }
 
   .pie-cinta {
     margin: 0 calc(var(--margen) * -1);
     padding: 0.85rem var(--margen);
-    background: var(--arena);
-    color: var(--tinta);
+    background: var(--hueso);
+    color: var(--carbon);
     font-weight: 700;
   }
 
@@ -72,11 +72,11 @@ import Navaja from './Navaja.astro';
 
   .pie :global(.pie-navaja) {
     width: 9rem;
-    color: var(--papel);
+    color: var(--hueso);
   }
 
   .pie :global(.pie-navaja .navaja-grabado) {
-    stroke: var(--tinta);
+    stroke: var(--carbon);
   }
 
   .pie a {
@@ -101,13 +101,13 @@ import Navaja from './Navaja.astro';
     font-size: 13.4cqi;
     line-height: 0.78;
     white-space: nowrap;
-    color: var(--papel);
+    color: var(--hueso);
   }
 
   .pie-legal {
     margin: 1rem 0 0;
     font-size: var(--text-nota);
-    color: var(--papel-suave);
+    color: var(--hueso-suave);
   }
 
   @media (width >= 48rem) {

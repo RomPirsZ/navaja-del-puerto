@@ -34,11 +34,11 @@ test('Archivo carga desde el propio origen', async ({ page }) => {
   expect(cargadas).toContain('Archivo Variable');
 });
 
-test('theme-color coincide con la tinta de la barra superior', async ({ page }) => {
-  // La meta no admite variables CSS: este test evita que se desincronice de --tinta
+test('theme-color coincide con el carbón de la barra superior', async ({ page }) => {
+  // La meta no admite variables CSS: este test evita que se desincronice de --carbon
   await page.goto('/');
-  const tinta = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--tinta').trim());
-  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', tinta);
+  const carbon = await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue('--carbon').trim());
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', carbon);
 });
 
 test('la navaja es decorativa: no llega al árbol de accesibilidad', async ({ page }) => {

@@ -62,6 +62,16 @@
   - *En vivo en https://navaja-del-puerto.ankordev.workers.dev. La CSP servida es idéntica a `_headers` y están las demás cabeceras. Reserva y cancelación completas en producción a 1440 y 390 px, sin errores, sin violaciones de la CSP y sin peticiones fuera del origen.*
   - *Lighthouse móvil sobre la URL real: 99 / 100 / 100 / 100, LCP 1,7–1,8 s y CLS 0.*
   - *Pendiente: el paso de Lighthouse en la CI, al instalar `@lhci/cli` 0.16.1 cuando cumpla los 7 días (2026-11-18 23:40 UTC).*
-- [ ] R12 En el portafolio (T30): caso de estudio 003 con capturas reales y enlaces, ES y EN
+- [ ] R12 En el portafolio (T30): caso de estudio 003 con capturas reales y enlaces, ES y EN — *espera a la Fase 6: las capturas se hacen con el diseño nuevo*
+
+## Fase 6 — Rediseño (21 nov)
+
+Pedido por el usuario el 2026-11-21: la paleta **Charcoal Black `#1C1C1C`, Bone White `#EDE6D8` y Barber Red `#B3261E`** en toda la web, y un hero oscuro a todo el ancho lo más parecido posible a su referencia (titular arriba a la izquierda, botón rojo, retrato delante de una palabra gigante, resplandor rojo y franja baja). Decisiones del usuario: el resto de la página cambia 1:1 (misma estructura, arena → hueso, bandas → carbón, naranja → rojo); el retrato es la foto de Leo; la palabra gigante es «NAVAJA» con un titular propio; la franja lleva tres rasgos y el estado en vivo, sin valoraciones (PRODUCT.md).
+
+- [x] R13 Paleta carbón / hueso / rojo: `tokens.test.ts` primero (roles nuevos, escala, pares AA), luego `global.css` y todos los componentes; el texto sobre rojo pasa a hueso — *hecha 2026-11-21. El test se escribió primero y falló (18 de 20). Nueve roles: `hueso-claro`, `hueso` (#EDE6D8), `hueso-oscuro`, `carbon-suave`, `carbon-alto`, `carbon` (#1C1C1C), `hueso-suave`, `rojo` (#B3261E) y `rojo-claro` (#F26B60). El último hace falta porque el rojo del usuario da 2,6:1 sobre el carbón: se usa para el código del turno, los errores y el paso en curso de la ficha. El test exige los tres colores exactos, 13 pares en AA y que ningún bloque con fondo rojo ponga el texto en carbón; además comprueba que no quede ningún rol de la paleta anterior en `src/`. Sobre el rojo se escribe en hueso (5,26:1): botón, cabecera, «Reservar →», horario, opción elegida, aviso de error, ficha y selección. Los filetes del horario pasan a hueso, el `theme-color` y el favicon al carbón y al rojo, y Vitest lee con `?raw` todas las hojas de estilo*
+- [ ] R14 Hero a todo el ancho: retrato de Leo recortado, «NAVAJA» gigante detrás, titular propio, resplandor rojo, franja con rasgos y estado en vivo; Servicios pasa a su propia sección; cabecera con los enlaces centrados; movimiento y tests adaptados
+- [ ] R15 Cierre: impeccable (polish/critique y detector) y Taste a 390, 768 y 1440 px; spec, plan, contrato, `CLAUDE.md` y `DESIGN.md`; Lighthouse móvil; despliegue (push con confirmación) y comprobación en producción
+
+**Hecho cuando:** la web en producción usa la paleta nueva, el hero ocupa todo el ancho en móvil y escritorio y `npm test` está en verde.
 
 **Al terminar cada fase:** parar y esperar revisión.

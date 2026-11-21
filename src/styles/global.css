@@ -1,18 +1,19 @@
 @import 'tailwindcss';
 
-/* Tokens of the «Lado A» direction (plan §8, surface contract). Colours live only here:
-   components use the roles (tokens.test.ts checks it). One tonal scale from sand to black,
-   plus the orange of the record sleeve, which fills whole fields rather than accents. */
+/* Colour tokens (plan §8): the user's palette of 2026-11-21, Charcoal Black, Bone White and
+   Barber Red. Colours live only here: components use the roles (tokens.test.ts checks it).
+   One tonal scale from bone to charcoal, plus the red, which fills whole fields and the main
+   action and always carries bone text (charcoal on red is 2.6:1). */
 :root {
-  --papel: #f2e8d4; /* text on the dark bands, the lightest step */
-  --arena-clara: #e6d8bd; /* one step above the ground: active rows, panels */
-  --arena: #d6c3a0; /* ground: the sleeve's cardboard */
-  --arena-oscura: #c2ab82; /* one step below the ground: bars, pressed states */
-  --tinta-suave: #4a3d2f; /* secondary text on sand */
-  --vinilo: #231c16; /* raised surfaces on the dark bands */
-  --tinta: #16120e; /* ink, the dark bands and the record label */
-  --papel-suave: #c9b896; /* secondary text on the dark bands */
-  --funda: #f05a24; /* the sleeve orange: whole fields and the primary action */
+  --hueso-claro: #f6f1e7; /* one step above the ground: active rows, panels */
+  --hueso: #ede6d8; /* Bone White: the light ground and the text on the charcoal bands */
+  --hueso-oscuro: #dcd2bf; /* one step below the ground: the notice strip, pressed states */
+  --carbon-suave: #524b43; /* secondary text on bone */
+  --carbon-alto: #2a2826; /* raised surfaces on the charcoal bands */
+  --carbon: #1c1c1c; /* Charcoal Black: ink, the dark bands and the hero */
+  --hueso-suave: #b2aa9b; /* secondary text on charcoal */
+  --rojo: #b3261e; /* Barber Red: whole fields and the primary action, always with bone text */
+  --rojo-claro: #f26b60; /* red as text on charcoal (code, errors): Barber Red there gives 2.6:1 */
 
   /* One pair of outer margins, one gap and one section rhythm for the whole page */
   --margen: clamp(1rem, 0.55rem + 1.8vw, 2rem);
@@ -26,15 +27,15 @@
 }
 
 @theme inline {
-  --color-papel: var(--papel);
-  --color-arena-clara: var(--arena-clara);
-  --color-arena: var(--arena);
-  --color-arena-oscura: var(--arena-oscura);
-  --color-tinta-suave: var(--tinta-suave);
-  --color-vinilo: var(--vinilo);
-  --color-tinta: var(--tinta);
-  --color-papel-suave: var(--papel-suave);
-  --color-funda: var(--funda);
+  --color-hueso-claro: var(--hueso-claro);
+  --color-hueso: var(--hueso);
+  --color-hueso-oscuro: var(--hueso-oscuro);
+  --color-carbon-suave: var(--carbon-suave);
+  --color-carbon-alto: var(--carbon-alto);
+  --color-carbon: var(--carbon);
+  --color-hueso-suave: var(--hueso-suave);
+  --color-rojo: var(--rojo);
+  --color-rojo-claro: var(--rojo-claro);
 
   /* One family, Archivo with a width axis: extra condensed for the name, normal for text */
   --font-display: 'Archivo Variable', 'Arial Narrow', 'Nimbus Sans Narrow', sans-serif;
@@ -50,12 +51,12 @@
 
 @layer base {
   html {
-    background: var(--arena);
-    color: var(--tinta);
+    background: var(--hueso);
+    color: var(--carbon);
     font-family: var(--font-sans);
     font-size: 100%;
     text-size-adjust: 100%;
-    scrollbar-color: var(--tinta) var(--arena);
+    scrollbar-color: var(--carbon) var(--hueso);
   }
 
   body {
@@ -63,16 +64,16 @@
     line-height: 1.5;
     /* Keeps fallback text the size of Archivo while the font loads (no visible jump) */
     font-size-adjust: from-font;
-    caret-color: var(--tinta);
+    caret-color: var(--carbon);
   }
 
   /* Browser surfaces belong to the design too (impeccable craft floor) */
   ::selection {
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
   }
 
-  /* currentColor is the surface's own ink, so the ring keeps 3:1 on sand, orange and black */
+  /* currentColor is the surface's own ink, so the ring keeps 3:1 on bone, red and charcoal */
   :focus-visible {
     outline: 3px solid currentColor;
     outline-offset: 3px;
@@ -104,15 +105,15 @@
     font-size-adjust: none;
   }
 
-  /* The one button shape: square, flat, sleeve orange, ink text */
+  /* The one button shape: square, flat, red with bone text */
   .boton {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 3.25rem;
     padding-inline: 1.5rem;
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
     font-weight: 800;
     font-size: var(--text-tema);
     text-decoration: none;
@@ -121,8 +122,8 @@
   }
 
   .boton:hover {
-    background: var(--tinta);
-    color: var(--funda);
+    background: var(--carbon);
+    color: var(--hueso);
   }
 
   /* Hours, durations and prices line up like a tracklist */
@@ -132,10 +133,10 @@
 
   /* The engraved razor: body in the surface's ink, engraving lines in the ground colour */
   .navaja {
-    color: var(--tinta);
+    color: var(--carbon);
   }
   .navaja-grabado {
-    stroke: var(--arena);
+    stroke: var(--hueso);
   }
 }
 

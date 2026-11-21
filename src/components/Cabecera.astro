@@ -44,8 +44,8 @@ const enlaces = [
     position: sticky;
     top: 0;
     z-index: 20;
-    background: var(--tinta);
-    color: var(--papel);
+    background: var(--carbon);
+    color: var(--hueso);
   }
 
   .cabecera-fila {
@@ -78,7 +78,7 @@ const enlaces = [
     padding-inline: 0.75rem;
     color: inherit;
     background: transparent;
-    border: 2px solid var(--papel-suave);
+    border: 2px solid var(--hueso-suave);
     cursor: pointer;
     anchor-name: --menu-principal;
   }
@@ -86,8 +86,8 @@ const enlaces = [
   .cabecera-accion {
     padding-inline: 0.875rem;
     white-space: nowrap;
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
   }
 
   /* Narrow: the list is a popover under the header; the page behind blurs (as in Swap) */
@@ -102,8 +102,8 @@ const enlaces = [
     margin: 0.5rem 0 0;
     padding: 0.5rem 1.25rem;
     list-style: none;
-    background: var(--tinta);
-    color: var(--papel);
+    background: var(--carbon);
+    color: var(--hueso);
     border: 0;
   }
 
@@ -114,7 +114,7 @@ const enlaces = [
   }
 
   .cabecera-lista::backdrop {
-    background: color-mix(in oklab, var(--tinta) 35%, transparent);
+    background: color-mix(in oklab, var(--carbon) 35%, transparent);
     backdrop-filter: blur(10px);
   }
 
@@ -158,8 +158,8 @@ const enlaces = [
     margin-block: 0.5rem;
     padding-inline: 1rem;
     justify-content: center;
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
   }
 
   .cabecera-cerrar {
@@ -168,9 +168,9 @@ const enlaces = [
     margin-block-end: 0.5rem;
     font: inherit;
     font-weight: 700;
-    color: var(--papel);
+    color: var(--hueso);
     background: transparent;
-    border: 2px solid var(--papel-suave);
+    border: 2px solid var(--hueso-suave);
     cursor: pointer;
   }
 

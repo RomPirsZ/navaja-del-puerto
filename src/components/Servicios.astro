@@ -72,7 +72,7 @@ import { t, type Clave } from '../i18n';
     margin: 0;
     padding: 0;
     list-style: none;
-    border-block-start: 2px solid var(--tinta);
+    border-block-start: 2px solid var(--carbon);
   }
 
   /* The whole row is the link: the name's ::after stretches over it */
@@ -83,7 +83,7 @@ import { t, type Clave } from '../i18n';
     align-items: baseline;
     gap: 0.75rem;
     padding: 0.6rem 0.5rem;
-    border-block-end: 2px solid var(--tinta);
+    border-block-end: 2px solid var(--carbon);
   }
 
   .pista-nombre::after {
@@ -97,7 +97,7 @@ import { t, type Clave } from '../i18n';
   }
 
   .pista:has(.pista-nombre:focus-visible) {
-    outline: 3px solid var(--tinta);
+    outline: 3px solid var(--carbon);
     outline-offset: 2px;
   }
 
@@ -119,7 +119,7 @@ import { t, type Clave } from '../i18n';
   }
 
   .pista-descripcion {
-    color: var(--tinta-suave);
+    color: var(--carbon-suave);
     line-height: 1.35;
   }
 
@@ -148,8 +148,8 @@ import { t, type Clave } from '../i18n';
     display: grid;
     place-items: center end;
     padding-inline: 0.6rem;
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
     white-space: nowrap;
     clip-path: inset(0 0 0 100%);
     transition: clip-path 250ms var(--curva);
@@ -163,13 +163,13 @@ import { t, type Clave } from '../i18n';
 
   .pista:has(.pista-nombre:hover),
   .pista:has(.pista-nombre:focus-visible) {
-    background: var(--tinta);
-    color: var(--papel);
+    background: var(--carbon);
+    color: var(--hueso);
   }
 
   .pista:has(.pista-nombre:hover) .pista-descripcion,
   .pista:has(.pista-nombre:focus-visible) .pista-descripcion {
-    color: var(--papel-suave);
+    color: var(--hueso-suave);
   }
 
   .pista:has(.pista-nombre:hover) .pista-reservar,
@@ -180,6 +180,6 @@ import { t, type Clave } from '../i18n';
   .servicios-nota {
     margin: 0.75rem 0 0;
     font-size: var(--text-nota);
-    color: var(--tinta-suave);
+    color: var(--carbon-suave);
   }
 </style>

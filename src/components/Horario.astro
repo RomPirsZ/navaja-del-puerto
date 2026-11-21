@@ -68,8 +68,8 @@ const semana = [1, 2, 3, 4, 5, 6, 0].map((dia) => ({
     display: grid;
     gap: 1.5rem;
     padding: var(--seccion) var(--margen);
-    background: var(--funda);
-    color: var(--tinta);
+    background: var(--rojo);
+    color: var(--hueso);
   }
 
   .horario-titulo {
@@ -95,7 +95,7 @@ const semana = [1, 2, 3, 4, 5, 6, 0].map((dia) => ({
 
   .semana {
     margin: 0;
-    border-block-start: 2px solid var(--tinta);
+    border-block-start: 2px solid var(--hueso);
   }
 
   .semana-dia {
@@ -103,7 +103,7 @@ const semana = [1, 2, 3, 4, 5, 6, 0].map((dia) => ({
     grid-template-columns: 7.5rem minmax(0, 1fr);
     gap: 1rem;
     padding-block: 0.6rem;
-    border-block-end: 2px solid var(--tinta);
+    border-block-end: 2px solid var(--hueso);
   }
 
   .semana-dia dt {
@@ -115,10 +115,10 @@ const semana = [1, 2, 3, 4, 5, 6, 0].map((dia) => ({
     margin: 0;
   }
 
-  /* Today, marked by more than colour: the row turns into the black band */
+  /* Today, marked by more than colour: the row turns into the charcoal band */
   .semana-dia[aria-current='date'] {
-    background: var(--tinta);
-    color: var(--papel);
+    background: var(--carbon);
+    color: var(--hueso);
     margin-inline: -0.5rem;
     padding-inline: 0.5rem;
   }

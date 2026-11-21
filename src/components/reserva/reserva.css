@@ -26,7 +26,7 @@
 .paso-titulo {
   margin: 0;
   font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);
-  color: var(--papel);
+  color: var(--hueso);
 }
 
 /* ——— Choices ——— */
@@ -58,26 +58,26 @@
   padding: 0.75rem 1rem;
   font: inherit;
   text-align: start;
-  color: var(--papel);
-  background: var(--vinilo);
-  border: 2px solid var(--vinilo);
+  color: var(--hueso);
+  background: var(--carbon-alto);
+  border: 2px solid var(--carbon-alto);
   cursor: pointer;
 }
 
 .opcion:hover {
-  border-color: var(--papel-suave);
+  border-color: var(--hueso-suave);
 }
 
 .opcion[aria-pressed='true'] {
-  background: var(--funda);
-  border-color: var(--funda);
-  color: var(--tinta);
+  background: var(--rojo);
+  border-color: var(--rojo);
+  color: var(--hueso);
 }
 
 .opcion:disabled {
   background: transparent;
-  border-color: var(--vinilo);
-  color: var(--papel-suave);
+  border-color: var(--carbon-alto);
+  color: var(--hueso-suave);
   cursor: not-allowed;
 }
 
@@ -135,7 +135,7 @@
 .horas-titulo {
   margin: 0;
   font-size: var(--text-cuerpo);
-  color: var(--papel-suave);
+  color: var(--hueso-suave);
 }
 
 .horas-estado {
@@ -167,41 +167,42 @@
   width: 100%;
   min-height: 3rem;
   padding: 0.7rem 0.85rem;
-  color: var(--tinta);
-  background: var(--papel);
-  border: 2px solid var(--papel-suave);
+  color: var(--carbon);
+  background: var(--hueso);
+  border: 2px solid var(--hueso-suave);
   border-radius: 0;
 }
 
+/* Red border on the bone field; the lighter red outside, where it sits on the charcoal band */
 .campo [aria-invalid='true'] {
-  border-color: var(--funda);
-  outline: 2px solid var(--funda);
+  border-color: var(--rojo);
+  outline: 2px solid var(--rojo-claro);
 }
 
 .campo-ayuda {
   margin: 0;
   font-size: var(--text-nota);
-  color: var(--papel-suave);
+  color: var(--hueso-suave);
 }
 
 .campo-error {
   margin: 0;
   font-weight: 700;
-  color: var(--funda);
+  color: var(--rojo-claro);
 }
 
 .aviso-error {
   margin: 0;
   padding: 0.75rem 1rem;
-  background: var(--funda);
-  color: var(--tinta);
+  background: var(--rojo);
+  color: var(--hueso);
   font-weight: 700;
 }
 
 .datos-demo {
   margin: 0;
   font-size: var(--text-nota);
-  color: var(--papel-suave);
+  color: var(--hueso-suave);
   max-width: 48ch;
 }
 
@@ -210,12 +211,12 @@
 }
 
 .reserva .boton:hover {
-  background: var(--papel);
-  color: var(--tinta);
+  background: var(--hueso);
+  color: var(--carbon);
 }
 
 .reserva .boton:disabled {
-  background: var(--papel-suave);
+  background: var(--hueso-suave);
   cursor: progress;
 }
 
@@ -227,15 +228,15 @@
   padding-inline: 1.25rem;
   font: inherit;
   font-weight: 700;
-  color: var(--papel);
+  color: var(--hueso);
   background: transparent;
-  border: 2px solid var(--papel);
+  border: 2px solid var(--hueso);
   cursor: pointer;
 }
 
 .boton-secundario:hover {
-  background: var(--papel);
-  color: var(--tinta);
+  background: var(--hueso);
+  color: var(--carbon);
 }
 
 /* ——— Receipt ——— */
@@ -259,7 +260,7 @@
   font-weight: 900;
   font-size: clamp(3.5rem, 2rem + 6vw, 6rem);
   line-height: 0.9;
-  color: var(--funda);
+  color: var(--rojo-claro);
 }
 
 .confirmacion-resumen {
@@ -286,7 +287,7 @@
   display: grid;
   gap: 1rem;
   padding-block-start: 2rem;
-  border-block-start: 2px solid var(--papel-suave);
+  border-block-start: 2px solid var(--hueso-suave);
 }
 
 .turnos-titulo {
@@ -308,7 +309,7 @@
   gap: 0.5rem;
   justify-items: start;
   padding: 1rem;
-  background: var(--vinilo);
+  background: var(--carbon-alto);
 }
 
 .turno p {
@@ -346,8 +347,8 @@
   z-index: 5;
   margin-inline: calc(var(--margen) * -1);
   padding: 0.75rem var(--margen);
-  background: var(--funda);
-  color: var(--tinta);
+  background: var(--rojo);
+  color: var(--hueso);
 }
 
 .ficha-etiqueta {
@@ -395,8 +396,8 @@
 
 .ficha-linea [aria-current='step'] {
   padding-inline: 0.35rem;
-  background: var(--tinta);
-  color: var(--funda);
+  background: var(--carbon);
+  color: var(--rojo-claro);
 }
 
 .ficha-total,
@@ -405,7 +406,7 @@
   font-weight: 800;
 }
 
-/* Wide: the record itself, with the orange label in the middle, beside the steps */
+/* Wide: the record itself, with the red label in the middle, beside the steps */
 @media (width >= 64rem) {
   .reserva {
     grid-template-columns: minmax(0, 1fr) min(26rem, 38%);
@@ -418,7 +419,7 @@
     margin: 0;
     padding: 0;
     background: none;
-    color: var(--tinta);
+    color: var(--hueso);
   }
 
   .ficha-disco {
@@ -426,13 +427,13 @@
     place-items: center;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: var(--vinilo);
+    background: var(--carbon-alto);
     /* The grooves: two rings of the band's black around the label. Drawn rings, not elevation (taste-skill-ignore) */
     box-shadow:
-      inset 0 0 0 1.75rem var(--vinilo),
-      inset 0 0 0 calc(1.75rem + 2px) var(--tinta),
-      inset 0 0 0 3.5rem var(--vinilo),
-      inset 0 0 0 calc(3.5rem + 2px) var(--tinta);
+      inset 0 0 0 1.75rem var(--carbon-alto),
+      inset 0 0 0 calc(1.75rem + 2px) var(--carbon),
+      inset 0 0 0 3.5rem var(--carbon-alto),
+      inset 0 0 0 calc(3.5rem + 2px) var(--carbon);
   }
 
   .ficha-etiqueta {
@@ -440,7 +441,7 @@
     aspect-ratio: 1;
     min-height: 0;
     border-radius: 50%;
-    background: var(--funda);
+    background: var(--rojo);
     display: grid;
     place-content: center;
     justify-items: center;
