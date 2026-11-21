@@ -309,7 +309,7 @@
       {
         "name": "fila-activa",
         "value": "background-color, color 200ms",
-        "purpose": "Inversión de la fila del Lado A."
+        "purpose": "Inversión de la fila de Servicios."
       },
       {
         "name": "reservar-barrido",
@@ -440,7 +440,7 @@
       "css": ".ds-hero{position:relative;container-type:inline-size;overflow:hidden;min-height:26rem;display:grid;align-content:space-between;background:radial-gradient(70% 55% at 56% 100%,color-mix(in oklab,var(--rojo) 78%,transparent),transparent 72%),radial-gradient(40% 30% at 56% 100%,color-mix(in oklab,var(--rojo) 55%,transparent),transparent),var(--carbon);color:var(--hueso);font-family:'Archivo Variable',ui-sans-serif,system-ui,sans-serif}.ds-hero-texto{display:grid;justify-items:start;gap:1.25rem;padding:2rem 1.5rem 0;max-width:min(40rem,54cqi)}.ds-hero-titulo{margin:0;font-family:'Archivo Variable','Arial Narrow','Nimbus Sans Narrow',sans-serif;font-stretch:62%;font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:0.86;font-size:clamp(2.5rem,1.4rem + 3.2vw,4.5rem)}.ds-hero-titulo span{display:block}.ds-hero-texto p{margin:0;max-width:34ch;color:var(--hueso-suave)}.ds-hero-boton{display:inline-flex;align-items:center;min-height:3.25rem;padding-inline:1.5rem;background:var(--rojo);color:var(--hueso);font-weight:800;font-size:clamp(1.25rem,1.12rem + 0.55vw,1.625rem);text-decoration:none}.ds-hero-boton:hover{background:var(--hueso);color:var(--carbon)}.ds-hero-boton:focus-visible{outline:3px solid currentColor;outline-offset:3px}.ds-hero-palabra{margin:0;text-align:center;font-family:'Archivo Variable','Arial Narrow','Nimbus Sans Narrow',sans-serif;font-stretch:125%;font-weight:900;text-transform:uppercase;font-size:calc((100cqi - 3rem) / 5.35);line-height:0.74;letter-spacing:-0.02em;white-space:nowrap;-webkit-mask-image:linear-gradient(to bottom,black 10%,transparent 98%);mask-image:linear-gradient(to bottom,black 10%,transparent 98%)}"
     },
     {
-      "name": "Tema del Lado A",
+      "name": "Tema de Servicios",
       "kind": "custom",
       "refersTo": "track-row",
       "description": "Fila de la lista de servicios con filetes de 2 px; activa se invierte a carbón y «Reservar →» entra en rojo.",
@@ -536,11 +536,11 @@
       "Do escribir en `hueso` sobre el rojo y usar `rojo-claro` cuando el rojo sea texto sobre carbón.",
       "Do dar al rojo campos enteros (resplandor del hero, capítulo, etiqueta, barra, botón, opción elegida).",
       "Do separar filas con filetes de 2 px en la tinta de la superficie y alinear cifras con `.cifras`.",
-      "Do imprimir las fotos sobre el fondo con `multiply` (`hueso`), y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).",
+      "Do imprimir las fotos sobre el fondo con `multiply` (`hueso`), aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso, y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).",
       "Do usar la forma única de botón y, para elegir, botones con `aria-pressed`.",
       "Do dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).",
       "Do animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).",
-      "Do rotular la ficción: aviso de concepto visible, barberos, precios, horario y dirección marcados como ficticios."
+      "Do rotular la ficción: aviso de concepto en el pie, la reserva rotulada como demo, y barberos, precios, horario y dirección marcados como ficticios."
     ],
     "donts": [
       "Don't escribir en carbón sobre el rojo (2,61:1).",

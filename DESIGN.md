@@ -153,7 +153,7 @@ Hueso y carbón en una sola escala tonal, con un único color saturado, el rojo 
 La escala, de claro a oscuro (el test exige que cada paso sea más oscuro que el anterior):
 - **Hueso claro** (`hueso-claro`): un paso por encima del fondo, para filas activas y paneles sobre el hueso.
 - **Hueso** (`hueso`): el fondo de la página, el texto de todas las bandas carbón y del rojo, el fondo de los campos de formulario, la tira de temas del pie y el blanco con el que se imprimen las fotos del ritual y de los créditos.
-- **Hueso oscuro** (`hueso-oscuro`): un paso por debajo del fondo. La franja del aviso de concepto.
+- **Hueso oscuro** (`hueso-oscuro`): un paso por debajo del fondo. Sin uso desde R16, cuando la franja del aviso de concepto salió de lo alto de la página; se queda como paso de la escala.
 - **Carbón suave** (`carbon-suave`): texto secundario sobre hueso (descripciones de temas, notas).
 - **Carbón alto** (`carbon-alto`): superficies elevadas en tono dentro de las bandas carbón: opciones de la reserva, turnos guardados, la cabeza del capítulo del ritual, el disco de la ficha, el hueco de una foto pendiente.
 - **Carbón** (`carbon`): la tinta del texto sobre hueso y el color del hero, la cabecera, la reserva, el ritual y el pie.
@@ -201,7 +201,7 @@ La escala tiene cinco pasos en `@theme`, fluidos de 390 a 1440 px; las piezas mo
 - **Display / Título** (900, `--text-titulo`, 0.82): títulos de sección con la clase `display` (mayúsculas, `-0.01em`).
 - **Tema** (700 a 800, `--text-tema`, 1.2 a 1.3): nombres de temas, frases de entrada (30 a 44ch), el botón, los precios, el estado en vivo de la franja del hero.
 - **Cuerpo** (400, `--text-cuerpo`, 1.5): texto corrido, descripciones, la frase del hero (34ch). `font-size-adjust: from-font` evita el salto mientras carga Archivo.
-- **Nota** (600, `--text-nota`, `0.875rem`): aviso de concepto, notas de ficción, la franja del hero, la etiqueta del turno, el pie legal.
+- **Nota** (600, `--text-nota`, `0.875rem`): notas de ficción, la franja del hero, la etiqueta del turno, el pie legal.
 
 ### Named Rules
 **The Three Widths Rule.** Una familia, tres anchuras con papel fijo: 62 % y 900 para lo que se mira, normal para lo que se lee, 125 % solo para la palabra del hero. Nada intermedio, ninguna segunda familia, y el 125 % no sale del hero.
@@ -212,7 +212,7 @@ La escala tiene cinco pasos en `@theme`, fluidos de 390 a 1440 px; las piezas mo
 
 Una sola columna en el móvil y una retícula de dos en escritorio. El ritmo lo marcan tres medidas: `--margen` para los márgenes laterales de toda la página, `--hueco` para el espacio entre columnas y créditos, y `--seccion` para el relleno vertical de cada capítulo. Dentro de los componentes, los espacios son fijos y pequeños (0.25 a 2.5rem), propios de una contraportada.
 
-- **Hero:** a sangre en cualquier ancho, alto del primer pantallazo bajo el aviso y la cabecera (`100svh − 7rem`; desde 48rem, al menos 34rem). Es su propio contenedor: la palabra, la navaja de fondo y el resplandor se miden con su ancho. Tres filas: texto arriba a la izquierda, escenario y franja. En el móvil, Leo ocupa la fila del medio y sube un poco junto al botón; desde 48rem el escenario abarca todo el hero, Leo se levanta junto al titular (alrededor del 57 al 60 % del ancho), el texto se limita a `min(40rem, 54cqi)` y la franja va en una línea, servicios a la izquierda y estado a la derecha.
+- **Hero:** a sangre en cualquier ancho, alto del primer pantallazo bajo la cabecera (`100svh − 4rem`; desde 48rem, al menos 34rem). Nada va antes de la cabecera: el aviso de concepto vive en el pie (R16). Es su propio contenedor: la palabra, la navaja de fondo y el resplandor se miden con su ancho. Tres filas: texto arriba a la izquierda, escenario y franja. En el móvil, Leo ocupa la fila del medio y sube un poco junto al botón; desde 48rem el escenario abarca todo el hero, Leo se levanta junto al titular (alrededor del 57 al 60 % del ancho), el texto se limita a `min(40rem, 54cqi)` y la franja va en una línea, servicios a la izquierda y estado a la derecha.
 - **Servicios:** sección propia bajo el hero. Desde 64rem y solo con ratón (`hover: hover`), columnas 7/5 con un panel cuadrado de fotos fijo con `sticky` al lado de la lista.
 - **Cabecera:** desde 48rem, nombre, enlaces centrados y acción en tres columnas.
 - **Créditos:** filas compactas con retrato de 7.5rem en el móvil; tres columnas desde 48rem.
@@ -277,8 +277,8 @@ Barra fija `carbon` de 4rem con el nombre en la voz condensada, Servicios · Bar
 ### Hero (primer pantallazo)
 Escenario `carbon` a sangre. Arriba a la izquierda, el titular en la voz condensada, la frase en `hueso-suave` y el botón rojo. Detrás, la palabra «NAVAJA» en la anchura del 125 %, de margen a margen, fundida hacia abajo con `mask-image` en el resplandor rojo; delante, Leo recortado en duotono carbón→hueso (`scripts/retrato-hero.sh`), con las manos y el borde inferior disueltos por máscara. La navaja de la vista, grande y tenue, al fondo. Al pie, la franja en nota con los tres servicios y sus pictogramas y, si hay JS, el estado en vivo en `--text-tema` sobre «Hora de Puerto Cabello» (en `hueso`, nunca `hueso-suave`, por el resplandor). Con colores forzados, la palabra pasa a `GrayText`.
 
-### Lado A (lista de temas)
-Título «Lado A» en la voz condensada junto a «Servicios» en tema, y la lista como `<ol>` con filetes de 2 px de `carbon`. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `carbon` con `hueso`, y «Reservar →» entra en un bloque `rojo` con texto `hueso` sobre la duración y el precio con un barrido `clip-path` de 250 ms. Con ratón en ancho ≥ 64rem, el panel de al lado muestra la foto del primer tema, impresa con `multiply` sobre el hueso, y la del tema señalado entra con un barrido `clip-path`.
+### Servicios (lista de temas)
+Título «Servicios» en la voz condensada a `--text-titulo` (desde R17 ya no dice «Lado A»; los números A1…A5 de la lista se quedan), y la lista como `<ol>` con filetes de 2 px de `carbon`. Cada fila es un enlace entero (número, nombre, descripción, duración y precio tabulares). Activa (puntero o foco), la fila se invierte a `carbon` con `hueso`, y «Reservar →» entra en un bloque `rojo` con texto `hueso` sobre la duración y el precio con un barrido `clip-path` de 250 ms. Con ratón en ancho ≥ 64rem, el panel de al lado muestra la foto del primer tema, impresa con `multiply` sobre el hueso, y la del tema señalado entra con un barrido `clip-path`.
 
 ### Créditos (barberos)
 Retrato 4:5 impreso con `multiply` sobre `hueso`, nombre en la voz condensada, especialidad, días en 700 y un enlace subrayado de 2 px que lleva a la reserva con ese barbero. Con ratón, el crédito señalado se acerca (`scale(1.04)`) y los demás bajan a opacidad 0.5.
@@ -311,11 +311,11 @@ Una sola curva para todo: `--curva`, `cubic-bezier(0.22, 1, 0.36, 1)` (en Anime.
 - **Do** escribir en `hueso` sobre el rojo y usar `rojo-claro` cuando el rojo sea texto sobre carbón.
 - **Do** dar al rojo campos enteros (resplandor del hero, capítulo, etiqueta, barra, botón, opción elegida).
 - **Do** separar filas con filetes de 2 px en la tinta de la superficie y alinear cifras con `.cifras`.
-- **Do** imprimir las fotos sobre el fondo con `multiply` (`hueso`), y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).
+- **Do** imprimir las fotos sobre el fondo con `multiply` (`hueso`), aclaradas desde sus originales con `scripts/aclarar-fotos.sh` (gamma 1,45 y negro al 10 %) para que no se empasten sobre el hueso, y producir el retrato del hero con `scripts/retrato-hero.sh` (duotono carbón→hueso recortado).
 - **Do** usar la forma única de botón y, para elegir, botones con `aria-pressed`.
 - **Do** dejar el foco en el anillo global de `currentColor` (3 px, separación 3 px).
 - **Do** animar solo propiedades que no recalculan el diseño (`transform`, `opacity`, `clip-path`, `filter`, color, fondo, borde) con `--curva`, y comprobar que todo se lee con movimiento reducido (constitución II).
-- **Do** rotular la ficción: aviso de concepto visible, barberos, precios, horario y dirección marcados como ficticios.
+- **Do** rotular la ficción: aviso de concepto en el pie, la reserva rotulada como demo, y barberos, precios, horario y dirección marcados como ficticios.
 
 ### Don't:
 - **Don't** escribir en carbón sobre el rojo (2,61:1).
