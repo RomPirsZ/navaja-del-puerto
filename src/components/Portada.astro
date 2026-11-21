@@ -82,8 +82,8 @@ import Navaja from './Navaja.astro';
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto minmax(16rem, 1fr) auto;
     width: 100%;
-    /* The first screen under the notice (two lines on phones) and the 4rem header */
-    min-block-size: calc(100svh - 7rem);
+    /* The first screen under the 4rem header (the concept notice lives in the footer) */
+    min-block-size: calc(100svh - 4rem);
     background:
       radial-gradient(70% 55% at 56% 100%, color-mix(in oklab, var(--rojo) 78%, transparent), transparent 72%),
       radial-gradient(40% 30% at 56% 100%, color-mix(in oklab, var(--rojo) 55%, transparent), transparent),
@@ -293,7 +293,7 @@ import Navaja from './Navaja.astro';
        wide windows keep the strip inside the first screen */
     .hero {
       grid-template-rows: auto minmax(2rem, 1fr) auto;
-      min-block-size: max(34rem, calc(100svh - 6rem));
+      min-block-size: max(34rem, calc(100svh - 4rem));
     }
 
     .hero-escena {

@@ -49,7 +49,7 @@ Es una barbería de puerto: afeitado clásico con navaja y toalla caliente junto
 ## Brand Commitments
 
 - **Nombre:** «Navaja del Puerto», elegido el 2026-11-18. Una búsqueda web no encontró ninguna barbería real con ese nombre.
-- **Aviso de concepto visible:** el sitio dice que es un concepto de portafolio de [A]nkordev, que la barbería no existe y que la reserva es una demo. El pie lleva «Concepto de [A]nkordev» con enlace al portafolio.
+- **Aviso de concepto en el pie:** el sitio dice que es un concepto de portafolio de [A]nkordev, que la barbería no existe y que la reserva es una demo. Desde el 2026-11-21, por decisión del usuario, ese aviso va solo en el pie, con el enlace al portafolio; la sección de la reserva sigue diciendo que es una demo.
 - **Referencias del usuario** (principios, no copia; spec §2): «The Gentleman's Club» y «Buzzcuts» para la imagen, y los vídeos de Shopify Supply, Swap y Contra/Shora para el movimiento. Están en `referencias/`, fuera de git.
 
 ## Evidence on Hand

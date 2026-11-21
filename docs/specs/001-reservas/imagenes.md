@@ -21,6 +21,7 @@ Entrega cada imagen en JPG o PNG al tamaño indicado (o mayor, con la misma prop
 | Archivo | Proporción y tamaño | Qué es | Dónde va |
 |---|---|---|---|
 | `hero-retrato.jpg` | 4:5 · 1600×2000 | Hombre de perfil con barba | Hero, entre las letras del nombre *(hasta el rediseño del 2026-11-21: desde R14 el hero usa la foto de Leo, `barbero-leo`, recortada con `scripts/retrato-hero.sh` en `hero-retrato.webp`)* |
+| `hero-navaja` | 3:2 · 3000×2000 (Nano Banana) | Navaja de barbero abierta sobre negro | Hero, de fondo, grande y tenue (R19, en lugar de la navaja SVG). Se trata con `scripts/navaja-hero.sh`: la luminancia pasa a canal alfa en hueso |
 | `barbero-ramon.jpg` | 4:5 · 1200×1500 | Ramón, el veterano de la navaja | Barberos |
 | `barbero-leo.jpg` | 4:5 · 1200×1500 | Leo, degradados y diseño | Barberos |
 | `barbero-jesus.jpg` | 4:5 · 1200×1500 | Jesús, cortes clásicos e infantiles | Barberos |
@@ -104,6 +105,11 @@ An open straight razor gliding along a lathered cheek, extreme close-up, the bla
 **ritual-locion.jpg**
 ```
 A barber's open palms catching a splash of aftershave from a glass bottle, droplets frozen in the air, centered in the frame, dark empty space around, 3:2 horizontal
+```
+
+**hero-navaja** *(2026-11-21, para Nano Banana; sin el sufijo común: el fondo es negro)*
+```
+Studio product photograph of a single open vintage straight razor (cut-throat razor), seen from the side, blade fully open at about 150 degrees from the handle, lying diagonally across the frame from lower left to upper right. Polished carbon-steel blade with a hollow grind and fine engraved scrollwork on the blade face, a square toe, a spine with small thumb notches on the tang, handle scales of ivory-coloured bone held by two small brass pins. Black and white photograph, high contrast, a single soft key light from the upper left that draws a thin bright rim along the spine, the edge and the scales, everything else falling into deep shadow. Isolated on a seamless pure black background, no table, no reflection, no cast shadow, the whole razor inside the frame with generous empty margin around it. Sharp focus along the whole razor, fine film grain. Landscape 3:2, 3000 × 2000 px. No text, no logos, no watermark, no hands, no other objects. A generic razor, not a copy of any real brand's design.
 ```
 
 Para el ritual, cambia en el sufijo común «clean plain white background» por «dark background»: esas fotos van a sangre, no en duotono.

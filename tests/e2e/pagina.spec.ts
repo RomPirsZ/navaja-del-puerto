@@ -1,11 +1,20 @@
 // La página (spec §4, R06): lo que se necesita está a la vista y funciona con teclado.
 import { test, expect } from '@playwright/test';
 
-test('el aviso de concepto, el titular y la acción se ven sin hacer scroll', async ({ page }) => {
+test('el titular y la acción se ven sin hacer scroll', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByText('Concepto de [A]nkordev: esta barbería no existe')).toBeInViewport();
   await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
   await expect(page.getByRole('link', { name: /^Reservar( turno)?$/ }).first()).toBeInViewport();
+});
+
+// Decisión del usuario (2026-11-21): el aviso de concepto va solo en el pie, no sobre la cabecera
+test('el aviso de concepto está en el pie y nada va antes de la cabecera', async ({ page }) => {
+  await page.goto('/');
+  expect(await page.evaluate(() => document.body.firstElementChild?.tagName)).toBe('HEADER');
+  await expect(page.locator('.aviso')).toHaveCount(0);
+  await expect(page.locator('footer')).toContainText('Navaja del Puerto no existe');
+  await expect(page.locator('footer')).toContainText('[A]nkordev');
+  await expect(page.locator('footer')).toContainText('la reserva es una demo');
 });
 
 test('los cinco servicios llevan duración y precio de ejemplo', async ({ page }) => {

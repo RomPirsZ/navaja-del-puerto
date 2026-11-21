@@ -12,7 +12,6 @@ import { t } from '../i18n';
 ---
 
 <Base>
-  <p class="aviso">{t('aviso.concepto')}</p>
   <Cabecera />
   <main>
     <Portada />
@@ -32,16 +31,6 @@ import { t } from '../i18n';
 </Base>
 
 <style>
-  /* The concept notice is visible without scrolling at every width (spec §11) */
-  .aviso {
-    margin: 0;
-    padding: 0.4rem var(--margen);
-    background: var(--hueso-oscuro);
-    color: var(--carbon);
-    font-size: var(--text-nota);
-    font-weight: 600;
-  }
-
   .reservar {
     padding: var(--seccion) var(--margen);
     background: var(--carbon);

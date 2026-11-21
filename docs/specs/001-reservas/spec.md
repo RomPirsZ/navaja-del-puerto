@@ -43,7 +43,7 @@ Todo el movimiento de las referencias se reproduce con propiedades que admite la
 ## 4. Página (una sola, en español)
 
 1. **Cabecera:** logotipo, enlaces a Servicios, Barberos y Horario, y la acción «Reservar turno». En el móvil, menú accesible que desenfoca la página de detrás.
-2. **Hero** *(rediseñado el 2026-11-21 a partir de una referencia del usuario)***:** carbón a sangre en cualquier ancho. Arriba a la izquierda, el titular «Corte moderno, navaja de siempre», una frase que dice qué es (barbería en Puerto Cabello y reserva del turno a la hora exacta) y la acción «Reservar turno». En el centro, Leo recortado delante de «NAVAJA», que va de margen a margen y se funde en un resplandor rojo. Abajo, una franja con tres servicios con icono y el estado en vivo («Abierto hasta las 7», hora de Puerto Cabello); sin valoraciones ni estrellas (PRODUCT.md). Aviso de concepto, titular y acción visibles sin hacer scroll.
+2. **Hero** *(rediseñado el 2026-11-21 a partir de una referencia del usuario)***:** carbón a sangre en cualquier ancho. Arriba a la izquierda, el titular «Corte moderno, navaja de siempre», una frase que dice qué es (barbería en Puerto Cabello y reserva del turno a la hora exacta) y la acción «Reservar turno». En el centro, Leo recortado delante de «NAVAJA», que va de margen a margen y se funde en un resplandor rojo. Abajo, una franja con tres servicios con icono y el estado en vivo («Abierto hasta las 7», hora de Puerto Cabello); sin valoraciones ni estrellas (PRODUCT.md). Titular y acción visibles sin hacer scroll. El aviso de concepto ya no va sobre la cabecera: desde el 2026-11-21, por decisión del usuario, está solo en el pie (§4.8).
 3. **Servicios** (sección propia desde el rediseño): ver abajo.
    **Servicios:** lista con nombre, una línea de descripción, duración y precio. Al pasar por una fila (o al enfocarla), el precio cede el sitio a «Reservar». Pulsarla abre la reserva con ese servicio ya elegido.
 4. **Barberos:** tira de retratos. El elegido se abre con su nombre, su especialidad y los días que trabaja, y lleva a la reserva con él ya elegido.
@@ -161,5 +161,5 @@ Backend real, pagos, cuentas, recordatorios por SMS, WhatsApp o email, panel del
 - [ ] Teclado completo en todo el flujo, foco gestionado entre pasos, cambios anunciados y cero violaciones serias o críticas de axe en móvil y escritorio.
 - [ ] Contraste AA en todos los textos, también sobre las fotos.
 - [ ] Lighthouse móvil ≥ 90 en rendimiento y ≥ 95 en accesibilidad, buenas prácticas y SEO.
-- [ ] El aviso de concepto se ve sin hacer scroll, y precios y barberos están rotulados como ficticios.
+- [ ] El aviso de concepto está en el pie, con el enlace al portafolio (decisión del usuario del 2026-11-21: antes iba visible sin scroll), y precios y barberos están rotulados como ficticios.
 - [ ] Ninguna petición a terceros: fuentes, fotos y scripts servidos desde el propio sitio.
