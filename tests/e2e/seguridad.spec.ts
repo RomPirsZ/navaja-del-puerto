@@ -37,10 +37,12 @@ test.describe('con movimiento', () => {
 test('con la CSP de producción, la isla se hidrata y el movimiento corre sin violaciones', async ({ page, request }) => {
   const csp = await leerCsp(request);
   // astro preview no aplica public/_headers: se añade la CSP a la respuesta del HTML
+  // Only the document needs the header. Re-sending every asset raced the end of the test:
+  // a fetch still in flight when the page closed threw «Fetch response has been disposed»
   await page.route('**/*', async (ruta) => {
+    if (ruta.request().resourceType() !== 'document') return ruta.continue();
     const respuesta = await ruta.fetch();
-    const esHtml = (respuesta.headers()['content-type'] ?? '').includes('text/html');
-    await ruta.fulfill({ response: respuesta, headers: { ...respuesta.headers(), ...(esHtml ? { 'content-security-policy': csp } : {}) } });
+    await ruta.fulfill({ response: respuesta, headers: { ...respuesta.headers(), 'content-security-policy': csp } });
   });
   await page.addInitScript(() => {
     (window as unknown as { violaciones: string[] }).violaciones = [];
@@ -55,5 +57,6 @@ test('con la CSP de producción, la isla se hidrata y el movimiento corre sin vi
   await expect(page.locator('html')).toHaveClass(/\bmotion-ready\b/);
   await page.locator('footer').scrollIntoViewIfNeeded();
   expect(await page.evaluate(() => (window as unknown as { violaciones: string[] }).violaciones)).toEqual([]);
+  await page.unrouteAll({ behavior: 'ignoreErrors' });
 });
 });
