@@ -178,8 +178,18 @@ const enlaces = [
     display: none;
   }
 
-  /* Wide: the same list, inline; the menu button goes away */
+  /* Wide: the same list, inline and centred between the name and the action, as in the
+     hero reference; the menu button goes away */
   @media (width >= 48rem) {
+    .cabecera-fila {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    }
+
+    .cabecera-accion {
+      justify-self: end;
+    }
+
     .solo-ancho {
       display: inline;
     }

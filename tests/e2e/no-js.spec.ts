@@ -10,8 +10,12 @@ test('sin JavaScript se leen servicios, barberos, horario, zona y el aviso de la
   await expect(page.locator('.semana-dia')).toHaveCount(7);
   await expect(page.getByText('Zona colonial de Puerto Cabello')).toBeVisible();
   await expect(page.locator('[data-reserva]')).toContainText('necesita JavaScript');
-  // El estado en vivo necesita el reloj del visitante: sin JS no aparece vacío
-  await expect(page.locator('[data-estado-apertura]')).toBeHidden();
+  // El estado en vivo necesita el reloj del visitante: sin JS no aparece vacío, ni en el
+  // horario ni en la franja del hero (que tampoco deja su nota suelta)
+  const estados = page.locator('[data-estado-apertura]');
+  await expect(estados).toHaveCount(2);
+  for (const estado of await estados.all()) await expect(estado).toBeHidden();
+  await expect(page.locator('.hero-estado')).toBeHidden();
 });
 
 test('sin JavaScript el menú del móvil sigue funcionando (popover nativo)', async ({ page }) => {

@@ -45,12 +45,14 @@ const semana = [1, 2, 3, 4, 5, 6, 0].map((dia) => ({
   import { estadoApertura, textoApertura } from '../lib/apertura';
   import { ahoraEnPuerto } from '../lib/reservas/tiempo';
 
-  const estado = document.querySelector<HTMLElement>('[data-estado-apertura]');
+  // The same live state is painted here and in the hero's strip
+  const estados = document.querySelectorAll<HTMLElement>('[data-estado-apertura]');
 
   function pintar() {
     const ahora = ahoraEnPuerto(new Date());
-    if (estado) {
-      estado.textContent = textoApertura(estadoApertura(ahora));
+    const texto = textoApertura(estadoApertura(ahora));
+    for (const estado of estados) {
+      estado.textContent = texto;
       estado.hidden = false;
     }
     for (const fila of document.querySelectorAll<HTMLElement>('.semana-dia')) {

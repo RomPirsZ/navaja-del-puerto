@@ -144,7 +144,7 @@
    they start hidden, until the module takes over (`motion-ready`). If the module does not
    arrive within 2.5 s they show anyway: content never depends on JS. */
 @media (prefers-reduced-motion: no-preference) {
-  .motion:not(.motion-ready) :is([data-revelar], .funda-nombre, .funda-retrato) {
+  .motion:not(.motion-ready) :is([data-revelar], .hero-palabra, .hero-retrato) {
     opacity: 0;
     animation: aparecer-sin-modulo 0s 2.5s forwards;
   }

@@ -5,11 +5,11 @@ import { animate, splitText, stagger, utils } from 'animejs';
 
 const CURVA = 'out(4)';
 
-/** The name lands letter by letter in a wave (Shopify Supply), then the portrait settles. */
+/** «NAVAJA» lands letter by letter in a wave (Shopify Supply), then Leo settles in front. */
 function entradaPortada(): void {
-  const lineas = document.querySelectorAll<HTMLElement>('.funda-nombre .linea');
-  // splitText keeps a visually hidden copy of each line, so screen readers read the words
-  const letras = [...lineas].flatMap((linea) => splitText(linea, { chars: true }).chars);
+  // The giant word is decorative (aria-hidden): the headline is never split
+  const palabra = document.querySelector<HTMLElement>('.hero-palabra-texto');
+  const letras = palabra ? splitText(palabra, { chars: true }).chars : [];
   utils.set(letras, { opacity: 0 });
   animate(letras, {
     rotateX: [-95, 0],
@@ -19,7 +19,7 @@ function entradaPortada(): void {
     delay: stagger(18, { start: 60 }),
     ease: CURVA,
   });
-  const retrato = document.querySelector<HTMLElement>('.funda-retrato');
+  const retrato = document.querySelector<HTMLElement>('.hero-retrato');
   if (retrato) {
     utils.set(retrato, { opacity: 0 });
     animate(retrato, { y: ['6%', '0%'], scale: [1.05, 1], opacity: [0, 1], duration: 1100, delay: 420, ease: 'out(3)' });

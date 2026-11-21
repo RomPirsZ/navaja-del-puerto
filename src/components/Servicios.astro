@@ -1,45 +1,65 @@
 ---
 // Side A of the record: the services as a tracklist, with duration and sample price. A row
 // leads to the booking with that service chosen (script below; without it, to #reservar).
+// Its own section under the hero since the redesign; with a mouse on wide screens, the photo
+// of the track under the pointer wipes into the panel beside the list.
 import { SERVICIOS } from '../data/servicios';
 import { t, type Clave } from '../i18n';
+import Foto from './Foto.astro';
 ---
 
 <section id="servicios" class="servicios" aria-labelledby="servicios-titulo">
-  <h2 id="servicios-titulo" class="servicios-titulo" data-revelar>
-    <span class="display">{t('servicios.lado')}</span>{' '}
-    <span class="servicios-sub">{t('servicios.titulo')}</span>
-  </h2>
-  <ol class="pistas">
+  <div class="servicios-lista" data-revelar-grupo>
+    <h2 id="servicios-titulo" class="servicios-titulo" data-revelar>
+      <span class="display">{t('servicios.lado')}</span>{' '}
+      <span class="servicios-sub">{t('servicios.titulo')}</span>
+    </h2>
+    <ol class="pistas">
+      {
+        SERVICIOS.map((s, i) => {
+          const nombre = t(`servicio.${s.id}.nombre` as Clave);
+          return (
+            <li class="pista" data-servicio={s.id} data-revelar>
+              <span class="pista-numero cifras" aria-hidden="true">{t('servicios.pista', { n: String(i + 1) })}</span>
+              <span class="pista-texto">
+                <a
+                  class="pista-nombre"
+                  href="#reservar"
+                  data-preseleccionar-servicio={s.id}
+                  aria-label={t('servicios.reservarServicio', { servicio: nombre })}
+                  aria-describedby={`pista-${s.id}`}
+                >
+                  {nombre}
+                </a>
+                <span class="pista-descripcion">{t(`servicio.${s.id}.descripcion` as Clave)}</span>
+              </span>
+              <span class="pista-datos cifras" id={`pista-${s.id}`}>
+                <span class="pista-duracion">{t('servicios.duracion', { min: String(s.duracion) })}</span>{' '}
+                <span class="pista-precio">{t('servicios.precio', { monto: String(s.precio) })}</span>
+                <span class="pista-reservar" aria-hidden="true">{t('servicios.reservar')} →</span>
+              </span>
+            </li>
+          );
+        })
+      }
+    </ol>
+    <p class="servicios-nota">{t('servicios.nota')}</p>
+  </div>
+  <div class="servicios-muestras" aria-hidden="true">
     {
-      SERVICIOS.map((s, i) => {
-        const nombre = t(`servicio.${s.id}.nombre` as Clave);
-        return (
-          <li class="pista" data-servicio={s.id} data-revelar>
-            <span class="pista-numero cifras" aria-hidden="true">{t('servicios.pista', { n: String(i + 1) })}</span>
-            <span class="pista-texto">
-              <a
-                class="pista-nombre"
-                href="#reservar"
-                data-preseleccionar-servicio={s.id}
-                aria-label={t('servicios.reservarServicio', { servicio: nombre })}
-                aria-describedby={`pista-${s.id}`}
-              >
-                {nombre}
-              </a>
-              <span class="pista-descripcion">{t(`servicio.${s.id}.descripcion` as Clave)}</span>
-            </span>
-            <span class="pista-datos cifras" id={`pista-${s.id}`}>
-              <span class="pista-duracion">{t('servicios.duracion', { min: String(s.duracion) })}</span>{' '}
-              <span class="pista-precio">{t('servicios.precio', { monto: String(s.precio) })}</span>
-              <span class="pista-reservar" aria-hidden="true">{t('servicios.reservar')} →</span>
-            </span>
-          </li>
-        );
-      })
+      SERVICIOS.map((s) => (
+        <div class="servicios-muestra" data-muestra={s.id}>
+          <Foto
+            nombre={`servicio-${s.id}`}
+            alt={t('servicios.muestra', { servicio: t(`servicio.${s.id}.nombre` as Clave) })}
+            aspecto="aspect-square"
+            anchos={[400, 600, 800]}
+            sizes="36vw"
+          />
+        </div>
+      ))
     }
-  </ol>
-  <p class="servicios-nota">{t('servicios.nota')}</p>
+  </div>
 </section>
 
 <script>
@@ -51,6 +71,61 @@ import { t, type Clave } from '../i18n';
 </script>
 
 <style>
+  .servicios {
+    display: grid;
+    gap: var(--hueco);
+    padding: var(--seccion) var(--margen) 0;
+  }
+
+  .servicios-lista {
+    max-width: 60rem;
+  }
+
+  .servicios-muestras {
+    display: none;
+  }
+
+  /* Wide screens with a mouse: the photo panel beside the list, printed onto the bone ground.
+     The first track's photo waits there; a hovered or focused track wipes its own in */
+  @media (width >= 64rem) and (hover: hover) {
+    .servicios {
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      align-items: start;
+    }
+
+    .servicios-muestras {
+      display: block;
+      position: sticky;
+      inset-block-start: 6rem;
+      aspect-ratio: 1;
+      mix-blend-mode: multiply;
+    }
+
+    .servicios-muestra {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(100% 0 0 0);
+      /* Leaving: a little quicker than arriving (open/close asymmetry) */
+      transition: clip-path 350ms var(--curva);
+    }
+
+    .servicios-muestra:first-child,
+    .servicios:has([data-servicio='corte'] :is(:hover, :focus-visible)) [data-muestra='corte'],
+    .servicios:has([data-servicio='corte-barba'] :is(:hover, :focus-visible)) [data-muestra='corte-barba'],
+    .servicios:has([data-servicio='barba'] :is(:hover, :focus-visible)) [data-muestra='barba'],
+    .servicios:has([data-servicio='afeitado'] :is(:hover, :focus-visible)) [data-muestra='afeitado'],
+    .servicios:has([data-servicio='infantil'] :is(:hover, :focus-visible)) [data-muestra='infantil'] {
+      clip-path: inset(0);
+      transition-duration: 400ms;
+    }
+
+    /* Another track under the pointer: the waiting photo steps aside */
+    .servicios:has(.pista:not([data-servicio='corte']) :is(:hover, :focus-visible)) .servicios-muestra:first-child {
+      clip-path: inset(100% 0 0 0);
+      transition-duration: 350ms;
+    }
+  }
+
   .servicios-titulo {
     display: flex;
     align-items: baseline;

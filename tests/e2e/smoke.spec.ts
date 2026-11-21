@@ -5,7 +5,7 @@ test('la página carga en español con su título y su h1', async ({ page }) => 
   expect(respuesta?.status()).toBe(200);
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
   await expect(page).toHaveTitle(/Navaja del Puerto/);
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Navaja del Puerto');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Corte moderno,\s*navaja de siempre/);
 });
 
 test('la isla de reserva se hidrata: el aviso sin JS da paso a la reserva', async ({ page }) => {

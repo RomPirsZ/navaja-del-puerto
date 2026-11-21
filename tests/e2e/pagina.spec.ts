@@ -1,7 +1,7 @@
 // La página (spec §4, R06): lo que se necesita está a la vista y funciona con teclado.
 import { test, expect } from '@playwright/test';
 
-test('el aviso de concepto, el nombre y la acción se ven sin hacer scroll', async ({ page }) => {
+test('el aviso de concepto, el titular y la acción se ven sin hacer scroll', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Concepto de [A]nkordev: esta barbería no existe')).toBeInViewport();
   await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
@@ -31,12 +31,46 @@ test('los barberos dicen sus días en palabras', async ({ page }) => {
   await expect(page.locator('#barberos')).toContainText('De martes a domingo');
 });
 
-test('el horario muestra el estado en vivo con la hora de Puerto Cabello', async ({ page }) => {
+test('el horario y el hero muestran el estado en vivo con la hora de Puerto Cabello', async ({ page }) => {
   // Martes 24 de noviembre, 10:00 en Puerto Cabello
   await page.clock.setFixedTime(new Date('2026-11-24T14:00:00Z'));
   await page.goto('/');
-  await expect(page.locator('[data-estado-apertura]')).toHaveText('Abierto hasta las 12');
+  await expect(page.locator('#horario [data-estado-apertura]')).toHaveText('Abierto hasta las 12');
+  await expect(page.locator('.hero [data-estado-apertura]')).toHaveText('Abierto hasta las 12');
   await expect(page.locator('.semana-dia[aria-current="date"] dt')).toHaveText('martes');
+});
+
+// Hero del rediseño (2026-11-21): a sangre en cualquier ancho, con «NAVAJA» decorativa detrás
+for (const ancho of [390, 768, 1440]) {
+  test.describe(`hero a ${ancho} px`, () => {
+    test.use({ viewport: { width: ancho, height: ancho < 600 ? 844 : 900 } });
+
+    test('ocupa todo el ancho, sin scroll horizontal, y llena el primer pantallazo', async ({ page }) => {
+      await page.goto('/');
+      const hero = page.locator('.hero');
+      const caja = await hero.boundingBox();
+      expect(caja?.x).toBe(0);
+      expect(caja?.width).toBe(ancho);
+      const { anchoDoc, alto } = await page.evaluate(() => ({
+        anchoDoc: document.documentElement.scrollWidth,
+        alto: window.innerHeight,
+      }));
+      expect(anchoDoc).toBeLessThanOrEqual(ancho);
+      // The hero reaches the bottom of the first screen
+      expect((caja?.y ?? 0) + (caja?.height ?? 0)).toBeGreaterThanOrEqual(alto - 1);
+      await expect(page.locator('.hero-retrato img')).toBeInViewport();
+    });
+  });
+}
+
+test('la palabra gigante es decorativa y los rasgos del hero son servicios reales', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('.hero-palabra')).toHaveAttribute('aria-hidden', 'true');
+  await expect(page.locator('.hero-palabra')).toHaveText(/navaja/i);
+  const rasgos = page.locator('.hero-rasgos li');
+  await expect(rasgos).toHaveCount(3);
+  await expect(rasgos.nth(1)).toHaveText('Afeitado con navaja');
+  await expect(page.locator('.hero-rasgos svg[aria-hidden="true"]')).toHaveCount(3);
 });
 
 test.describe('móvil', () => {

@@ -34,7 +34,7 @@ const archivo = Object.entries(archivos).find(([ruta]) => ruta.split('/').pop()?
       fallbackFormat="webp"
       class:list={['foto block h-auto w-full object-cover', aspecto, clase]}
       loading={prioridad ? 'eager' : 'lazy'}
-      fetchpriority={prioridad ? 'high' : 'auto'}
+      fetchpriority={prioridad ? 'high' : undefined}
     />
   ) : (
     <div role="img" aria-label={alt} class:list={['foto foto-pendiente', aspecto, clase]} data-pendiente={nombre}>
