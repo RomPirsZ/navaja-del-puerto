@@ -19,6 +19,8 @@ test('el aviso de concepto está en el pie y nada va antes de la cabecera', asyn
 
 test('los cinco servicios llevan duración y precio de ejemplo', async ({ page }) => {
   await page.goto('/');
+  // Decisión del usuario (2026-11-21): el título es solo «Servicios», sin «Lado A»
+  await expect(page.locator('#servicios-titulo')).toHaveText('Servicios');
   const pistas = page.locator('#servicios .pista');
   await expect(pistas).toHaveCount(5);
   await expect(pistas.nth(1)).toContainText('Corte y barba');

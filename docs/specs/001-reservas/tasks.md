@@ -92,7 +92,7 @@ Pedido por el usuario el 2026-11-21: la paleta **Charcoal Black `#1C1C1C`, Bone 
 Pedidos por el usuario tras ver el rediseño: el aviso de concepto solo en el pie; «SERVICIOS» como título en lugar de «Lado A» (se quedan los números A1…A5 y la frase de los barberos); fotos de servicios y de barberos más claras; la navaja del hero, una imagen hecha con IA (prompt para Nano Banana en `imagenes.md`).
 
 - [x] R16 El aviso de concepto, solo en el pie: sin la franja de arriba; el hero descuenta solo la cabecera; spec y PRODUCT.md al día — *hecha 2026-11-21. Test primero: nada va antes de la cabecera y el pie dice que la barbería no existe, que es un concepto de [A]nkordev y que la reserva es una demo (ya lo decía `pie.concepto`). Se quitan la franja y `aviso.concepto`; el hero pasa a `100svh − 4rem`. Spec §4.2 y §11 y PRODUCT.md recogen la decisión. Ojo: la prueba de la CSP con movimiento falla a veces en la tanda completa («Fetch response has been disposed» al reenviar una respuesta) y pasa al repetirla sola*
-- [ ] R17 «SERVICIOS» como título, al tamaño que tenía «Lado A»
+- [x] R17 «SERVICIOS» como título, al tamaño que tenía «Lado A» — *hecha 2026-11-21. Test primero (el encabezado de la sección es «Servicios»). El `h2` es solo «Servicios» en la voz condensada a `--text-titulo`; se quitan el subtítulo y `servicios.lado`. Se quedan A1…A5 y «Los créditos de este disco», como pidió el usuario*
 - [ ] R18 Fotos de servicios y de barberos aclaradas desde los originales (`scripts/aclarar-fotos.sh`), con su procedencia
 - [ ] R19 Navaja del hero: foto generada por el usuario con Nano Banana, tratada con `scripts/navaja-hero.sh` y puesta en lugar del SVG
 

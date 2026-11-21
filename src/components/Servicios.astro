@@ -1,5 +1,6 @@
 ---
-// Side A of the record: the services as a tracklist, with duration and sample price. A row
+// The services as a record's tracklist (A1–A5), with duration and sample price; since
+// 2026-11-21 the heading is just «Servicios», without «Lado A» (user's request). A row
 // leads to the booking with that service chosen (script below; without it, to #reservar).
 // Its own section under the hero since the redesign; with a mouse on wide screens, the photo
 // of the track under the pointer wipes into the panel beside the list.
@@ -10,10 +11,7 @@ import Foto from './Foto.astro';
 
 <section id="servicios" class="servicios" aria-labelledby="servicios-titulo">
   <div class="servicios-lista" data-revelar-grupo>
-    <h2 id="servicios-titulo" class="servicios-titulo" data-revelar>
-      <span class="display">{t('servicios.lado')}</span>{' '}
-      <span class="servicios-sub">{t('servicios.titulo')}</span>
-    </h2>
+    <h2 id="servicios-titulo" class="servicios-titulo display" data-revelar>{t('servicios.titulo')}</h2>
     <ol class="pistas">
       {
         SERVICIOS.map((s, i) => {
@@ -126,21 +124,10 @@ import Foto from './Foto.astro';
     }
   }
 
+  /* «Servicios» at the size «Lado A» had (user's request, 2026-11-21) */
   .servicios-titulo {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 0.25rem 1rem;
     margin: 0 0 0.75rem;
-  }
-
-  .servicios-titulo .display {
     font-size: var(--text-titulo);
-  }
-
-  .servicios-sub {
-    font-size: var(--text-tema);
-    font-weight: 700;
   }
 
   .pistas {
